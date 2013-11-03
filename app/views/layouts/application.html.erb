@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>YellowRed</title>
+  <title>YellowRed.me</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+	
+	<% unless current_user.nil? %>
+		<h2>Welcome, <%= current_user.profile.username %>!</h2>
+		<%= button_to "Log Out", session_url, :method => :delete %>
+	<% end %>
+
+	<% unless flash[:errors].nil?%>
+		<% flash[:errors].each do |error_message| %>
+			<%= error_message %>
+		<% end %>
+	<% end%>
 
 <%= yield %>
 

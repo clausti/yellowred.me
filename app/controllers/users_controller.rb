@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
     if @user.save
       login_user!
-      # redirect_to home_url
+      redirect_to root_url
     else
       #render errors as json?
       flash.now[:errors] = @user.errors.full_messages
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
   def show #users profile page
     @user = current_user
+    @profile = @user.profile
 
     render :show
   end
