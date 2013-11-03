@@ -3,6 +3,10 @@ require 'bcrypt'
 class User < ActiveRecord::Base
   attr_accessible :email, :password, :session_token
   
+  before_validation(:on => :create) do
+    self.reset_session_token
+  end
+  
   validates :email, :password_digest, :session_token, :presence => true
   validates :email, :uniqueness => true
   validates :password, :length => { :minimum => 6, :allow_nil => true }
@@ -24,6 +28,31 @@ class User < ActiveRecord::Base
   has_many :stars, :inverse_of => :user
   
   
+  def self.fetch_by_credientials(user_hash)
+    @user = User.find_by_email(user_hash[:email])
+    
+    if @user && @user.has_password?(user_hash[:password])
+      @user
+    else
+      nil
+    end
+  end
   
+  def password=(raw_pw) 
+    @password = raw_pw
+    self.password_digest = Bcrypt::Password.create(raw_pw)
+  end
+  
+  def password
+    @password
+  end
+  
+  def has_password?(tent_pw)
+    Bcrypt::Password.new(self.password_digest) == tent_pw
+  end
+  
+  def reset_session_token
+    self.session_token = SecureRandom::urlsafe_base64(16)
+  end
   
 end
