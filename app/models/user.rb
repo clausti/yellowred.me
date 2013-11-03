@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   has_many :stars, :inverse_of => :user
   
   
-  def self.fetch_by_credientials(user_hash)
+  def self.find_by_credentials(user_hash)
     @user = User.find_by_email(user_hash[:email])
     
     if @user && @user.has_password?(user_hash[:password])
@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   
   def password=(raw_pw) 
     @password = raw_pw
-    self.password_digest = Bcrypt::Password.create(raw_pw)
+    self.password_digest = BCrypt::Password.create(raw_pw)
   end
   
   def password
@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
   end
   
   def has_password?(tent_pw)
-    Bcrypt::Password.new(self.password_digest) == tent_pw
+    BCrypt::Password.new(self.password_digest) == tent_pw
   end
   
   def reset_session_token

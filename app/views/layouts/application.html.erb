@@ -9,7 +9,7 @@
 <body>
 	
 	<% unless current_user.nil? %>
-		<h2>Welcome, <%= current_user.profile.username %>!</h2>
+		<h2>Welcome, <%= current_user.email %>!</h2>
 		<%= button_to "Log Out", session_url, :method => :delete %>
 	<% end %>
 
