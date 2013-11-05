@@ -61,4 +61,8 @@ class User < ActiveRecord::Base
     self.session_token = SecureRandom::urlsafe_base64(16)
   end
   
+  def messages
+    self.messages_sent + self.messages_recd
+  end
+  
 end

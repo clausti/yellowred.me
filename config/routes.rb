@@ -21,7 +21,7 @@ YellowRed::Application.routes.draw do
   
   resources :stars, :only => [:create, :destroy]
   get 'who-i-starred', :to => 'stars#index'
-  get 'who-starred-me', :to => 'stars#starred-me'
+  get 'who-starred-me', :to => 'stars#starred_me'
   
   get ':username', :to => 'profiles#show'
 

@@ -6,6 +6,11 @@ class StarsController < ApplicationController
     render :index
   end
   
+  def starred_me
+    @stars = current_user.starred_mes
+    render :index
+  end
+  
   def create
     @star = Star.new(params[:star])
     @star.save
