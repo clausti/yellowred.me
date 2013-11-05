@@ -2,7 +2,7 @@ class NopesController < ApplicationController
   before_filter :must_be_logged_in
   
   def index
-    @nopes = current_user.maybes
+    @nopes = current_user.nopes
     render :index
   end
   

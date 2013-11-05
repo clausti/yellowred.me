@@ -28,11 +28,10 @@ class User < ActiveRecord::Base
   has_many :nopes, :inverse_of => :user
   has_many :stars, :inverse_of => :user
   
-  has_many :starred_mes,
-           :through => :profile,
-           :source => :stars
+  # has_many :starred_mes,
+  #          :through => :profile,
+  #          :source => :stars
            
-  
   
   def self.find_by_credentials(user_hash)
     @user = User.find_by_email(user_hash[:email])

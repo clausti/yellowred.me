@@ -2,12 +2,12 @@ class StarsController < ApplicationController
   before_filter :must_be_logged_in
   
   def index
-    @stars = current_user.maybes
+    @stars = current_user.stars
     render :index
   end
   
   def starred_me
-    @stars = current_user.starred_mes
+    @stars = current_user.profile.stars
     render :index
   end
   
