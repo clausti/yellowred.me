@@ -7,7 +7,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'debugger'
 gem 'ejs'
 gem 'jquery-rails'
-gem 'sqlite3'
+gem 'pg'
 gem 'underscore'
 
 # Gems used only for assets and not required

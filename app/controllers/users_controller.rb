@@ -2,14 +2,14 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
+    @profile = Profile.new
     render :new
   end
 
   def create
     @user = User.new(params[:user])
-
+    @user.profile = Profile.new(:username => params[:username])
     if @user.save
-      Profile.create(:user_id => @user.id)
       SavedSearch.create(:user_id => @user.id)
       login_user!
       redirect_to edit_profile_url

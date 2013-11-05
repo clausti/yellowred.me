@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
   def destroy
     @user = current_user
     logout_user!
-    redirect_to new_session_url
+    redirect_to lobby_url
   end
   
 end
