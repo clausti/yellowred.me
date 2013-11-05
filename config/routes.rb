@@ -14,10 +14,13 @@ YellowRed::Application.routes.draw do
   resources :messages, :only => [:index, :show, :create, :destroy]
   
   resources :maybes, :only => [:index, :create, :destroy]
+  get 'my-maybe-list', :to => 'maybes#index'
   
   resources :nopes, :only => [:index, :create, :destroy]
+  get 'my-nope-list', :to => 'nopes#index'
   
   resources :stars, :only => [:index, :create, :destroy]
+  get 'who-i-starred', :to => 'stars#index'
   get 'who-starred-me', :to => 'stars#starred_me'
   
   get ':username', :to => 'profiles#show'
