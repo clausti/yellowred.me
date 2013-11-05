@@ -4,8 +4,10 @@ class ProfilesController < ApplicationController
   def show
     if params[:username] #want the urls to be by username not sure how yet
       @profile = Profile.find_by_username(params[:username])
+      render :show
     else
       @profile = current_user.profile
+      render :show
     end
   end
   

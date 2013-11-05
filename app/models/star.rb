@@ -4,6 +4,6 @@ class Star < ActiveRecord::Base
   validates :profile_id, :user_id, :presence => true
   validates_uniqueness_of :profile_id, :scope => [:user_id]
   
-  belongs_to :user, :inverse_of => :maybes
-  belongs_to :profile, :inverse_of => :maybes
+  belongs_to :user, :inverse_of => :stars
+  belongs_to :profile, :inverse_of => :stars
 end

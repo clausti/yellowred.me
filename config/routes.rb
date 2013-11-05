@@ -5,7 +5,6 @@ YellowRed::Application.routes.draw do
   get 'signup', :to => 'users#new'
   
   resource :profile, :only => [:show, :edit, :update]
-  get 'profiles/:username', :to => 'profiles#show' #can this just be :username?
   
   resource :session, :only => [:create, :destroy]  
   resources :users, :only => [:create] do 
@@ -14,8 +13,16 @@ YellowRed::Application.routes.draw do
   
   resources :messages, :only => [:index, :show, :new, :create, :destroy]
   
-  resources :maybes, :only => [:create, :destroy, :index]
-  resources :nopes, :only => [:create, :destroy, :index]
-  resources :stars, :only => [:create, :destroy, :index]
+  resources :maybes, :only => [:create, :destroy]
+  get 'my-maybe-list', :to => 'maybes#index'
+  
+  resources :nopes, :only => [:create, :destroy]
+  get 'my-nope-list', :to => 'nopes#index'
+  
+  resources :stars, :only => [:create, :destroy]
+  get 'who-i-starred', :to => 'stars#index'
+  get 'who-starred-me', :to => 'stars#starred-me'
+  
+  get ':username', :to => 'profiles#show'
 
 end
