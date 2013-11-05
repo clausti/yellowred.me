@@ -1,0 +1,2 @@
+class MaybesController < ApplicationController
+end
