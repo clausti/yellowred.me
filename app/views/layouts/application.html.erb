@@ -8,20 +8,6 @@
 </head>
 <body>
 	
-	<div id="site-header">
-		<div id="logo-home-link">
-			<a href="/">YellowRed<sub>&hearts;</sub>me</a>
-		</div>
-		
-		<div id="current-user-thumbnail-utility">
-				<% unless current_user.nil? %>
-					Welcome, <%= current_user.email.split('@')[0] %>!
-					<%= button_to "Log Out", session_url, :method => :delete %>
-				<% end %>
-		</div>
-		
-	</div>
-	
 	
 <%= yield %>
 
