@@ -1,6 +1,27 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#site-header {
+	display: inline-block;
+	width: 940;
+	border-style: solid;
+	border-color: orange;
+}
+
+#logo-home-link {
+	float: left;
+	width: 770px;
+	font-size: 24pt;
+}
+
+#current-user-thumbnail-utility {
+	text-align: right;
+	float: left;
+	width: 200px;
+	border-style: solid;
+	border-color: purple;
+}
+
 
 #all-content {
 	display: inline-block;
@@ -8,9 +29,9 @@
 
 #left-sidebar {
 	font-size: 14pt;
-	padding: 20px;
+	padding: 10px;
 	float: left;
-	width: 200px;
+	width: 140px;
 	border-style: solid;
 	border-color: blue;
 }
