@@ -8,32 +8,15 @@
 
 #left-sidebar {
 	font-size: 14pt;
+	padding: 20px;
 	float: left;
 	width: 200px;
 	border-style: solid;
 	border-color: blue;
 }
 
-#left-sidebar .errors-marquee {
-	font-size: 12pt;
-	float: left;
-	width: 195px;
-//	height: 60px;
-	color: red;
-	border-style: solid;
-	border-color: purple;
-}
-
 #central-content {
 	font-size: 16pt;
-	float:left;
-	width: 600px;
-	border-style: solid;
-	border-color: black;
-}
-
-#lobby-blurb {
-	font-size: 18pt;
 	float:left;
 	width: 600px;
 	border-style: solid;

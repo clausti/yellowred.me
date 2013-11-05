@@ -1,0 +1,27 @@
+#lobby-sidebar {
+	font-size: 14pt;
+	padding: 10px;
+	float: left;
+	width: 200px;
+	border-style: solid;
+	border-color: blue;
+}
+
+#lobby-sidebar .errors-marquee {
+	font-size: 12pt;
+	float: left;
+	width: 195px;
+//	height: 60px;
+	color: red;
+	border-style: solid;
+	border-color: purple;
+}
+
+#lobby-blurb {
+	font-size: 18pt;
+	padding: 20px;
+	float:left;
+	width: 600px;
+	border-style: solid;
+	border-color: black;
+}
