@@ -8,8 +8,8 @@ gem 'debugger'
 gem 'ejs'
 gem 'figaro'
 gem 'jquery-rails'
-# gem 'pg'
-gem 'sqlite3'
+gem 'pg'
+# gem 'sqlite3'
 gem 'underscore'
 
 # Gems used only for assets and not required
