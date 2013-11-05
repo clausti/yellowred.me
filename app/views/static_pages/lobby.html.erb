@@ -4,14 +4,25 @@
 
 <div id="all-content">
 	<div id="left-sidebar">
-
+		
+		<div class="errors-marquee">
+			la la errors, space for more errors
+			<% unless flash[:errors].nil?%>
+				<% flash[:errors].each do |error_message| %>
+					<%= error_message %>
+				<% end %>
+			<% end%>
+		</div>
+		
 		<form action="<%= session_url %>" method="post" accept-charset="utf-8">
 			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
 			<label for="user_username">Email</label>
+			<br>
 			<input type="text" name="user[email]" value="<%= @user.email %>" id="user_username">
-
+			<br>
 			<label for="user_password">Password</label>
+			<br>
 			<input type="password" name="user[password]" id="user_password">
 
 			<p><input type="submit" value="Log In"></p>
@@ -19,12 +30,12 @@
 	
 	</div>
 
-	<div id="central-content">
+	<div id="lobby-blurb">
 	
 	Keep track of who you're interested in... 
-
+	<br><br>
 	...set and forget who you're not. 
-
+<br><br>
 	yellowred... get to green. 
 
 	</div>

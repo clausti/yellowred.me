@@ -7,36 +7,58 @@
 }
 
 #left-sidebar {
+	font-size: 14pt;
 	float: left;
-	width: 150px;
+	width: 200px;
 	border-style: solid;
 	border-color: blue;
 }
 
+#left-sidebar .errors-marquee {
+	font-size: 12pt;
+	float: left;
+	width: 195px;
+//	height: 60px;
+	color: red;
+	border-style: solid;
+	border-color: purple;
+}
+
 #central-content {
+	font-size: 16pt;
 	float:left;
-	width: 400px;
+	width: 600px;
+	border-style: solid;
+	border-color: black;
+}
+
+#lobby-blurb {
+	font-size: 18pt;
+	float:left;
+	width: 600px;
 	border-style: solid;
 	border-color: black;
 }
 
 #right-sidebar {
 	float: left;
-	width: 150px;
+	width: 200px;
 	border-style: solid;
 	border-color: green;
 }
 
 #yellow-box {
+	font-size: 14pt;
 	float: left;
-	width: 145px;
+	width: 195px;
 	border-style: solid;
 	border-color: yellow;
 }
 
 #red-box {
+	font-size: 14pt;
 	float: left;
-	width: 145px;
+	width: 195px;
 	border-style: solid;
 	border-color: red;
 }
