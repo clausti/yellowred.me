@@ -1,16 +1,15 @@
 class ProfilesController < ApplicationController
   
   def show
-    if params[:username] #want the urls to be by username not sure how yet
+    if params[:username]
       @profile = Profile.find_by_username(params[:username])
-      render :show
     else
       @profile = current_user.profile
-      render :show
     end
+    render :json => @profile, :status => 200
   end
   
-  def edit
+  def edit #will only be hit on intial profile edit after signup
     @profile = current_user.profile
     render :edit
   end
@@ -19,10 +18,9 @@ class ProfilesController < ApplicationController
     @profile = current_user.profile
     
     if @profile.update_attributes(params[:profile])
-      redirect_to home_url
+      render :json => @profile, :status => 200
     else
-      flash.now[:errors] = @profile.errors.full_messages
-      render :edit
+      render :json => @profile.errors.full_messages, :status => 422
     end
   end
   

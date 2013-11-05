@@ -2,19 +2,25 @@ class MaybesController < ApplicationController
     
   def index
     @maybes = current_user.maybes
-    render :index
+    render :json => @maybes, :status => 200
   end
   
   def create
     @maybe = Maybe.new(params[:maybe])
-    @maybe.save
-    render :json => @maybe, :status => 200
+    if @maybe.save
+      render :json => @maybe, :status => 200
+    else
+      render :json => @maybe.errrors.full_messages, :status => 422
+    end
   end
   
   def destroy
     @maybe = Maybe.find(params[:maybe])
-    @maybe.destroy
-    render :json => true, :status => 200
+    if @maybe.destroy
+      render :json => true, :status => 200
+    else
+      render :json => @maybe.errrors.full_messages, :status => 422
+    end
   end
   
 end

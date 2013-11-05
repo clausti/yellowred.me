@@ -11,7 +11,7 @@ YellowRed::Application.routes.draw do
     resource :saved_search, :only => [:show, :update]
   end
   
-  resources :messages, :only => [:index, :show, :new, :create, :destroy]
+  resources :messages, :only => [:index, :show, :create, :destroy]
   
   resources :maybes, :only => [:create, :destroy]
   get 'my-maybe-list', :to => 'maybes#index'
