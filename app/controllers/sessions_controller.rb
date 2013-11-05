@@ -1,5 +1,10 @@
 class SessionsController < ApplicationController
-  skip_before_filter :must_be_logged_in, :only => :create
+  skip_before_filter :must_be_logged_in, :only => :create, :lobby
+  
+  def lobby
+    @user = User.new
+    render :lobby
+  end
 
   def create
     @user = User.find_by_credentials(params[:user])
@@ -9,8 +14,8 @@ class SessionsController < ApplicationController
     else
       # not rendering as json. just putting on the page.
       # can change later to a backbone view?
-      flash[:errors] = ["Invalid username and/or password"]
-      redirect_to lobby_url
+      flash.now[:errors] = ["Invalid username and/or password"]
+      render :lobby
     end
   end
 
