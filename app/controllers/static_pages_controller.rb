@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  before_filter :must_be_logged_in, :except => :lobby
+  skip_before_filter :must_be_logged_in, :only => :lobby
   
   def home 
     @user = current_user

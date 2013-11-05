@@ -1,5 +1,4 @@
 class ProfilesController < ApplicationController
-  before_filter :must_be_logged_in
   
   def show
     if params[:username] #want the urls to be by username not sure how yet

@@ -1,6 +1,5 @@
 class MaybesController < ApplicationController
-  before_filter :must_be_logged_in
-  
+    
   def index
     @maybes = current_user.maybes
     render :index
