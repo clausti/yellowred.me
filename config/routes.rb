@@ -11,5 +11,11 @@ YellowRed::Application.routes.draw do
   resources :users, :only => [:create] do 
     resource :saved_search, :only => [:show, :update]
   end
+  
+  resources :messages, :only => [:index, :show, :new, :create, :destroy]
+  
+  resources :maybes, :only => [:create, :destroy, :index]
+  resources :nopes, :only => [:create, :destroy, :index]
+  resources :stars, :only => [:create, :destroy, :index]
 
 end
