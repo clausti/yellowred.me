@@ -9,8 +9,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     @user.profile = Profile.new(:username => params[:username])
+    @user.saved_search = SavedSearch.new
+    
     if @user.save
-      SavedSearch.create(:user_id => @user.id)
       login_user!
       redirect_to edit_profile_url
     else
