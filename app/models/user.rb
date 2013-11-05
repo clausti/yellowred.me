@@ -8,10 +8,11 @@ class User < ActiveRecord::Base
   end
   
   validates :email, :password_digest, :session_token, :presence => true
-  validates :email, :uniqueness => true
+  validates :email, :uniqueness => {:case_sensitive => false}
   validates :password, :length => { :minimum => 6, :allow_nil => true }
   
   has_one :profile, :inverse_of => :user
+  has_one :saved_search, :inverse_of => :user
   
   has_many :messages_sent, 
            :class_name => "Message",

@@ -1,8 +1,7 @@
-class Profile < ActiveRecord::Base
+class SavedSearch < ActiveRecord::Base
   attr_accessible :user_id,
                   :username,
                   :gender, 
-                  :about_me,
                   :friends_wanted,
                   :dating_wanted,
                   :hookups_wanted, 
@@ -16,17 +15,8 @@ class Profile < ActiveRecord::Base
                   :education,
                   :children,
                   :pets
-
-  validates :user_id, :presence => true, :uniqueness => true
-  validates :gender, :about_me, :presence => true, :on => :update
-  validates :username, :presence => true, 
-                       :uniqueness => {:case_sensitive => false},
-                       :on => :update               
                   
-  belongs_to :user, :inverse_of => :profile
-  
-  has_many :maybes, :inverse_of => :profile
-  has_many :nopes, :inverse_of => :profile
-  has_many :stars, :inverse_of => :profile
-
+  validates :user_id, :presence => true, :uniqueness => true
+                  
+  belongs_to :user, :inverse_of => :saved_search
 end

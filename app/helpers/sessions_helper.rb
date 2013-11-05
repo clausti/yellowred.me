@@ -2,7 +2,7 @@ module SessionsHelper
   
   def must_be_logged_in
     if current_user.nil?
-      redirect_to new_session_url
+      redirect_to lobby_url
     end
   end
   

@@ -1,3 +1,42 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#all-content {
+	display: inline-block;
+}
+
+#left-sidebar {
+	float: left;
+	width: 150px;
+	border-style: solid;
+	border-color: blue;
+}
+
+#central-content {
+	float:left;
+	width: 400px;
+	border-style: solid;
+	border-color: black;
+}
+
+#right-sidebar {
+	float: left;
+	width: 150px;
+	border-style: solid;
+	border-color: green;
+}
+
+#yellow-box {
+	float: left;
+	width: 145px;
+	border-style: solid;
+	border-color: yellow;
+}
+
+#red-box {
+	float: left;
+	width: 145px;
+	border-style: solid;
+	border-color: red;
+}

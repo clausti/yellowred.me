@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131103005722) do
+ActiveRecord::Schema.define(:version => 20131105051119) do
 
   create_table "maybes", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -44,27 +44,48 @@ ActiveRecord::Schema.define(:version => 20131103005722) do
   add_index "nopes", ["user_id", "profile_id"], :name => "index_nopes_on_user_id_and_profile_id", :unique => true
 
   create_table "profiles", :force => true do |t|
-    t.string   "username",                          :null => false
-    t.string   "gender",                            :null => false
-    t.string   "about_me",                          :null => false
-    t.boolean  "friends_wanted", :default => false
-    t.boolean  "dating_wanted",  :default => false
-    t.boolean  "hookups_wanted", :default => false
-    t.boolean  "men_wanted",     :default => false
-    t.boolean  "women_wanted",   :default => false
-    t.boolean  "both_wanted",    :default => false
-    t.boolean  "any_wanted",     :default => false
+    t.string   "username",                            :null => false
+    t.string   "gender",                              :null => false
+    t.string   "about_me",                            :null => false
+    t.boolean  "friends_wanted",   :default => false
+    t.boolean  "dating_wanted",    :default => false
+    t.boolean  "hookups_wanted",   :default => false
+    t.boolean  "men_wanted",       :default => false
+    t.boolean  "women_wanted",     :default => false
     t.integer  "height"
     t.string   "body_type"
     t.string   "religion"
     t.string   "education"
     t.string   "children"
     t.string   "pets"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.boolean  "nonbinary_wanted", :default => false
   end
 
   add_index "profiles", ["username"], :name => "index_profiles_on_username", :unique => true
+
+  create_table "saved_searches", :force => true do |t|
+    t.integer  "user_id",          :null => false
+    t.string   "username"
+    t.string   "gender"
+    t.boolean  "friends_wanted"
+    t.boolean  "dating_wanted"
+    t.boolean  "hookups_wanted"
+    t.boolean  "men_wanted"
+    t.boolean  "women_wanted"
+    t.boolean  "nonbinary_wanted"
+    t.integer  "height"
+    t.string   "body_type"
+    t.string   "religion"
+    t.string   "education"
+    t.string   "children"
+    t.string   "pets"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "saved_searches", ["user_id"], :name => "index_saved_searches_on_user_id", :unique => true
 
   create_table "stars", :force => true do |t|
     t.integer  "user_id",    :null => false
