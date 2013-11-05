@@ -44,6 +44,24 @@
 	border-color: black;
 }
 
+#search-box {
+	font-size: 16pt;
+	float:left;
+	width: 595px;
+	height: 200px;
+	border-style: solid;
+	border-color: blue;
+}
+
+#search-results {
+	font-size: 16pt;
+	float:left;
+	width: 595px;
+	height: 300px;
+	border-style: solid;
+	border-color: orange;
+}
+
 #right-sidebar {
 	float: left;
 	width: 200px;
@@ -55,6 +73,7 @@
 	font-size: 14pt;
 	float: left;
 	width: 195px;
+	height: 250px;
 	border-style: solid;
 	border-color: yellow;
 }
@@ -63,6 +82,7 @@
 	font-size: 14pt;
 	float: left;
 	width: 195px;
+	height: 100px;
 	border-style: solid;
 	border-color: red;
 }

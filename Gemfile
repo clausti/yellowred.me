@@ -6,8 +6,10 @@ gem 'backbone-on-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'debugger'
 gem 'ejs'
+gem 'figaro'
 gem 'jquery-rails'
-gem 'pg'
+# gem 'pg'
+gem 'sqlite3'
 gem 'underscore'
 
 # Gems used only for assets and not required
