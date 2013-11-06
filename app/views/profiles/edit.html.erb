@@ -166,7 +166,7 @@
 			<label for="profile_children">Kids?</label>
 			<select name="profile[children]" id="profile_children">
 				<option value=""></option>
-				<% options = %w( have\ kids have\ kids&\ want\ more want\ kids don't\ want\ kids ) %>
+				<% options = %w( have\ kids have\ kids\ &\ want\ more want\ kids don't\ want\ kids ) %>
 				<% options.each do |children| %>
 			    <option value="<%= children %>"
 						<% if @profile.children == children %>

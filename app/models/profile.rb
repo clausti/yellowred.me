@@ -16,11 +16,37 @@ class Profile < ActiveRecord::Base
                   :children,
                   :pets
 
-  validates :user_id, :presence => true, :uniqueness => true
-  validates :gender, :presence => true, :on => :update
-  validates :username, :presence => true, 
-                       :uniqueness => {:case_sensitive => false},
-                       :on => :update               
+  validates :user_id, 
+            :presence   => true, 
+            :uniqueness => true
+            
+  validates :username, 
+            :on         => :update,
+            :presence   => true, 
+            :uniqueness => {:case_sensitive => false}          
+            
+  validates :gender, 
+            :on        => :update,
+            :inclusion => %w( male female genderqueer/nonbinary )
+            
+  validates :height,
+            :inclusion => { :in => 58..84 }
+            
+  validates :body_type,
+            :inclusion => %w( skinny lean average athletic soft chubby heavy)
+            
+  validates :religion,
+            :inclusion => %w( none Jehovah Yaweh Allah Buddhist Hindu FSM other )
+            
+  validates :education,
+            :inclusion => %w( some\ high\ school high\ school college masters PhD MD )
+            
+  validates :children,
+            :inclusion => %w( have\ kids have\ kids\ &\ want\ more want\ kids don't\ want\ kids )
+            
+  validates :pets,
+            :inclusion => %w( cats dogs ball\ pythons bearded\ dragons fish other )
+                
                   
   belongs_to :user, :inverse_of => :profile
   
