@@ -11,7 +11,7 @@ class StarsController < ApplicationController
   end
   
   def create
-    @star = Star.new(params[:star])
+    @star = Star.new(params[:star].merge(:user_id => current_user.id))
     if @star.save
       render :json => @star.profile, :status => 200
     else

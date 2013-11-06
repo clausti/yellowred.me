@@ -8,6 +8,7 @@ YellowRed::Application.routes.draw do
   
   resources :users, :only => [:create]
   resource :profile, :only => [:show, :edit, :update]
+  
   resource :saved_search, :only => [:show, :update]
   get 'saved_search/results', :to => 'saved_searches#results'
   
