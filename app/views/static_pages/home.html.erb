@@ -96,7 +96,7 @@
 				<label for="search_height">Height</label>
 				<select name="search[height]" id="search_height">
 					<option value=""></option>
-					<% options = (58..84).to_a %>
+					<% options = Profile::HEIGHTS %>
 					<% options.each do |height| %>
 					<% hieght_feet_inches = height.divmod(12) %>
 				    <option value="<%= height %> %>"
@@ -109,7 +109,7 @@
 				<label for="search_body_type">Body Type</label>
 				<select name="search[body_type]" id="search_body_type">
 					<option value=""></option>
-					<% options = %w( skinny lean average athletic soft chubby heavy) %>
+					<% options = Profile::BODY_TYPES %>
 					<% options.each do |body_type| %>
 				    <option value="<%= body_type %>"
 							<% if @search.body_type == body_type %>
@@ -121,7 +121,7 @@
 				<label for="search_religion">Religion</label>
 				<select name="search[religion]" id="search_religion">
 					<option value=""></option>
-					<% options = %w( none Jehovah Yaweh Allah Buddhist Hindu FSM other ) %>
+					<% options = Profile::RELIGIONS %>
 					<% options.each do |religion| %>
 				    <option value="<%= religion %>"
 							<% if @search.religion == religion %>
@@ -133,7 +133,7 @@
 				<label for="search_education">Education</label>
 				<select name="search[education]" id="search_education">
 					<option value=""></option>
-					<% options = %w( some\ high\ school high\ school college masters PhD MD ) %>
+					<% options = Profile::EDUCATION_LEVELS %>
 					<% options.each do |education| %>
 				    <option value="<%= education %>"
 							<% if @search.education == education %>
@@ -145,7 +145,7 @@
 				<label for="search_children">Kids?</label>
 				<select name="search[children]" id="search_children">
 					<option value=""></option>
-					<% options = %w( have\ kids have\ kids&\ want\ more want\ kids don't\ want\ kids ) %>
+					<% options = Profile::CHILDREN_CHOICES %>
 					<% options.each do |children| %>
 				    <option value="<%= children %>"
 							<% if @search.children == children %>
@@ -157,7 +157,7 @@
 				<label for="search_pets">Pets?</label>
 				<select name="search[pets]" id="search_pets">
 					<option value=""></option>
-					<% options = %w( cats dogs ball\ pythons bearded\ dragons fish other ) %>
+					<% options = Profile::PET_CHOICES %>
 					<% options.each do |pets| %>
 				    <option value="<%= pets %>"
 							<% if @search.pets == pets %>

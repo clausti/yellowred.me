@@ -42,7 +42,7 @@
 			<label for="profile_gender">Gender</label>
 			<select name="profile[gender]" id="profile_gender">
 				<option value=""></option>
-				<% options = %w( male female genderqueer/nonbinary ) %>
+				<% options = Profile::GENDERS %>
 				<% options.each do |gender| %>
 					<% option_value = gender.split('genderqueer/')[-1] %>
 			    <option value="<%= option_value %>"
@@ -130,7 +130,7 @@
 			<label for="profile_body_type">Body Type</label>
 			<select name="profile[body_type]" id="profile_body_type">
 				<option value=""></option>
-				<% options = %w( skinny lean average athletic soft chubby heavy) %>
+				<% options = Profile::BODY_TYPES %>
 				<% options.each do |body_type| %>
 			    <option value="<%= body_type %>"
 						<% if @profile.body_type == body_type %>
@@ -142,7 +142,7 @@
 			<label for="profile_religion">Religion</label>
 			<select name="profile[religion]" id="profile_religion">
 				<option value=""></option>
-				<% options = %w( none Jehovah Yaweh Allah Buddhist Hindu FSM other ) %>
+				<% options = Profile::RELIGIONS %>
 				<% options.each do |religion| %>
 			    <option value="<%= religion %>"
 						<% if @profile.religion == religion %>
@@ -154,7 +154,7 @@
 			<label for="profile_education">Education</label>
 			<select name="profile[education]" id="profile_education">
 				<option value=""></option>
-				<% options = %w( some\ high\ school high\ school college masters PhD MD ) %>
+				<% options = Profile::EDUCATION_LEVELS %>
 				<% options.each do |education| %>
 			    <option value="<%= education %>"
 						<% if @profile.education == education %>
@@ -166,7 +166,7 @@
 			<label for="profile_children">Kids?</label>
 			<select name="profile[children]" id="profile_children">
 				<option value=""></option>
-				<% options = %w( have\ kids have\ kids\ &\ want\ more want\ kids don't\ want\ kids ) %>
+				<% options = Profile::CHILDREN_CHOICES %>
 				<% options.each do |children| %>
 			    <option value="<%= children %>"
 						<% if @profile.children == children %>
@@ -178,7 +178,7 @@
 			<label for="profile_pets">Pets?</label>
 			<select name="profile[pets]" id="profile_pets">
 				<option value=""></option>
-				<% options = %w( cats dogs ball\ pythons bearded\ dragons fish other ) %>
+				<% options = Profile::PET_CHOICES %>
 				<% options.each do |pets| %>
 			    <option value="<%= pets %>"
 						<% if @profile.pets == pets %>

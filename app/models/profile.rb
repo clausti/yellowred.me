@@ -15,6 +15,14 @@ class Profile < ActiveRecord::Base
                   :education,
                   :children,
                   :pets
+                  
+  GENDERS          = %w( male female genderqueer/nonbinary )
+  HEIGHTS          = (58..84).to_a
+  BODY_TYPES       = %w( skinny lean average athletic soft chubby heavy)
+  RELIGIONS        = %w( none Jehovah Yaweh Allah Buddhist Hindu FSM other )
+  EDUCATION_LEVELS = %w( some\ high\ school high\ school college masters PhD MD )
+  CHILDREN_CHOICES = %w( have\ kids have\ kids\ &\ want\ more want\ kids don't\ want\ kids )
+  PET_CHOICES      = %w( cats dogs ball\ pythons bearded\ dragons fish other )
 
   validates :user_id, 
             :presence   => true, 
@@ -27,25 +35,25 @@ class Profile < ActiveRecord::Base
             
   validates :gender, 
             :on        => :update,
-            :inclusion => %w( male female genderqueer/nonbinary )
+            :inclusion => GENDERS
             
   validates :height,
-            :inclusion => { :in => 58..84 }
+            :inclusion => HEIGHTS
             
   validates :body_type,
-            :inclusion => %w( skinny lean average athletic soft chubby heavy)
+            :inclusion => BODY_TYPES
             
   validates :religion,
-            :inclusion => %w( none Jehovah Yaweh Allah Buddhist Hindu FSM other )
+            :inclusion => RELIGIONS
             
   validates :education,
-            :inclusion => %w( some\ high\ school high\ school college masters PhD MD )
+            :inclusion => EDUCATION_LEVELS
             
   validates :children,
-            :inclusion => %w( have\ kids have\ kids\ &\ want\ more want\ kids don't\ want\ kids )
+            :inclusion => CHILDREN_CHOICES
             
   validates :pets,
-            :inclusion => %w( cats dogs ball\ pythons bearded\ dragons fish other )
+            :inclusion => PET_CHOICES
                 
                   
   belongs_to :user, :inverse_of => :profile
