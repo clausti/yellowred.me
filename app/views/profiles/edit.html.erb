@@ -25,7 +25,6 @@
 	
 	<div id="central-content">
 		<div class="errors-marquee">
-			la la errors, space for more errors
 			<% unless flash[:errors].nil?%>
 				<% flash[:errors].each do |error_message| %>
 					<%= error_message %>
@@ -44,10 +43,16 @@
 			<label for="profile_gender">Gender</label>
 			<select name="profile[gender]" id="profile_gender">
 				<option value=""></option>
-				<option value="male">male</option>
-				<option value="female">female</option>
-				<option value="nonbinary">genderqueer/nonbinary</option>
+				<% options = %w( male female genderqueer/nonbinary ) %>
+				<% options.each do |gender| %>
+					<% option_value = gender.split('genderqueer/')[-1] %>
+			    <option value="<%= option_value %>"
+						<% if @profile.gender == option_value %>
+								selected
+						<% end %>><%= gender %></option>
+				<% end %>				
 			</select><br>
+			
 		</div>
 		
 		<div id="seeking">
