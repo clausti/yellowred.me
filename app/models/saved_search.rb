@@ -7,8 +7,7 @@ class SavedSearch < ActiveRecord::Base
                   :hookups_wanted, 
                   :men_wanted,
                   :women_wanted,
-                  :both_wanted,
-                  :any_wanted,
+                  :nonbinary_wanted,
                   :height, #integer in inches
                   :body_type,
                   :religion,

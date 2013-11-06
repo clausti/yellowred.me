@@ -17,10 +17,8 @@
 
 <div id="all-content">
 	
-	<div id="left-sidebar" class="round-corners">
-		<div style="color:white;font-size:26pt;float:right">
-			<sub>&hearts;</sub>me
-		</div>
+	<div id="profile-left-sidebar" class="round-corners">
+		<sub>&hearts;</sub>me
 	</div>
 	
 	<div id="central-content" class="round-corners">
@@ -36,10 +34,11 @@
 			<input type="hidden" name="_method" value="PUT">
 			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 			
-		<div id="username-and-gender">
+		<div id="username">
 			<label for="profile_username">Username</label>
 			<input type="text" name="profile[username]" value="<%= @profile.username %>" id="profile_username">
-			
+		</div>
+		<div id="gender">
 			<label for="profile_gender">Gender</label>
 			<select name="profile[gender]" id="profile_gender">
 				<option value=""></option>
@@ -52,13 +51,12 @@
 						<% end %>><%= gender %></option>
 				<% end %>				
 			</select><br>
-			
 		</div>
 		
-		<div id="seeking">
-			<div class="profile-checkbox-group">
+		<div id="profile-form-seeking">
+			<div class="checkbox-group">
 				Looking for:<br>
-					<div class="profile-checkbox-group">
+					<div class="checkbox-group">
 						<input type="checkbox" 
 									 name="profile[friends_wanted]" 
 									 value="true"
@@ -76,13 +74,13 @@
 									 value="true"
 									 <% if @profile.hookups_wanted %>
 										 checked
-									 <% end %>>Hookups<br>	
+									 <% end %>>Hookups<br>
 					</div>
 			</div>
-			
-			<div class="profile-checkbox-group">
+		
+			<div class="checkbox-group">
 				Interested in:<br>
-					<div class="profile-checkbox-group">
+					<div class="checkbox-group">
 						<input type="checkbox" 
 									 name="profile[men_wanted]" 
 									 value="true"
@@ -194,7 +192,7 @@
 			</div>
 		</form>
 		<br>
-		<div style="float:right;text-align:right;padding-bottom:8px;padding-right:5px;width:95%">
+		<div style="float:right;text-align:right;padding-bottom:5px;padding-right:5px;width:95%">
 			<%= button_to "Go to Home without saving", root_url, :method => :get, :class => "button" %>
 		</div>
 	</div>

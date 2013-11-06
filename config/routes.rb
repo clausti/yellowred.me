@@ -4,12 +4,11 @@ YellowRed::Application.routes.draw do
   get 'lobby', :to => 'sessions#lobby'
   get 'sign-up', :to => 'users#new'
   
-  resource :profile, :only => [:show, :edit, :update]
-  
   resource :session, :only => [:create, :destroy]  
-  resources :users, :only => [:create] do 
-    resource :saved_search, :only => [:show, :update]
-  end
+  resources :users, :only => [:create]
+  
+  resource :profile, :only => [:show, :edit, :update]
+  resource :saved_search, :only => [:show, :update]
   
   resources :messages, :only => [:index, :show, :create, :destroy]
   

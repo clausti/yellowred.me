@@ -12,8 +12,8 @@
 	padding: 10px;
 	margin: 5px;
 	float: left;
-	width: auto;
-	height: 350px;
+	height: auto;
+	width: 145px;
 	border-style: solid;
 	border-color: blue;
 	background-color: #8AD3EB;
@@ -24,18 +24,44 @@
 	padding: 5px;
 	font-size: 14pt;
 	float:left;
-	width: 600px;
+	max-width: 600px;
+	height: auto;
 	border-style: solid;
-	border-color: black;
+	border-color: #4d4b4d;
 }
 
 #search-box {
 	float:left;
 	width: 595px;
-	height: 200px;
+//	height: 200px;
 	margin-bottom: 5px;
 	border-style: solid;
 	border-color: blue;
+}
+
+#search-form {
+	font-size: 14pt;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#search-form-seeking {
+	float:left;
+	width: 50%;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 10px;
+	padding-bottom: 15px;
+}
+
+#their-stats {
+	float:left;
+	width: 42%;
+	float: right;
+	padding-top: 10px;
+	padding-left: 15px;
+	padding-right: 5px;
+	padding-bottom: 5px;
 }
 
 #search-results {

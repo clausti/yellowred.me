@@ -29,7 +29,149 @@
 	
 	<div id="central-content" class="round-corners">
 		<div id="search-box" class="round-corners">
-			I'm where the search form will be!
+			<div class="errors-marquee">
+				<% unless flash[:errors].nil?%>
+					<% flash[:errors].each do |error_message| %>
+						<%= error_message %>
+					<% end %>
+				<% end%>
+			</div>
+	
+			<form action="<%= saved_search_url %>" method="post" id="search-form" accept-charset="utf-8">
+				<input type="hidden" name="_method" value="PUT">
+				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	
+			<div id="search-form-seeking">
+				<div class="checkbox-group">
+					Looking for:<br>
+						<div class="checkbox-group">
+							<input type="checkbox" 
+										 name="search[friends_wanted]" 
+										 value="true"
+										 <% if @search.friends_wanted %>
+											 checked
+										 <% end %>> Friends<br>
+							<input type="checkbox" 
+										 name="search[dating_wanted]" 
+										 value="true"
+										 <% if @search.dating_wanted %>
+											 checked
+										 <% end %>> Dating<br>
+							<input type="checkbox" 
+										 name="search[hookups_wanted]" 
+										 value="true"
+										 <% if @search.hookups_wanted %>
+											 checked
+										 <% end %>> Hookups<br>
+						</div>
+				</div>
+				
+				<div class="checkbox-group">
+					Interested in:<br>
+						<div class="checkbox-group">
+							<input type="checkbox" 
+										 name="search[men_wanted]" 
+										 value="true"
+										 <% if @search.men_wanted %>
+											 checked
+										 <% end %>> Men<br>
+							<input type="checkbox" 
+										 name="search[women_wanted]" 
+										 value="true"
+										 <% if @search.women_wanted %>
+											 checked
+										 <% end %>> Women<br>
+							<input type="checkbox" 
+										 name="search[nonbinary_wanted]" 
+										 value="true"
+										 <% if @search.nonbinary_wanted %>
+											 checked
+										 <% end %>> Genderqueer/Nonbinary<br>	
+						</div>
+				</div>
+			</div>
+	
+			<div id="their-stats">
+				<label for="search_height">Height</label>
+				<select name="search[height]" id="search_height">
+					<option value=""></option>
+					<% options = (58..84).to_a %>
+					<% options.each do |height| %>
+					<% hieght_feet_inches = height.divmod(12) %>
+				    <option value="<%= height %> %>"
+							<% if @search.height == height %>
+									selected
+							<% end %>><%=hieght_feet_inches[0]%>' <%=hieght_feet_inches[1]%>"</option>
+					<% end %>	
+				</select><br>		
+		
+				<label for="search_body_type">Body Type</label>
+				<select name="search[body_type]" id="search_body_type">
+					<option value=""></option>
+					<% options = %w( skinny lean average athletic soft chubby heavy) %>
+					<% options.each do |body_type| %>
+				    <option value="<%= body_type %>"
+							<% if @search.body_type == body_type %>
+								selected
+						  <% end %>><%= body_type %></option>
+					<% end %>				
+				</select><br>
+
+				<label for="search_religion">Religion</label>
+				<select name="search[religion]" id="search_religion">
+					<option value=""></option>
+					<% options = %w( none Jehovah Yaweh Allah Buddhist Hindu FSM other ) %>
+					<% options.each do |religion| %>
+				    <option value="<%= religion %>"
+							<% if @search.religion == religion %>
+								selected
+						  <% end %>><%= religion %></option>
+					<% end %>				
+				</select><br>
+		
+				<label for="search_education">Education</label>
+				<select name="search[education]" id="search_education">
+					<option value=""></option>
+					<% options = %w( some\ high\ school high\ school college masters PhD MD ) %>
+					<% options.each do |education| %>
+				    <option value="<%= education %>"
+							<% if @search.education == education %>
+								selected
+						  <% end %>><%= education %></option>
+					<% end %>					
+				</select><br>
+		
+				<label for="search_children">Kids?</label>
+				<select name="search[children]" id="search_children">
+					<option value=""></option>
+					<% options = %w( have\ kids have\ kids&\ want\ more want\ kids don't\ want\ kids ) %>
+					<% options.each do |children| %>
+				    <option value="<%= children %>"
+							<% if @search.children == children %>
+								selected
+						  <% end %>><%= children %></option>
+					<% end %>				
+				</select><br>
+		
+				<label for="search_pets">Pets?</label>
+				<select name="search[pets]" id="search_pets">
+					<option value=""></option>
+					<% options = %w( cats dogs ball\ pythons bearded\ dragons fish other ) %>
+					<% options.each do |pets| %>
+				    <option value="<%= pets %>"
+							<% if @search.pets == pets %>
+								selected
+						  <% end %>><%= pets %></option>
+					<% end %>				
+				</select>
+				<br>
+				<br>
+				<div style="float:right;padding-right:10px">
+					<input class="button" type="submit" value="Search">
+				</div>
+			</div>
+
+			</form>
 		</div>
 		
 		<div id="search-results" class="round-corners">
