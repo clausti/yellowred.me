@@ -2,7 +2,7 @@ YellowRed::Application.routes.draw do
 
   root :to => 'static_pages#home'
   get 'lobby', :to => 'sessions#lobby'
-  get 'sign-up', :to => 'users#new'
+  get 'signup', :to => 'users#new'
   
   resource :session, :only => [:create, :destroy]
   

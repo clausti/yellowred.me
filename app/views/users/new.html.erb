@@ -1,18 +1,25 @@
-<!-- New User View -->
 
 <h2>Sign Up</h2>
 
 <form action="<%= users_url %>" method="post" accept-charset="utf-8">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+		<label for="user_username">Username</label>
+		<input type="text" name="username" value="<%= @profile.username %>" id="user_username">
+		<br>
 	
-	<label for="user_username">Username</label>
-	<input type="text" name="username" value="<%= @profile.username %>" id="username">
+		<label for="user_email">Email</label>
+		<input type="text" name="user[email]" value="<%= @user.email %>" id="user_email">
+		<br>
 
-	<label for="user_email">Email</label>
-	<input type="text" name="user[email]" value="<%= @user.email %>" id="user_email">
-
-	<label for="user_password">Password</label>
-	<input type="password" name="user[password]" id="user_password">
-
-	<p><input type="submit" value="Sign Up"></p>
+		<label for="user_password">Password</label>
+		<input type="password" name="user[password]" id="user_password">
+		<br>
+																							
+		<input type="submit" value="Sign Up!" class="button" style="display:inline">
+	
 </form>
+
+<%= button_to "Back to Lobby", lobby_url, :method => :get, 
+																					:class => "button",
+																					:style => "display:inline" %>

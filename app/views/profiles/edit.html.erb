@@ -117,7 +117,7 @@
 			<label for="profile_height">Height</label>
 			<select name="profile[height]" id="profile_height">
 				<option value=""></option>
-				<% options = (58..84).to_a %>
+				<% options = Profile::HEIGHTS %>
 				<% options.each do |height| %>
 				<% hieght_feet_inches = height.divmod(12) %>
 			    <option value="<%= height %> %>"

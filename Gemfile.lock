@@ -83,6 +83,8 @@ GEM
       callsite
       rack-contrib
       railties
+    meyer-css-reset-rails (1.0.2)
+      rails (~> 3.2.12)
     mime-types (1.25)
     multi_json (1.8.2)
     pg (0.16.0)
@@ -149,6 +151,7 @@ DEPENDENCIES
   figaro
   jquery-rails
   meta_request
+  meyer-css-reset-rails
   pg
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
