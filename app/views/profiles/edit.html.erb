@@ -35,57 +35,93 @@
 			<label for="profile_gender">Gender</label>
 			<select name="profile[gender]" id="profile_gender">
 				<option value="option2"></option>
-				<option value="option1">Male</option>
-				<option value="option2">Female</option>
-				<option value="option2">Non-binary</option>
-			</select><br>
-			Looking for:<br>
-			  <div class="profile-radio-input">
-					<label>Friends?</label><br>
-			    <input name="profile[friends_wanted]" id="profile_friends_wanted_true" type="radio" value="true">
-			    <label for="profile_friends_wanted_true">Yeah</label><br>
-					<input name="profile[friends_wanted]" id="profile_friends_wanted_false" type="radio" value="false">
-			    <label for="profile_friends_wanted_false">No</label>
-				</div>
-			  <div class="profile-radio-input">
-					<label>Dates?</label><br>
-			    <input name="profile[dating_wanted]" id="profile_friends_wanted_true" type="radio" value="true">
-			    <label for="profile_dating_wanted_true">Yeah</label><br>
-					<input name="profile[dating_wanted]" id="profile_dating_wanted_false" type="radio" value="false">
-			    <label for="profile_dating_wanted_false">No</label>
-				</div>
-			  <div class="profile-radio-input">
-					<label>Hookups?</label><br>
-			    <input name="profile[friends_wanted]" id="profile_friends_wanted_true" type="radio" value="true">
-			    <label for="profile_friends_wanted_true">Yeah</label><br>
-					<input name="profile[friends_wanted]" id="profile_friends_wanted_false" type="radio" value="false">
-			    <label for="profile_friends_wanted_false">No</label>
-				</div>
-		  <!--
-		  t.boolean  "dating_wanted", radio yes/no
-		  t.boolean  "hookups_wanted", radio yes/no
-		  t.boolean  "men_wanted", radio yes/no
-		  t.boolean  "women_wanted", radio yes/no
-		  t.boolean  "nonbinary_wanted", radio yes/no -->
+				<option value="option1">male</option>
+				<option value="option2">female</option>
+				<option value="option2">genderqueer/nonbinary</option>
+			</select><br><br>
+			
+			<div class="profile-checkbox-group">
+				Looking for:<br>
+					<div class="profile-checkbox-group">
+						<input type="checkbox" name="profile[friends_wanted]" value="true">Friends<br>
+						<input type="checkbox" name="profile[dating_wanted]" value="true">Dating<br>
+						<input type="checkbox" name="profile[hookups_wanted]" value="true">Hookups<br>	
+					</div>
+			</div>
+			
+			<div class="profile-checkbox-group">
+				Interested in:<br>
+					<div class="profile-checkbox-group">
+						<input type="checkbox" name="profile[men_wanted]" value="true">Men<br>
+						<input type="checkbox" name="profile[women_wanted]" value="true">Women<br>
+						<input type="checkbox" name="profile[nonbinary_wanted]" value="true">Genderqueer/Nonbinary folks<br>	
+					</div>
+			</div>
 		</div>
-		
+		<hr>
 		<div id="about-me">
 			<label for="profile_about_me">About me:</label><br>
-			<textarea name="profile[about_me]" id="profile_about_me" rows="8" cols="40"></textarea>
+			<textarea name="profile[about_me]" id="profile_about_me" rows="10" cols="43"></textarea>
 		</div>
 		
 		<div id="my-stats">
-		  <!-- t.integer  "height", drop-down {4'10 to 7'0, or 58" to 84"}
-		  t.string   "body_type", drop-down {skinny, lean, average, athletic, soft, chubby, heavy}
-		  t.string   "religion", drop-down {none, Jehovah, Yaweh, Allah, Buddhist, Hindu, FSM, other}
-		  t.string   "education", drop-down {some high school, high school, college, masters, PhD, MD}
-		  t.string   "children", drop-down {have kids, have kids&want kids, want kids, don't want kids}
-		  t.string   "pets", drop-down {cats, dogs, ball-python, bearded dragon, fish, other} -->
+			My Stats:<br>
+			<label for="profile_height">Height</label>
+			<select name="profile[height]" id="profile_height">
+				<option value=""></option>
+				<% (58..84).each do |height_inches| %>
+				<% hieght_feet_inches = height_inches.divmod(12) %>
+			    <option value="<%= height_inches %>"><%=hieght_feet_inches[0]%>' <%=hieght_feet_inches[1]%>"</option>
+				<% end %>				
+			</select><br>
+			
+			<label for="profile_body_type">Body Type</label>
+			<select name="profile[body_type]" id="profile_body_type">
+				<option value=""></option>
+				<% options = %w( skinny lean average athletic soft chubby heavy) %>
+				<% options.each do |option| %>
+			    <option value="<%= option %>"><%= option %></option>
+				<% end %>				
+			</select><br>
+			
+			<label for="profile_religion">Religion</label>
+			<select name="profile[religion]" id="profile_religion">
+				<option value=""></option>
+				<% options = %w( none Jehovah Yaweh Allah Buddhist Hindu FSM other ) %>
+				<% options.each do |option| %>
+			    <option value="<%= option %>"><%= option %></option>
+				<% end %>				
+			</select><br>
+			
+			<label for="profile_education">Education</label>
+			<select name="profile[education]" id="profile_education">
+				<option value=""></option>
+				<% options = %w( some\ high\ school high\ school college masters PhD MD ) %>
+				<% options.each do |option| %>
+			    <option value="<%= option %>"><%= option %></option>
+				<% end %>				
+			</select><br>
+			
+			<label for="profile_children">Kids?</label>
+			<select name="profile[children]" id="profile_children">
+				<option value=""></option>
+				<% options = %w( have\ kids have\ kids&\ want\ more want\ kids don't\ want\ kids ) %>
+				<% options.each do |option| %>
+			    <option value="<%= option %>"><%= option %></option>
+				<% end %>				
+			</select><br>
+			
+			<label for="profile_pets">Pets?</label>
+			<select name="profile[pets]" id="profile_pets">
+				<option value=""></option>
+				<% options = %w( cats dogs ball\ pythons bearded\ dragons fish other ) %>
+				<% options.each do |option| %>
+			    <option value="<%= option %>"><%= option %></option>
+				<% end %>				
+			</select><br>
 		</div>
-
-			<p><input type="submit" value="Save Profile"></p>
+			<div style="float:right"><input type="submit" value="Save Profile"></div>
 		</form>
-		
 	</div>
 	
 	<div id="right-sidebar">
