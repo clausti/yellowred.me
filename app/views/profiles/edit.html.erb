@@ -17,13 +17,13 @@
 
 <div id="all-content">
 	
-	<div id="left-sidebar">
+	<div id="left-sidebar" class="round-corners">
 		<div style="color:white;font-size:26pt;float:right">
 			<sub>&hearts;</sub>me
 		</div>
 	</div>
 	
-	<div id="central-content">
+	<div id="central-content" class="round-corners">
 		<div class="errors-marquee">
 			<% unless flash[:errors].nil?%>
 				<% flash[:errors].each do |error_message| %>
@@ -200,11 +200,11 @@
 	</div>
 	
 	<div id="right-sidebar">
-		<div id="yellow-box">
+		<div id="yellow-box" class="round-corners">
 			I'm in the yellow box
 		</div>
 		
-		<div id="red-box">
+		<div id="red-box" class="round-corners">
 			I'm in the red box
 		</div>
 	</div>

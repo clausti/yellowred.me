@@ -21,6 +21,7 @@
 
 #central-content {
 	margin: 5px;
+	padding: 5px;
 	font-size: 14pt;
 	float:left;
 	width: 600px;
@@ -32,6 +33,7 @@
 	float:left;
 	width: 595px;
 	height: 200px;
+	margin-bottom: 5px;
 	border-style: solid;
 	border-color: blue;
 }
@@ -39,7 +41,7 @@
 #search-results {
 	float:left;
 	width: 595px;
-	height: 300px;
+	height: 370px;
 	border-style: solid;
 	border-color: orange;
 }
@@ -48,8 +50,12 @@
 	margin: 5px;
 	float: left;
 	width: 200px;
-	border-style: solid;
-	border-color: green;
+}
+
+#spacer-div {
+	float: left;
+	width: 195px;
+	height: 250px;
 }
 
 #yellow-box {
@@ -57,6 +63,7 @@
 	float: left;
 	width: 195px;
 	height: 250px;
+	margin-bottom: 10px;
 	border-style: solid;
 	border-color: yellow;
 }
@@ -66,6 +73,8 @@
 	float: left;
 	width: 195px;
 	height: 100px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	border-style: solid;
 	border-color: red;
 }
