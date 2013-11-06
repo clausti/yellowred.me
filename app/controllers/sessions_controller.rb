@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_filter :must_be_logged_in, :only => :create, :lobby
+  skip_before_filter :must_be_logged_in, :only => [:create, :lobby]
   
   def lobby
     @user = User.new

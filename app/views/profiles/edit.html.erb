@@ -1,23 +1,5 @@
 <!-- profile edit page, on sign-up -->
 
-<!-- create_table "profiles", :force => true do |t|
-  t.string   "username",  input
-  t.string   "gender", drop-down {male, female, nonbinary}
-  t.string   "about_me" textarea
-  t.boolean  "friends_wanted", radio yes/no
-  t.boolean  "dating_wanted", radio yes/no
-  t.boolean  "hookups_wanted", radio yes/no
-  t.boolean  "men_wanted", radio yes/no
-  t.boolean  "women_wanted", radio yes/no
-  t.boolean  "nonbinary_wanted", radio yes/no
-  t.integer  "height", drop-down {4'10 to 7'0, or 58" to 84"}
-  t.string   "body_type", drop-down {skinny, lean, average, athletic, soft, chubby, heavy}
-  t.string   "religion", drop-down {none, Jehovah, Yaweh, Allah, Buddhist, Hindu, FSM, other}
-  t.string   "education", drop-down {some high school, high school, college, masters, PhD, MD}
-  t.string   "children", drop-down {have kids, have kids&want kids, want kids, don't want kids}
-  t.string   "pets", drop-down {cats, dogs, ball-python, bearded dragon, fish, other}
-end -->
-
 <div id="site-header">
 	<div id="logo-home-link">
 		<a href="/"><span 
@@ -36,21 +18,72 @@ end -->
 <div id="all-content">
 	
 	<div id="left-sidebar">
-		<div id="heart-you"><sub>&hearts;</sub>me</div>
+		<div id="heart-you">
+			<sub>&hearts;</sub>me
+		</div>
 	</div>
 	
 	<div id="central-content">
-		
-		<form action="<%= profile_url %>" method="get" accept-charset="utf-8">
+		<form action="<%= profile_url %>" method="get" id="profile-edit-form" accept-charset="utf-8">
 			<input type="hidden" name="_method" value="PUT">
 			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	
+			
+		<div id="username-and-seeking">
 			<label for="profile_username">Username</label>
 			<input type="text" name="profile[username]" value="<%= @profile.username %>" id="profile_username">
-	
-	
+			
+			<label for="profile_gender">Gender</label>
+			<select name="profile[gender]" id="profile_gender">
+				<option value="option2"></option>
+				<option value="option1">Male</option>
+				<option value="option2">Female</option>
+				<option value="option2">Non-binary</option>
+			</select><br>
+			Looking for:<br>
+			  <div class="profile-radio-input">
+					<label>Friends?</label><br>
+			    <input name="profile[friends_wanted]" id="profile_friends_wanted_true" type="radio" value="true">
+			    <label for="profile_friends_wanted_true">Yeah</label><br>
+					<input name="profile[friends_wanted]" id="profile_friends_wanted_false" type="radio" value="false">
+			    <label for="profile_friends_wanted_false">No</label>
+				</div>
+			  <div class="profile-radio-input">
+					<label>Dates?</label><br>
+			    <input name="profile[dating_wanted]" id="profile_friends_wanted_true" type="radio" value="true">
+			    <label for="profile_dating_wanted_true">Yeah</label><br>
+					<input name="profile[dating_wanted]" id="profile_dating_wanted_false" type="radio" value="false">
+			    <label for="profile_dating_wanted_false">No</label>
+				</div>
+			  <div class="profile-radio-input">
+					<label>Hookups?</label><br>
+			    <input name="profile[friends_wanted]" id="profile_friends_wanted_true" type="radio" value="true">
+			    <label for="profile_friends_wanted_true">Yeah</label><br>
+					<input name="profile[friends_wanted]" id="profile_friends_wanted_false" type="radio" value="false">
+			    <label for="profile_friends_wanted_false">No</label>
+				</div>
+		  <!--
+		  t.boolean  "dating_wanted", radio yes/no
+		  t.boolean  "hookups_wanted", radio yes/no
+		  t.boolean  "men_wanted", radio yes/no
+		  t.boolean  "women_wanted", radio yes/no
+		  t.boolean  "nonbinary_wanted", radio yes/no -->
+		</div>
+		
+		<div id="about-me">
+			<label for="profile_about_me">About me:</label><br>
+			<textarea name="profile[about_me]" id="profile_about_me" rows="8" cols="40"></textarea>
+		</div>
+		
+		<div id="my-stats">
+		  <!-- t.integer  "height", drop-down {4'10 to 7'0, or 58" to 84"}
+		  t.string   "body_type", drop-down {skinny, lean, average, athletic, soft, chubby, heavy}
+		  t.string   "religion", drop-down {none, Jehovah, Yaweh, Allah, Buddhist, Hindu, FSM, other}
+		  t.string   "education", drop-down {some high school, high school, college, masters, PhD, MD}
+		  t.string   "children", drop-down {have kids, have kids&want kids, want kids, don't want kids}
+		  t.string   "pets", drop-down {cats, dogs, ball-python, bearded dragon, fish, other} -->
+		</div>
 
-			<p><input type="submit" value="Edit Profile"></p>
+			<p><input type="submit" value="Save Profile"></p>
 		</form>
 		
 	</div>

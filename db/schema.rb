@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20131105073846) do
     t.boolean  "hookups_wanted",   :default => false
     t.boolean  "men_wanted",       :default => false
     t.boolean  "women_wanted",     :default => false
+    t.boolean  "nonbinary_wanted", :default => false
     t.integer  "height"
     t.string   "body_type"
     t.string   "religion"
@@ -60,7 +61,6 @@ ActiveRecord::Schema.define(:version => 20131105073846) do
     t.string   "pets"
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
-    t.boolean  "nonbinary_wanted", :default => false
     t.integer  "user_id",                             :null => false
   end
 
