@@ -17,8 +17,15 @@ class ProfilesController < ApplicationController
   
   def update
     @profile = current_user.profile
+    
+    profile_params = { "friends_wanted" => false,
+                       "dating_wanted" => false,
+                       "hookups_wanted" => false,
+                       "men_wanted" => false,
+                       "women_wanted" => false,
+                       "nonbinary_wanted" => false }.merge(params[:profile])
 
-    if @profile.update_attributes(params[:profile])
+    if @profile.update_attributes(profile_params)
       render :json => @profile, :status => 200
     else
       render :json => @profile.errors.full_messages, :status => 422

@@ -18,7 +18,7 @@
 <div id="all-content">
 	
 	<div id="left-sidebar">
-		<div id="heart-you">
+		<div style="color:white;font-size:26pt;float:right">
 			<sub>&hearts;</sub>me
 		</div>
 	</div>
@@ -59,25 +59,59 @@
 			<div class="profile-checkbox-group">
 				Looking for:<br>
 					<div class="profile-checkbox-group">
-						<input type="checkbox" name="profile[friends_wanted]" value="true">Friends<br>
-						<input type="checkbox" name="profile[dating_wanted]" value="true">Dating<br>
-						<input type="checkbox" name="profile[hookups_wanted]" value="true">Hookups<br>	
+						<input type="checkbox" 
+									 name="profile[friends_wanted]" 
+									 value="true"
+									 <% if @profile.friends_wanted %>
+										 checked
+									 <% end %>>Friends<br>
+						<input type="checkbox" 
+									 name="profile[dating_wanted]" 
+									 value="true"
+									 <% if @profile.dating_wanted %>
+										 checked
+									 <% end %>>Dating<br>
+						<input type="checkbox" 
+									 name="profile[hookups_wanted]" 
+									 value="true"
+									 <% if @profile.hookups_wanted %>
+										 checked
+									 <% end %>>Hookups<br>	
 					</div>
 			</div>
 			
 			<div class="profile-checkbox-group">
 				Interested in:<br>
 					<div class="profile-checkbox-group">
-						<input type="checkbox" name="profile[men_wanted]" value="true">Men<br>
-						<input type="checkbox" name="profile[women_wanted]" value="true">Women<br>
-						<input type="checkbox" name="profile[nonbinary_wanted]" value="true">Genderqueer/Nonbinary folks<br>	
+						<input type="checkbox" 
+									 name="profile[men_wanted]" 
+									 value="true"
+									 <% if @profile.men_wanted %>
+										 checked
+									 <% end %>>Men<br>
+						<input type="checkbox" 
+									 name="profile[women_wanted]" 
+									 value="true"
+									 <% if @profile.women_wanted %>
+										 checked
+									 <% end %>>Women<br>
+						<input type="checkbox" 
+									 name="profile[nonbinary_wanted]" 
+									 value="true"
+									 <% if @profile.nonbinary_wanted %>
+										 checked
+									 <% end %>>Genderqueer/Nonbinary folks<br>	
 					</div>
 			</div>
+			
 		</div>
 	
 		<div id="about-me">
 			<label for="profile_about_me">About me:</label><br>
-			<textarea name="profile[about_me]" id="profile_about_me" rows="10" cols="43"></textarea>
+			<textarea name="profile[about_me]" 
+								id="profile_about_me" 
+								rows="10" 
+								cols="43"><%= @profile.about_me %></textarea>
 		</div>
 		
 		<div id="my-stats">
@@ -85,27 +119,37 @@
 			<label for="profile_height">Height</label>
 			<select name="profile[height]" id="profile_height">
 				<option value=""></option>
-				<% (58..84).each do |height_inches| %>
-				<% hieght_feet_inches = height_inches.divmod(12) %>
-			    <option value="<%= height_inches %>"><%=hieght_feet_inches[0]%>' <%=hieght_feet_inches[1]%>"</option>
-				<% end %>				
-			</select><br>
+				<% options = (58..84).to_a %>
+				<% options.each do |height| %>
+				<% hieght_feet_inches = height.divmod(12) %>
+			    <option value="<%= height %> %>"
+						<% if @profile.height == height %>
+								selected
+						<% end %>><%=hieght_feet_inches[0]%>' <%=hieght_feet_inches[1]%>"</option>
+				<% end %>	
+			</select><br>		
 			
 			<label for="profile_body_type">Body Type</label>
 			<select name="profile[body_type]" id="profile_body_type">
 				<option value=""></option>
 				<% options = %w( skinny lean average athletic soft chubby heavy) %>
-				<% options.each do |option| %>
-			    <option value="<%= option %>"><%= option %></option>
+				<% options.each do |body_type| %>
+			    <option value="<%= body_type %>"
+						<% if @profile.body_type == body_type %>
+							selected
+					  <% end %>><%= body_type %></option>
 				<% end %>				
 			</select><br>
-			
+
 			<label for="profile_religion">Religion</label>
 			<select name="profile[religion]" id="profile_religion">
 				<option value=""></option>
 				<% options = %w( none Jehovah Yaweh Allah Buddhist Hindu FSM other ) %>
-				<% options.each do |option| %>
-			    <option value="<%= option %>"><%= option %></option>
+				<% options.each do |religion| %>
+			    <option value="<%= religion %>"
+						<% if @profile.religion == religion %>
+							selected
+					  <% end %>><%= religion %></option>
 				<% end %>				
 			</select><br>
 			
@@ -113,17 +157,23 @@
 			<select name="profile[education]" id="profile_education">
 				<option value=""></option>
 				<% options = %w( some\ high\ school high\ school college masters PhD MD ) %>
-				<% options.each do |option| %>
-			    <option value="<%= option %>"><%= option %></option>
-				<% end %>				
+				<% options.each do |education| %>
+			    <option value="<%= education %>"
+						<% if @profile.education == education %>
+							selected
+					  <% end %>><%= education %></option>
+				<% end %>					
 			</select><br>
 			
 			<label for="profile_children">Kids?</label>
 			<select name="profile[children]" id="profile_children">
 				<option value=""></option>
 				<% options = %w( have\ kids have\ kids&\ want\ more want\ kids don't\ want\ kids ) %>
-				<% options.each do |option| %>
-			    <option value="<%= option %>"><%= option %></option>
+				<% options.each do |children| %>
+			    <option value="<%= children %>"
+						<% if @profile.children == children %>
+							selected
+					  <% end %>><%= children %></option>
 				<% end %>				
 			</select><br>
 			
@@ -131,13 +181,22 @@
 			<select name="profile[pets]" id="profile_pets">
 				<option value=""></option>
 				<% options = %w( cats dogs ball\ pythons bearded\ dragons fish other ) %>
-				<% options.each do |option| %>
-			    <option value="<%= option %>"><%= option %></option>
+				<% options.each do |pets| %>
+			    <option value="<%= pets %>"
+						<% if @profile.pets == pets %>
+							selected
+					  <% end %>><%= pets %></option>
 				<% end %>				
 			</select><br>
 		</div>
-			<div style="float:right;padding:5px"><input type="submit" value="Save Profile"></div>
+			<div style="float:right;padding:5px">
+				<input class="button" type="submit" value="Save Profile">
+			</div>
 		</form>
+		<br>
+		<div style="float:right;text-align:right;padding-bottom:8px;padding-right:5px;width:95%">
+			<%= button_to "Go to Home without saving", root_url, :method => :get, :class => "button" %>
+		</div>
 	</div>
 	
 	<div id="right-sidebar">

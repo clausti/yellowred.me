@@ -1,23 +1,9 @@
-a, #logo-home-link {
-  text-decoration: none;
-}
 
-#lobby-header {
-	display: inline-block;
-	width: 870;
-	border-style: solid;
-	border-color: orange;
-}
-
-#lobby-logo {
-	float: left;
-	width: 868px;
-	font-size: 24pt;
-}
 
 #lobby-sidebar {
-	font-size: 14pt;
+	font-size: 12pt;
 	padding: 10px;
+	margin: 5px;
 	float: left;
 	width: 200px;
 	border-style: solid;
@@ -28,17 +14,28 @@ a, #logo-home-link {
 	font-size: 12pt;
 	float: left;
 	width: 98%;
-//	height: 60px;
 	color: red;
-	border-style: solid;
-	border-color: purple;
+//	height: 60px;
+//	border-style: solid;
+//	border-color: purple;
 }
 
 #lobby-blurb {
 	font-size: 18pt;
 	padding: 20px;
+	margin: 5px;
 	float:left;
 	width: 600px;
 	border-style: solid;
 	border-color: black;
+}
+
+#interested-in {
+	color: #EBC805;
+	text-shadow: 1px 1px 1px #0c078f
+}
+
+#red-not {
+	color: red;
+	text-shadow: -1px -1px 1px #0c078f
 }

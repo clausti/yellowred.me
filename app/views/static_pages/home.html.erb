@@ -8,10 +8,10 @@
 								 style="color:#068A19"><span 
 								 style="font-size:14pt"><sub>&hearts;</sub></span>me</span></a>
 	</div>
-	
+
 	<div id="current-user-thumbnail-utility">
 			Welcome, <%= current_user.email.split('@')[0] %>!
-			<%= button_to "Log Out", session_url, :method => :delete %>
+			<%= button_to "Log Out", session_url, :method => :delete, :class => "button" %>
 	</div>
 </div>
 
