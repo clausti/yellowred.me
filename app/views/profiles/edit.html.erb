@@ -24,22 +24,33 @@
 	</div>
 	
 	<div id="central-content">
-		<form action="<%= profile_url %>" method="get" id="profile-edit-form" accept-charset="utf-8">
+		<div class="errors-marquee">
+			la la errors, space for more errors
+			<% unless flash[:errors].nil?%>
+				<% flash[:errors].each do |error_message| %>
+					<%= error_message %>
+				<% end %>
+			<% end%>
+		</div>
+		
+		<form action="<%= profile_url %>" method="post" id="profile-edit-form" accept-charset="utf-8">
 			<input type="hidden" name="_method" value="PUT">
 			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 			
-		<div id="username-and-seeking">
+		<div id="username-and-gender">
 			<label for="profile_username">Username</label>
 			<input type="text" name="profile[username]" value="<%= @profile.username %>" id="profile_username">
 			
 			<label for="profile_gender">Gender</label>
 			<select name="profile[gender]" id="profile_gender">
-				<option value="option2"></option>
-				<option value="option1">male</option>
-				<option value="option2">female</option>
-				<option value="option2">genderqueer/nonbinary</option>
-			</select><br><br>
-			
+				<option value=""></option>
+				<option value="male">male</option>
+				<option value="female">female</option>
+				<option value="nonbinary">genderqueer/nonbinary</option>
+			</select><br>
+		</div>
+		
+		<div id="seeking">
 			<div class="profile-checkbox-group">
 				Looking for:<br>
 					<div class="profile-checkbox-group">
@@ -58,7 +69,7 @@
 					</div>
 			</div>
 		</div>
-		<hr>
+	
 		<div id="about-me">
 			<label for="profile_about_me">About me:</label><br>
 			<textarea name="profile[about_me]" id="profile_about_me" rows="10" cols="43"></textarea>
@@ -120,7 +131,7 @@
 				<% end %>				
 			</select><br>
 		</div>
-			<div style="float:right"><input type="submit" value="Save Profile"></div>
+			<div style="float:right;padding:5px"><input type="submit" value="Save Profile"></div>
 		</form>
 	</div>
 	

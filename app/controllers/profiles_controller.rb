@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
   
   def update
     @profile = current_user.profile
-    
+
     if @profile.update_attributes(params[:profile])
       render :json => @profile, :status => 200
     else

@@ -8,8 +8,7 @@ class Profile < ActiveRecord::Base
                   :hookups_wanted, 
                   :men_wanted,
                   :women_wanted,
-                  :both_wanted,
-                  :any_wanted,
+                  :nonbinary_wanted,
                   :height, #integer in inches
                   :body_type,
                   :religion,
@@ -18,7 +17,7 @@ class Profile < ActiveRecord::Base
                   :pets
 
   validates :user_id, :presence => true, :uniqueness => true
-  validates :gender, :about_me, :presence => true, :on => :update
+  validates :gender, :presence => true, :on => :update
   validates :username, :presence => true, 
                        :uniqueness => {:case_sensitive => false},
                        :on => :update               
