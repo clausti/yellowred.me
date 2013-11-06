@@ -1,11 +1,13 @@
 class SavedSearchesController < ApplicationController
   
   def show
+    # search model will have url: /saved_search. NOT URLROOT
     @search = current_user.saved_search
     render :json => @search
   end
   
   def results
+    # search collection will have url: saved_search/results
     # @profiles = all the profiles that match the search somehow
     @profiles = Profile.all #for now
     render :json => @profiles
