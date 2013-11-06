@@ -61,5 +61,10 @@ class Profile < ActiveRecord::Base
   has_many :maybes, :inverse_of => :profile
   has_many :nopes, :inverse_of => :profile
   has_many :stars, :inverse_of => :profile
+  
+  has_many :starring_users, 
+           :through => :stars, 
+           :source => :user
+  
 
 end

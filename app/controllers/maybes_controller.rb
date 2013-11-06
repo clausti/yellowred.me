@@ -1,8 +1,13 @@
 class MaybesController < ApplicationController
     
-  def index
-    @maybes = current_user.maybes
+  def maybe_list
+    @maybes = current_user.maybes.where( 'prefer = true' )
     render :json => @maybes, :status => 200
+  end
+  
+  def nope_list
+    @nopes = current_user.maybes.where( 'prefer = false' )
+    render :json => @nopes, :status => 200
   end
   
   def create

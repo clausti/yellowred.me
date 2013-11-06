@@ -1,5 +1,9 @@
-class CreateNopes < ActiveRecord::Migration
-  def change
+class DropNopes < ActiveRecord::Migration
+  def up
+    drop_table :nopes
+  end
+
+  def down
     create_table :nopes do |t|
       t.integer :user_id, :null => false
       t.integer :profile_id, :null => false

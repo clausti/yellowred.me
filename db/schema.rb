@@ -11,15 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131105073846) do
+ActiveRecord::Schema.define(:version => 20131106221423) do
 
   create_table "maybes", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.integer  "profile_id", :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "user_id",                      :null => false
+    t.integer  "profile_id",                   :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.boolean  "prefer",     :default => true
   end
 
+  add_index "maybes", ["prefer"], :name => "index_maybes_on_prefer"
   add_index "maybes", ["user_id", "profile_id"], :name => "index_maybes_on_user_id_and_profile_id", :unique => true
 
   create_table "messages", :force => true do |t|
@@ -34,15 +36,6 @@ ActiveRecord::Schema.define(:version => 20131105073846) do
   add_index "messages", ["recipient_id"], :name => "index_messages_on_recipient_id"
   add_index "messages", ["sender_id"], :name => "index_messages_on_sender_id"
 
-  create_table "nopes", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.integer  "profile_id", :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "nopes", ["user_id", "profile_id"], :name => "index_nopes_on_user_id_and_profile_id", :unique => true
-
   create_table "profiles", :force => true do |t|
     t.string   "username",                            :null => false
     t.string   "gender"
@@ -52,7 +45,6 @@ ActiveRecord::Schema.define(:version => 20131105073846) do
     t.boolean  "hookups_wanted",   :default => false
     t.boolean  "men_wanted",       :default => false
     t.boolean  "women_wanted",     :default => false
-    t.boolean  "nonbinary_wanted", :default => false
     t.integer  "height"
     t.string   "body_type"
     t.string   "religion"
@@ -61,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20131105073846) do
     t.string   "pets"
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
+    t.boolean  "nonbinary_wanted", :default => false
     t.integer  "user_id",                             :null => false
   end
 

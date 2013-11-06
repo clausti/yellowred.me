@@ -25,12 +25,18 @@ class User < ActiveRecord::Base
            :inverse_of => :recipient
            
   has_many :maybes, :inverse_of => :user
-  has_many :nopes, :inverse_of => :user
-  has_many :stars, :inverse_of => :user
+  has_many :maybe_profiles,
+           :through => :maybes,
+           :source => :profile
   
-  # has_many :starred_mes,
-  #          :through => :profile,
-  #          :source => :stars
+  has_many :stars, :inverse_of => :user
+  has_many :starred_profiles,
+           :through => :stars,
+           :source => :profile
+           
+  # has_many :starring_profiles, 
+  #          :through => :stars,
+  #          :source =>
            
   
   def self.find_by_credentials(user_hash)
