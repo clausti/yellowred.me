@@ -9,6 +9,7 @@ YellowRed::Application.routes.draw do
   resources :users, :only => [:create]
   resource :profile, :only => [:show, :edit, :update]
   resource :saved_search, :only => [:show, :update]
+  get 'saved_search/results', :to => 'saved_searches#results'
   
   resources :messages, :only => [:index, :show, :create, :destroy]
   
@@ -22,7 +23,7 @@ YellowRed::Application.routes.draw do
   get 'who-i-starred', :to => 'stars#index'
   get 'who-starred-me', :to => 'stars#starred_me'
   
-  resources :profiles, :only => [:index]
+  resources :profiles, :only => [:index, :show]
   get ':username', :to => 'profiles#show'
 
 end

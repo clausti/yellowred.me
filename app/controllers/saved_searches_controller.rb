@@ -5,6 +5,12 @@ class SavedSearchesController < ApplicationController
     render :json => @search
   end
   
+  def results
+    # @profiles = all the profiles that match the search somehow
+    @profiles = Profile.all #for now
+    render :json => @profiles
+  end
+  
   def update
     @search = current_user.saved_search
     
