@@ -65,6 +65,10 @@ class Profile < ActiveRecord::Base
   has_many :starring_users, 
            :through => :stars, 
            :source => :user
+           
+  has_many :starring_profiles, 
+           :through => :starring_users,
+           :source => :profile
   
 
 end

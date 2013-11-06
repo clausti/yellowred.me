@@ -34,9 +34,9 @@ class User < ActiveRecord::Base
            :through => :stars,
            :source => :profile
            
-  # has_many :starring_profiles, 
-  #          :through => :stars,
-  #          :source =>
+  has_many :starring_profiles, 
+           :through => :profile,
+           :source => :starring_profiles
            
   
   def self.find_by_credentials(user_hash)
