@@ -8,7 +8,9 @@ class SavedSearchesController < ApplicationController
   def update
     @search = current_user.saved_search
     
-    if @search.update_attributes(params[:search])
+    search_params = profile_booleans_false.merge(params[:search])
+    
+    if @search.update_attributes(search_params)
       render :json => @search
     else 
       render :json => @search.errors.full_messages, :status => 422
