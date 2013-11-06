@@ -1,3 +1,52 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#heart-you {
+	color:white;
+	font-size:18pt;
+	float:right
+}
+
+
+#heart { 
+        position: relative; 
+        width: 25px; 
+        height: 22px; 
+				float: right;
+      } 
+
+#heart:before, #heart:after { 
+  position: absolute; 
+  content: ""; 
+  left: 12px; 
+  top: 0; 
+  width: 12px; 
+  height: 20px; 
+  background: white; 
+  border-radius: 12px 12px 0 0; 
+  -webkit-transform: rotate(-45deg); 
+  -moz-transform: rotate(-45deg); 
+  -ms-transform: rotate(-45deg); 
+  -o-transform: rotate(-45deg); 
+  transform: rotate(-45deg); 
+ -webkit-transform-origin: 0 100%; 
+ -moz-transform-origin: 0 100%; 
+ -ms-transform-origin: 0 100%; 
+ -o-transform-origin: 0 100%; 
+ transform-origin: 0 100%; 
+} 
+
+#heart:after { 
+  left: 0; 
+  -webkit-transform: rotate(45deg); 
+  -moz-transform: rotate(45deg); 
+  -ms-transform: rotate(45deg); 
+  -o-transform: rotate(45deg); 
+ transform: rotate(45deg); 
+ -webkit-transform-origin: 100% 100%; 
+ -moz-transform-origin: 100% 100%; 
+ -ms-transform-origin: 100% 100%; 
+ -o-transform-origin: 100% 100%; 
+ transform-origin :100% 100%; 
+}

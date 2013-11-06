@@ -1,4 +1,68 @@
-<!-- profile edit page -->
+<!-- profile edit page, on sign-up -->
 
-I'm the profile edit page! 
-I don't have a 'new' page because I'm created when a new user is created!
+<!-- create_table "profiles", :force => true do |t|
+  t.string   "username",  input
+  t.string   "gender", drop-down {male, female, nonbinary}
+  t.string   "about_me" textarea
+  t.boolean  "friends_wanted", radio yes/no
+  t.boolean  "dating_wanted", radio yes/no
+  t.boolean  "hookups_wanted", radio yes/no
+  t.boolean  "men_wanted", radio yes/no
+  t.boolean  "women_wanted", radio yes/no
+  t.boolean  "nonbinary_wanted", radio yes/no
+  t.integer  "height", drop-down {4'10 to 7'0, or 58" to 84"}
+  t.string   "body_type", drop-down {skinny, lean, average, athletic, soft, chubby, heavy}
+  t.string   "religion", drop-down {none, Jehovah, Yaweh, Allah, Buddhist, Hindu, FSM, other}
+  t.string   "education", drop-down {some high school, high school, college, masters, PhD, MD}
+  t.string   "children", drop-down {have kids, have kids&want kids, want kids, don't want kids}
+  t.string   "pets", drop-down {cats, dogs, ball-python, bearded dragon, fish, other}
+end -->
+
+<div id="site-header">
+	<div id="logo-home-link">
+		<a href="/"><span 
+								 style="color:#EBC805">Yellow</span><span 
+								 style="color:red">red</span><span 
+								 style="color:#068A19"><span 
+								 style="font-size:14pt"><sub>&hearts;</sub></span>me</span></a>
+	</div>
+	
+	<div id="current-user-thumbnail-utility">
+			Welcome, <%= current_user.email.split('@')[0] %>!
+			<%= button_to "Log Out", session_url, :method => :delete %>
+	</div>
+</div>
+
+<div id="all-content">
+	
+	<div id="left-sidebar">
+		<div id="heart-you"><sub>&hearts;</sub>me</div>
+	</div>
+	
+	<div id="central-content">
+		
+		<form action="<%= profile_url %>" method="get" accept-charset="utf-8">
+			<input type="hidden" name="_method" value="PUT">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	
+			<label for="profile_username">Username</label>
+			<input type="text" name="profile[username]" value="<%= @profile.username %>" id="profile_username">
+	
+	
+
+			<p><input type="submit" value="Edit Profile"></p>
+		</form>
+		
+	</div>
+	
+	<div id="right-sidebar">
+		<div id="yellow-box">
+			I'm in the yellow box
+		</div>
+		
+		<div id="red-box">
+			I'm in the red box
+		</div>
+	</div>
+	
+</div>
