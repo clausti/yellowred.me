@@ -17,10 +17,12 @@
 									 style="font-size:14pt"><sub>&hearts;</sub></span>me</span></a>
 		</div>
 
-		<div id="current-user-thumbnail-utility" class="round-corners shadow">
-				Welcome, <%= current_user.profile.username %>!
-				<%= button_to "Log Out", session_url, :method => :delete, :class => "button" %>
-		</div>
+		<% unless current_user.nil? %>
+			<div id="current-user-thumbnail-utility" class="round-corners shadow">
+					Welcome, <%= current_user.profile.username %>!
+					<%= button_to "Log Out", session_url, :method => :delete, :class => "button" %>
+			</div>
+		<% end %>
 	</div>
 	
 <%= yield %>
