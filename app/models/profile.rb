@@ -40,8 +40,7 @@ class Profile < ActiveRecord::Base
   validates :gender, 
             :on => :update,
             :on        => :update,
-            :inclusion => GENDERS,
-            :allow_blank => true
+            :inclusion => GENDERS
             
   validates :height,
             :on        => :update,
@@ -87,6 +86,11 @@ class Profile < ActiveRecord::Base
            :through => :starring_users,
            :source => :profile
            
+  def self.height_string(height_inches)
+    hieght_feet_inches = height_inches.divmod(12)
+    "#{hieght_feet_inches[0]}' #{hieght_feet_inches[1]}\""
+  end
+           
   private
     def nilify_blanks
       Profile::LISTS.each do |list_name|
@@ -95,6 +99,6 @@ class Profile < ActiveRecord::Base
     end
   
     def strip_about_me
-      self.about_me.strip!
+      self.about_me.strip! if self.about_me
     end
 end

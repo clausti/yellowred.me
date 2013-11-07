@@ -1,3 +1,4 @@
-<div class="rounded-corners" style="border-style:solid;border-color:orange">
-	I am an imaginary profile card for: <%= profile.escape('username') %>
+<div class="profile-card round-corners">
+	<strong><%= profile.escape('username') %></strong><br>
+	<%= profile.escape('gender') || 'gender not specified' %>
 </div>

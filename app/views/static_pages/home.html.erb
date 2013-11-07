@@ -98,11 +98,10 @@
 					<option value=""></option>
 					<% options = Profile::HEIGHTS %>
 					<% options.each do |height| %>
-					<% hieght_feet_inches = height.divmod(12) %>
 				    <option value="<%= height %> %>"
 							<% if @search.height == height %>
 									selected
-							<% end %>><%=hieght_feet_inches[0]%>' <%=hieght_feet_inches[1]%>"</option>
+							<% end %>><%= Profile.height_string(height) %></option>
 					<% end %>	
 				</select><br>		
 		
