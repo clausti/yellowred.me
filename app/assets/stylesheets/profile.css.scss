@@ -2,6 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#profile-detail {
+	text-align: right;
+	margin: 5px;
+	padding: 5px;
+	border-style:solid;
+	border-color:orange;
+	border-width: 1px;
+	background-color: #FFC766;
+}
+
 #dummy-left-sidebar {
 	padding: 10px;
 	margin: 5px;

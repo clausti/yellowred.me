@@ -1,5 +1,5 @@
 YellowRed.Views.ProfilesList = Backbone.View.extend({
-	// call new with a collection specified
+	// initialize with a collection
 	
 	initialize: function() {
 		this.listenTo( this.collection, 
@@ -13,7 +13,6 @@ YellowRed.Views.ProfilesList = Backbone.View.extend({
 		var that = this
 		this.$el.html('');
 		this.collection.each( function (profile) {
-						
 			that.$el.append(that.template({
 				profile: profile
 			}))

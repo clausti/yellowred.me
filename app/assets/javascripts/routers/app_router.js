@@ -9,8 +9,8 @@ YellowRed.Routers.App = Backbone.Router.extend({
 		"who-i-starred": "displayMyStarred",
 		"who-starred-me": "displayMyStarring",
 		"profiles": "displayAllProfiles",
-		// "profile": "displayMyProfile",
-	// 	":username": "displayProfileDetail"
+	  "profile": "displayMyProfile",
+		":username": "displayProfileDetail"
 	},
 	
 	displayMyMaybes: function() {
@@ -83,12 +83,37 @@ YellowRed.Routers.App = Backbone.Router.extend({
 		});
 	},
 	
-	// displayMyProfile: function() {
-	// 	
-	// },
-	// 
-	// displayProfileDetail: function() {
-	// 	
-	// },
+	displayMyProfile: function() {
+		var central_content = this.central_content;
+		YellowRed.my_profile = YellowRed.my_profile || new YellowRed.Collections.MyProfile();
+		YellowRed.my_profile.fetch({
+			success: function() {
+				var myProfile = YellowRed.my_profile.first()
+				var myProfileView = new YellowRed.Views.ProfileDetail({
+					model: myProfile
+				});
+				central_content.html("<h3>" + myProfile.escape('username') + "</h3>"); 
+				central_content.append(myProfileView.render().$el)
+			}
+		});
+	},
+	 
+	displayProfileDetail: function(username) {
+		var central_content = this.central_content;
+		$.ajax({
+			url: username,
+			success: function(res) {
+				var profile = new YellowRed.Models.Profile(res);
+				var profileView = new YellowRed.Views.ProfileDetail({
+					model: profile
+				});
+				central_content.html("<h3>" + profile.escape('username') + "</h3>"); 
+				central_content.append(profileView.render().$el)
+			},
+			error: function(req, status, err) {
+				console.log("No such user.")
+			}
+		});
+	},
 
 });
