@@ -88,9 +88,10 @@ body {
 	width: auto;
 	text-decoration: none;
 	text-align: center;
-	text-shadow: 1px 1px 20px #0c078f;
+	text-shadow: 0px 0px 20px #0c078f;
 }.button:hover {
 	background-color: #dfdfdf;
+	color: #AA15D6;
 }.button:active {
 	position: relative;
 	top: 1px;

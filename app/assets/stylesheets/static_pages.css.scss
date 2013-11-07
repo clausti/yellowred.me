@@ -24,7 +24,9 @@
 a, #left-sidebar {
 	color: white;
 }
-
+a:hover, #left-sidebar {
+	color: #AA15D6;
+}
 
 #central-content {
 	margin-top: 5px;
