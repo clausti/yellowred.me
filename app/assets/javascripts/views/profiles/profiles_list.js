@@ -10,7 +10,10 @@ YellowRed.Views.ProfilesList = Backbone.View.extend({
   template: JST['profiles/card'],
 	
 	events: {
-		"click .profile-card": "linkProfile"
+		"click .star": "starProfile",
+		"click .maybe": "maybeProfile",
+		"click .nope": "nopeProfile",
+		"click .profile-card": "linkProfile",
 	},
 	
 	render: function() {
@@ -27,6 +30,68 @@ YellowRed.Views.ProfilesList = Backbone.View.extend({
 	linkProfile: function(event) {
 		var username = $(event.currentTarget).attr("data-username");
 		YellowRed.appRouter.navigate(username, {trigger: true});
+	},
+	
+	starProfile: function(event) {
+		var profileId = $(event.currentTarget).attr("data-id");
+		console.log("you clicked to star profile " + profileId);
+		$.ajax({
+			url: "stars",
+			type: "post",
+			data: { 
+				profile_id: profileId
+			},
+			success: function(res) {
+				console.log("successfully starred");
+				YellowRed.appRouter.navigate('');	
+			}, 
+			error: function() {
+				
+			}
+		});
+	},
+	
+	maybeProfile: function(event) {
+		var profileId = $(event.currentTarget).attr("data-id");
+		console.log("you clicked to maybe profile " + profileId);
+		$.ajax({
+			url: "maybes",
+			type: "post",
+			data: { 
+				maybe: { 
+					profile_id: profileId
+				}
+			},
+			success: function(res) {
+				console.log("successfully maybed");
+				YellowRed.appRouter.navigate('');	
+			}, 
+			error: function() {
+				
+			}
+		});
+	},
+	
+	nopeProfile: function(event) {
+		var profileId = $(event.currentTarget).attr("data-id");
+		console.log("you clicked to nope profile " + profileId);
+		$.ajax({
+			url: "maybes",
+			type: "post",
+			data: { 
+				maybe: { 
+					profile_id: profileId,
+					prefer: false
+				}
+			},
+			success: function(res) {
+				console.log("successfully noped");
+				YellowRed.appRouter.navigate('');	
+			}, 
+			error: function() {
+				
+			}
+		});
 	},
 
 });

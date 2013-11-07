@@ -14,7 +14,7 @@ YellowRed::Application.routes.draw do
   
   resources :messages, :only => [:index, :show, :create, :destroy]
   
-  resources :maybes, :only => [:create, :destroy]
+  resources :maybes, :only => [:create, :update, :destroy]
   get 'my-maybe-list', :to => 'maybes#maybe_list'
   get 'my-nope-list', :to => 'maybes#nope_list'
   

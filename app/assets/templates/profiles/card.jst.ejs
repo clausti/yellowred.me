@@ -1,4 +1,7 @@
 <div class="profile-card round-corners shadow" data-username="<%= profile.escape('username')%>" >
 	<strong><%= profile.escape('username') %></strong><br>
-	<%= profile.escape('gender') || 'gender not specified' %>
+	<%= profile.escape('gender') || 'gender not specified' %> <br>
+	<button class="maybe button" data-id="<%= profile.escape('id')%>">Maybe</button>
+	<button class="nope button" data-id="<%= profile.escape('id')%>">Nope!</button>
+	<button class="star button" data-id="<%= profile.escape('id')%>">Star</button>
 </div>

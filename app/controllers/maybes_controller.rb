@@ -21,6 +21,10 @@ class MaybesController < ApplicationController
     end
   end
   
+  def update
+    
+  end
+  
   def destroy
     @maybe = Maybe.find(params[:maybe])
     if @maybe.destroy
