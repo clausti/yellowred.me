@@ -3,11 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .profile-card {
-	width: 297px;
+	width: 305px;
 	float: left;
 	text-align: right;
 	padding: 5px;
 	margin: 5px;
 	border-style:solid;
 	border-color:orange;
+	border-width: 1px;
+	background-color: #FFC766;
 }

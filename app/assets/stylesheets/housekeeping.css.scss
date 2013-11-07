@@ -13,7 +13,6 @@
 	min-width: 815px;
 	font-size: 26pt;
 	font-family: "Times New Roman";
-//	letter-spacing: 1px;
 	text-indent: 10px
 }
 
@@ -22,11 +21,12 @@ a, #logo-home-link {
 }
 
 #current-user-thumbnail-utility {
+	text-shadow: 0px 0px 1px #0c078f;
+	color: #4d4b4d;
 	text-align: right;
 	padding: 2px;
 	float: left;
 	min-width: 200px;
-	text-shadow: none;
 	border-style: solid;
 	border-color: #119921;
 	border-width: 1px;

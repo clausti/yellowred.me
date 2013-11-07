@@ -18,7 +18,7 @@
 		</div>
 
 		<div id="current-user-thumbnail-utility" class="round-corners shadow">
-				Welcome, <%= current_user.email.split('@')[0] %>!
+				Welcome, <%= current_user.profile.username %>!
 				<%= button_to "Log Out", session_url, :method => :delete, :class => "button" %>
 		</div>
 	</div>
