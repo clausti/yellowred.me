@@ -23,7 +23,11 @@ class Profile < ActiveRecord::Base
   EDUCATION_LEVELS = %w( some\ high\ school high\ school college masters PhD MD )
   CHILDREN_CHOICES = %w( have\ kids have\ kids\ &\ want\ more want\ kids don't\ want\ kids )
   PET_CHOICES      = %w( cats dogs ball\ pythons bearded\ dragons fish other )
-
+  
+  LISTS = %w( gender height body_type religion education children pets )
+  
+  before_save :nilify_blanks, :strip_about_me
+  
   validates :user_id, 
             :presence   => true, 
             :uniqueness => true
@@ -82,6 +86,15 @@ class Profile < ActiveRecord::Base
   has_many :starring_profiles, 
            :through => :starring_users,
            :source => :profile
+           
+  private
+    def nilify_blanks
+      Profile::LISTS.each do |list_name|
+        self[list_name] = self[list_name].blank? ? nil : self[list_name]
+      end
+    end
   
-
+    def strip_about_me
+      self.about_me.strip!
+    end
 end
