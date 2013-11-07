@@ -9,7 +9,6 @@ YellowRed.Routers.App = Backbone.Router.extend({
 		"who-i-starred": "displayMyStarred",
 		"who-starred-me": "displayMyStarring",
 		"profiles": "displayAllProfiles",
-	  "profile": "displayMyProfile",
 		":username": "displayProfileDetail"
 	},
 	
@@ -79,21 +78,6 @@ YellowRed.Routers.App = Backbone.Router.extend({
 				});
 				central_content.html($("<h3>Browse profiles...</h3>"))
 				central_content.append(allProfiles.render().$el)
-			}
-		});
-	},
-	
-	displayMyProfile: function() {
-		var central_content = this.central_content;
-		YellowRed.my_profile = YellowRed.my_profile || new YellowRed.Collections.MyProfile();
-		YellowRed.my_profile.fetch({
-			success: function() {
-				var myProfile = YellowRed.my_profile.first()
-				var myProfileView = new YellowRed.Views.ProfileDetail({
-					model: myProfile
-				});
-				central_content.html("<h3>" + myProfile.escape('username') + "</h3>"); 
-				central_content.append(myProfileView.render().$el)
 			}
 		});
 	},
