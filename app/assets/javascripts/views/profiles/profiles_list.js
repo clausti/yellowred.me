@@ -9,6 +9,10 @@ YellowRed.Views.ProfilesList = Backbone.View.extend({
 	
   template: JST['profiles/card'],
 	
+	events: {
+		"click .profile-card": "linkProfile"
+	},
+	
 	render: function() {
 		var that = this
 		this.$el.html('');
@@ -18,6 +22,11 @@ YellowRed.Views.ProfilesList = Backbone.View.extend({
 			}))
 		});
 		return this;
-	}
+	},
+	
+	linkProfile: function(event) {
+		var username = $(event.currentTarget).attr("data-username");
+		YellowRed.appRouter.navigate(username, {trigger: true});
+	},
 
 });

@@ -5,6 +5,7 @@ YellowRed.Views.ProfileDetail = Backbone.View.extend({
 	
 	render: function() {
 		var renderedContent = this.template({
+			my_profile: this.my_profile,
 			profile: this.model
 		})
 		this.$el.html(renderedContent);

@@ -25,6 +25,10 @@
 	background-color: #669EFF;
 	border-color: #AA15D6;
 }
+.profile-card:active {
+	position: relative;
+	top: 2px;
+}
 
 .message-card {
 	display: block;

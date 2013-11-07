@@ -122,6 +122,9 @@ YellowRed.Routers.App = Backbone.Router.extend({
 					model: profile
 				});
 				central_content.html("<h3>" + profile.escape('username') + "</h3>"); 
+				if (username == "profile") {
+					central_content.append("<a href='/profile/edit' class='button' style='margin:5px'>Edit profile</a><br>");
+				}
 				central_content.append(profileView.render().$el)
 			},
 			error: function(req, status, err) {

@@ -5,7 +5,7 @@ window.YellowRed = {
   Routers: {},
   initialize: function() {
 		console.log("initialized")
-		new YellowRed.Routers.App({
+		YellowRed.appRouter = new YellowRed.Routers.App({
 			central_content: $("#central-content"),
 			search_results: $("#search-results")
 		});
