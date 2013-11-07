@@ -1,15 +1,30 @@
 YellowRed.Routers.App = Backbone.Router.extend({
 	initialize: function(page_elements){
 		this.central_content = page_elements.central_content;
+		this.search_results = page_elements.search_results;
 	},
 	
 	routes: {
+		"": "populateSearchResults",
 		"my-maybe-list": "displayMyMaybes",
 		"my-nope-list": "displayMyNopes",
 		"who-i-starred": "displayMyStarred",
 		"who-starred-me": "displayMyStarring",
 		"profiles": "displayAllProfiles",
 		":username": "displayProfileDetail"
+	},
+	
+	populateSearchResults: function() {
+		var searchResultsBox = this.search_results;
+		YellowRed.searched_profiles = new YellowRed.Collections.SearchedProfiles();
+		YellowRed.searched_profiles.fetch({
+			success: function() {
+				var searchResults = new YellowRed.Views.ProfilesList({
+					collection: YellowRed.searched_profiles
+				});
+				searchResultsBox.html(searchResults.render().$el);
+			}
+		});
 	},
 	
 	displayMyMaybes: function() {
