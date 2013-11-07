@@ -6,6 +6,7 @@ YellowRed.Routers.App = Backbone.Router.extend({
 	
 	routes: {
 		"": "populateSearchResults",
+		"messages": "displayAllMessages",
 		"my-maybe-list": "displayMyMaybes",
 		"my-nope-list": "displayMyNopes",
 		"who-i-starred": "displayMyStarred",
@@ -23,6 +24,20 @@ YellowRed.Routers.App = Backbone.Router.extend({
 					collection: YellowRed.searched_profiles
 				});
 				searchResultsBox.html(searchResults.render().$el);
+			}
+		});
+	},
+	
+	displayAllMessages: function() {
+		var central_content = this.central_content;
+		YellowRed.messages = YellowRed.messages || new YellowRed.Collections.AllMessages();
+		YellowRed.messages.fetch({
+			success: function() {
+				var allMessages = new YellowRed.Views.MessagesList({
+					collection: YellowRed.messages
+				});
+				central_content.html($("<h3>Everybody talks, everybody talks...</h3>"))
+				central_content.append(allMessages.render().$el)
 			}
 		});
 	},

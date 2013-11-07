@@ -1,5 +1,5 @@
 class Message < ActiveRecord::Base
-  attr_accessible :body, :recipient_id, :sender_id, :title
+  attr_accessible :title, :body, :recipient_id, :sender_id
   
   validates :sender_id, :recipient_id, :body, :title, :presence => true
   
