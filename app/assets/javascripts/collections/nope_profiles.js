@@ -1,4 +1,4 @@
-YellowRed.Collections.MaybeProfiles = Backbone.Collection.extend({
+YellowRed.Collections.NopeProfiles = Backbone.Collection.extend({
 	url: "/my-nope-list",
   model: YellowRed.Models.Profile
 });

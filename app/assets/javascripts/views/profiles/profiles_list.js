@@ -1,5 +1,6 @@
 YellowRed.Views.ProfilesList = Backbone.View.extend({
 	// call new with a collection specified
+	
 	initialize: function() {
 		this.listenTo( this.collection, 
 										"add remove change sync reset", 

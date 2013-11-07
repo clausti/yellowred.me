@@ -1,4 +1,4 @@
-YellowRed.Collections.StarredProfiles = Backbone.Collection.extend({
+YellowRed.Collections.StarringProfiles = Backbone.Collection.extend({
 	url: "/who-starred-me",
   model: YellowRed.Models.Profile
 });
