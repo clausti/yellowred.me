@@ -4,12 +4,11 @@ window.YellowRed = {
   Views: {},
   Routers: {},
   initialize: function() {
-		// collection of posts that match the search results to display on home pg
-		// fetch collection, on success, start a router, and render the views
+		console.log("initialized")
 		YellowRed.searched_profiles = new YellowRed.Collections.SearchedProfiles();
 		YellowRed.searched_profiles.fetch({
 			success: function () {
-				new YellowRed.Routers.Home();
+				new YellowRed.Routers.App();
 				Backbone.history.start();
 
 				var searchResults = new YellowRed.Views.ProfilesList({

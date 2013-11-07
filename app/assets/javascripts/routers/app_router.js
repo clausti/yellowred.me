@@ -1,4 +1,4 @@
-YellowRed.Routers.Home = Backbone.Router.extend({
+YellowRed.Routers.App = Backbone.Router.extend({
 	
 	routes: {
 		"my-maybe-list": "displayMyMaybes",
@@ -6,6 +6,8 @@ YellowRed.Routers.Home = Backbone.Router.extend({
 		"who-i-starred": "displayMyStarred",
 		"who-starred-me": "displayMyStarring",
 		"profiles": "displayAllProfiles"
+		"profile": "displayMyProfile",
+		":username": "displayProfileDetail"
 	},
 	
 	displayMyMaybes: function() {
@@ -15,7 +17,8 @@ YellowRed.Routers.Home = Backbone.Router.extend({
 				var myMaybes = new YellowRed.Views.ProfilesList({
 					collection: YellowRed.maybe_profiles
 				});
-				$("#central-content").html(myMaybes.render().$el)
+				$("#central-content").html("<h3>Maybe?</h3><div class='central-info-blurb'>Get something started! (Drag cards to sort.)</div>")
+				$("#central-content").append(myMaybes.render().$el)
 			}
 		});
 	},
@@ -27,7 +30,8 @@ YellowRed.Routers.Home = Backbone.Router.extend({
 				var myNopes = new YellowRed.Views.ProfilesList({
 					collection: YellowRed.nope_profiles
 				});
-				$("#central-content").html(myNopes.render().$el)
+				$("#central-content").html("<h3>Nope!</h3><div class='central-info-blurb'>These users will not appear in your search results.</div>")
+				$("#central-content").append(myNopes.render().$el)
 			}
 		});
 	},
@@ -39,7 +43,8 @@ YellowRed.Routers.Home = Backbone.Router.extend({
 				var myStarred = new YellowRed.Views.ProfilesList({
 					collection: YellowRed.starred_profiles
 				});
-				$("#central-content").html(myStarred.render().$el)
+				$("#central-content").html($("<h3>Who I starred</h3><div class='central-info-blurb'>Pretty...</div>"))
+				$("#central-content").append(myStarred.render().$el)
 			}
 		});
 	},
@@ -51,7 +56,8 @@ YellowRed.Routers.Home = Backbone.Router.extend({
 				var myStarring = new YellowRed.Views.ProfilesList({
 					collection: YellowRed.starring_profiles
 				});
-				$("#central-content").html(myStarring.render().$el)
+				$("#central-content").html($("<h3>Who starred me?</h3><div class='central-info-blurb'>They like me!</div>"))
+				$("#central-content").append(myStarring.render().$el)
 			}
 		});
 	},
@@ -60,12 +66,21 @@ YellowRed.Routers.Home = Backbone.Router.extend({
 		YellowRed.all_profiles = YellowRed.all_profiles || new YellowRed.Collections.AllProfiles();
 		YellowRed.all_profiles.fetch({
 			success: function() {
-				var myStarring = new YellowRed.Views.ProfilesList({
+				var allProfiles = new YellowRed.Views.ProfilesList({
 					collection: YellowRed.all_profiles
 				});
-				$("#central-content").html(myStarring.render().$el)
+				$("#central-content").html($("<h3>Browse profiles...</h3>"))
+				$("#central-content").append(allProfiles.render().$el)
 			}
 		});
+	},
+	
+	displayMyProfile: function() {
+		
+	},
+	
+	displayProfileDetail: function() {
+		
 	},
 
 });
