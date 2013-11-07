@@ -9,7 +9,7 @@ window.YellowRed = {
 		YellowRed.searched_profiles = new YellowRed.Collections.SearchedProfiles();
 		YellowRed.searched_profiles.fetch({
 			success: function () {
-				new YellowRed.Routers.App();
+				new YellowRed.Routers.Home();
 				Backbone.history.start();
 
 				var searchResults = new YellowRed.Views.ProfilesList({

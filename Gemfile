@@ -2,13 +2,14 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
+gem 'aws-sdk'
 gem 'backbone-on-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'debugger'
 gem 'ejs'
 gem 'figaro'
 gem 'jquery-rails'
-gem 'meyer-css-reset-rails'
+gem 'paperclip'
 gem 'pg'
 gem 'underscore'
 

@@ -1,10 +1,11 @@
-YellowRed.Routers.App = Backbone.Router.extend({
+YellowRed.Routers.Home = Backbone.Router.extend({
 	
 	routes: {
 		"my-maybe-list": "displayMyMaybes",
 		"my-nope-list": "displayMyNopes",
 		"who-i-starred": "displayMyStarred",
 		"who-starred-me": "displayMyStarring",
+		"profiles": "displayAllProfiles"
 	},
 	
 	displayMyMaybes: function() {
@@ -49,6 +50,18 @@ YellowRed.Routers.App = Backbone.Router.extend({
 			success: function() {
 				var myStarring = new YellowRed.Views.ProfilesList({
 					collection: YellowRed.starring_profiles
+				});
+				$("#central-content").html(myStarring.render().$el)
+			}
+		});
+	},
+	
+	displayAllProfiles: function() {
+		YellowRed.all_profiles = YellowRed.all_profiles || new YellowRed.Collections.AllProfiles();
+		YellowRed.all_profiles.fetch({
+			success: function() {
+				var myStarring = new YellowRed.Views.ProfilesList({
+					collection: YellowRed.all_profiles
 				});
 				$("#central-content").html(myStarring.render().$el)
 			}

@@ -29,6 +29,10 @@ GEM
       i18n (= 0.6.1)
       multi_json (~> 1.0)
     arel (3.0.2)
+    aws-sdk (1.24.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4, < 1.6.0)
+      uuidtools (~> 2.1)
     backbone-on-rails (1.1.0.0)
       eco
       ejs
@@ -42,6 +46,10 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.0.4)
     callsite (0.0.11)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.3)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -83,10 +91,14 @@ GEM
       callsite
       rack-contrib
       railties
-    meyer-css-reset-rails (1.0.2)
-      rails (~> 3.2.12)
     mime-types (1.25)
     multi_json (1.8.2)
+    nokogiri (1.5.10)
+    paperclip (3.5.2)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     pg (0.16.0)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -136,11 +148,13 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     underscore (0.0.0)
+    uuidtools (2.1.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk
   backbone-on-rails
   bcrypt-ruby (~> 3.0.0)
   better_errors
@@ -151,7 +165,7 @@ DEPENDENCIES
   figaro
   jquery-rails
   meta_request
-  meyer-css-reset-rails
+  paperclip
   pg
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
