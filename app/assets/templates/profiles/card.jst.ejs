@@ -1,4 +1,4 @@
 <div class="profile-card round-corners shadow">
-	<strong><%= profile.escape('username') %></strong><br>
+	<a href="#/<%= profile.escape('username') %>"><strong><%= profile.escape('username') %></strong></a><br>
 	<%= profile.escape('gender') || 'gender not specified' %>
 </div>

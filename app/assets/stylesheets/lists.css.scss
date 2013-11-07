@@ -12,6 +12,14 @@
 	border-color:orange;
 	border-width: 1px;
 	background-color: #FFC766;
+	
+	a {
+		color: #2e2c2e;
+	}
+	a:hover {
+		color: #AA15D6;
+		text-shadow: 0px 0px 1px #0c078f;
+	}
 }
 
 .profile-card:hover {
