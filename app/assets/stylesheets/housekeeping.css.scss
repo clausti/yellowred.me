@@ -4,16 +4,16 @@
 
 #site-header {
 	display: inline-block;
-	width: 960;
+	min-width: 1010px;
 	text-shadow: 1px 1px 1px #0c078f;
 }
 
 #logo-home-link {
 	float: left;
-	width: 760px;
-	font-size: 24pt;
+	min-width: 815px;
+	font-size: 26pt;
 	font-family: "Times New Roman";
-	letter-spacing: 1px;
+//	letter-spacing: 1px;
 	text-indent: 10px
 }
 
@@ -23,11 +23,14 @@ a, #logo-home-link {
 
 #current-user-thumbnail-utility {
 	text-align: right;
-	float: right;
-	width: 200px;
+	padding: 2px;
+	float: left;
+	min-width: 200px;
 	text-shadow: none;
-//	border-style: solid;
-//	border-color: purple;
+	border-style: solid;
+	border-color: #119921;
+	border-width: 1px;
+	background-color: #A6E1F5
 }
 
 body {
@@ -49,6 +52,12 @@ body {
 	-webkit-border-bottom-left-radius: 6px;
 	-moz-border-radius-bottomleft: 6px;
 	border-bottom-left-radius: 6px;
+}
+
+.shadow {
+	-moz-box-shadow: -1px 1px 3px -1px blue;
+	-webkit-box-shadow: 0px 1px 3px 0px blue;
+	box-shadow: 0px 1px 3px 0px blue;
 }
 
 .button {
@@ -76,7 +85,6 @@ body {
 	font-size: 10pt;
 	font-style: normal;
 	height: auto;
-//	line-height:30px;
 	width: auto;
 	text-decoration: none;
 	text-align: center;

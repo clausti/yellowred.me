@@ -1,23 +1,7 @@
-<!-- static pages home page  -->
-
-<div id="site-header">
-	<div id="logo-home-link">
-		<a href="/"><span 
-								 style="color:#EBC805">Yellow</span><span 
-								 style="color:red">red</span><span 
-								 style="color:#068A19"><span 
-								 style="font-size:14pt"><sub>&hearts;</sub></span>me</span></a>
-	</div>
-
-	<div id="current-user-thumbnail-utility">
-			Welcome, <%= current_user.email.split('@')[0] %>!
-			<%= button_to "Log Out", session_url, :method => :delete, :class => "button" %>
-	</div>
-</div>
 
 <div id="all-content">
 	
-	<div id="left-sidebar" class="round-corners">
+	<div id="left-sidebar" class="round-corners shadow">
 		<a href="/">Home/Search</a> <hr>
 		<a href="/profiles">Browse Profiles</a> <hr>
 		<a href="/profile">My Profile</a> <hr>
@@ -174,20 +158,17 @@
 			</form>
 		</div>
 		
-		<div id="search-results" class="round-corners">
+		<div id="search-results">
 			I'm where the search results would be!
 		</div>
 	</div>
 	
 	<div id="right-sidebar">
-		<div id="spacer-div">
-		</div>
-		
-		<div id="yellow-box" class="round-corners">
+		<div id="yellow-box" class="round-corners shadow">
 			I'm in the yellow box
 		</div>
 		
-		<div id="red-box" class="round-corners">
+		<div id="red-box" class="round-corners shadow">
 			I'm in the red box
 		</div>
 	</div>
