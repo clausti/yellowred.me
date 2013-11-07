@@ -18,7 +18,7 @@ class Profile < ActiveRecord::Base
                   
   GENDERS          = %w( male female genderqueer/nonbinary )
   HEIGHTS          = (58..84).to_a
-  BODY_TYPES       = %w( skinny lean average athletic soft chubby heavy)
+  BODY_TYPES       = %w( skinny lean average pregnant athletic soft chubby heavy)
   RELIGIONS        = %w( none Jehovah Yaweh Allah Buddhist Hindu FSM other )
   EDUCATION_LEVELS = %w( some\ high\ school high\ school college masters PhD MD )
   CHILDREN_CHOICES = %w( have\ kids have\ kids\ &\ want\ more want\ kids don't\ want\ kids )
