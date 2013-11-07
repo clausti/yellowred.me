@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    @user.profile = Profile.new(:username => params[:username])
+    @user.profile = Profile.create(:username => params[:username])
     @user.saved_search = SavedSearch.new
     
     if @user.save

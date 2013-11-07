@@ -34,25 +34,32 @@ class Profile < ActiveRecord::Base
             :uniqueness => {:case_sensitive => false}          
             
   validates :gender, 
+            :on => :update,
             :on        => :update,
             :inclusion => GENDERS
             
   validates :height,
+            :on        => :update,
             :inclusion => HEIGHTS
             
   validates :body_type,
+            :on        => :update,  
             :inclusion => BODY_TYPES
             
   validates :religion,
+            :on        => :update,
             :inclusion => RELIGIONS
             
   validates :education,
+            :on        => :update,  
             :inclusion => EDUCATION_LEVELS
             
   validates :children,
+            :on        => :update,  
             :inclusion => CHILDREN_CHOICES
             
   validates :pets,
+            :on        => :update,  
             :inclusion => PET_CHOICES
                 
                   

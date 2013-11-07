@@ -1,3 +1,3 @@
-YellowRed.Routers.Profiles = Backbone.Router.extend({
+YellowRed.Routers.App = Backbone.Router.extend({
 
 });
