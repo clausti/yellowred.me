@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
   validates :email, :uniqueness => {:case_sensitive => false}
   validates :password, :length => { :minimum => 6, :allow_nil => true }
   
-  has_one :profile, :inverse_of => :user
-  has_one :saved_search, :inverse_of => :user
+  has_one :profile, :inverse_of => :user, :dependent => :delete
+  has_one :saved_search, :inverse_of => :user, :dependent => :delete
   
   has_many :messages_sent, 
            :class_name => "Message",
@@ -24,16 +24,17 @@ class User < ActiveRecord::Base
            :foreign_key => :recipient_id,
            :inverse_of => :recipient
            
-  has_many :maybes, :inverse_of => :user
+  has_many :maybes, :inverse_of => :user, :dependent => :delete_all
   has_many :maybe_profiles,
            :through => :maybes,
            :source => :profile
   
-  has_many :stars, :inverse_of => :user
+  has_many :stars, :inverse_of => :user, :dependent => :delete_all
+
   has_many :starred_profiles,
            :through => :stars,
            :source => :profile
-           
+                      
   has_many :starring_profiles, 
            :through => :profile,
            :source => :starring_profiles

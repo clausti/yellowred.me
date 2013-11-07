@@ -65,8 +65,8 @@ class Profile < ActiveRecord::Base
                   
   belongs_to :user, :inverse_of => :profile
   
-  has_many :maybes, :inverse_of => :profile
-  has_many :stars, :inverse_of => :profile
+  has_many :maybes, :inverse_of => :profile, :dependent => :delete_all
+  has_many :stars, :inverse_of => :profile, :dependent => :delete_all
   
   has_many :starring_users, 
            :through => :stars, 
