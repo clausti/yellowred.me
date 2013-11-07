@@ -19,7 +19,7 @@ class ProfilesController < ApplicationController
     end
   end
   
-  def edit #will _only_ be hit on intial profile edit after signup
+  def edit
     @profile = current_user.profile
     render :edit
   end

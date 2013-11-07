@@ -36,31 +36,38 @@ class Profile < ActiveRecord::Base
   validates :gender, 
             :on => :update,
             :on        => :update,
-            :inclusion => GENDERS
+            :inclusion => GENDERS,
+            :allow_blank => true
             
   validates :height,
             :on        => :update,
-            :inclusion => HEIGHTS
+            :inclusion => HEIGHTS,
+            :allow_blank => true
             
   validates :body_type,
             :on        => :update,  
-            :inclusion => BODY_TYPES
+            :inclusion => BODY_TYPES,
+            :allow_blank => true
             
   validates :religion,
             :on        => :update,
-            :inclusion => RELIGIONS
+            :inclusion => RELIGIONS,
+            :allow_blank => true
             
   validates :education,
             :on        => :update,  
-            :inclusion => EDUCATION_LEVELS
+            :inclusion => EDUCATION_LEVELS,
+            :allow_blank => true
             
   validates :children,
             :on        => :update,  
-            :inclusion => CHILDREN_CHOICES
+            :inclusion => CHILDREN_CHOICES,
+            :allow_blank => true
             
   validates :pets,
             :on        => :update,  
-            :inclusion => PET_CHOICES
+            :inclusion => PET_CHOICES,
+            :allow_blank => true
                 
                   
   belongs_to :user, :inverse_of => :profile
