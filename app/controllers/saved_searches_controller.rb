@@ -10,7 +10,7 @@ class SavedSearchesController < ApplicationController
     # search collection will have url: saved_search/results
     # @profiles = all the profiles that match the search somehow
     @profiles = Profile.all #for now
-    render :json => @profiles
+    render :json => @profiles #and include search params?
   end
   
   def update
@@ -19,7 +19,8 @@ class SavedSearchesController < ApplicationController
     search_params = profile_booleans_false.merge(params[:search])
     
     if @search.update_attributes(search_params)
-      render :json => @search
+      # render :json => @search
+      results
     else 
       render :json => @search.errors.full_messages, :status => 422
     end

@@ -12,8 +12,10 @@ window.YellowRed = {
 				new YellowRed.Routers.App();
 				Backbone.history.start();
 
-				var searchView = new YellowRed.Views.ProfilesSearch();
-				$("#central-content").html(searchView.render().$el)
+				var searchResults = new YellowRed.Views.ProfilesList({
+					collection: YellowRed.searched_profiles
+				});
+				$("#search-results").html(searchResults.render().$el)
 			}
 		});
   }
