@@ -10,6 +10,10 @@ window.YellowRed = {
 			search_results: $("#search-results")
 		});
 		Backbone.history.start();
+		$("#current-user-thumbnail-utility").on("click", function() {
+			console.log("clicked on thumbnail utility");
+			YellowRed.appRouter.navigate("profile", { trigger: true} )
+		});
   }
 };
 

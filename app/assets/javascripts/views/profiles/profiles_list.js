@@ -14,6 +14,7 @@ YellowRed.Views.ProfilesList = Backbone.View.extend({
 		"click .maybe": "maybeProfile",
 		"click .nope": "nopeProfile",
 		"click .profile-card": "linkProfile",
+		"click #current-user-thumbnail-utility": "linkMyProfile",
 	},
 	
 	render: function() {
