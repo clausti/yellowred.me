@@ -28,8 +28,10 @@ YellowRed.Views.ProfilesList = Backbone.View.extend({
 	},
 	
 	linkProfile: function(event) {
-		var username = $(event.currentTarget).attr("data-username");
-		YellowRed.appRouter.navigate(username, {trigger: true});
+		if (!$(event.target).is("button")) {
+			var username = $(event.currentTarget).attr("data-username");
+			YellowRed.appRouter.navigate(username, {trigger: true});	
+		}
 	},
 	
 	starProfile: function(event) {
@@ -59,15 +61,12 @@ YellowRed.Views.ProfilesList = Backbone.View.extend({
 			type: "post",
 			data: { 
 				maybe: { 
-					profile_id: profileId
+					profile_id: profileId,
+					prefer: true
 				}
 			},
 			success: function(res) {
 				console.log("successfully maybed");
-				YellowRed.appRouter.navigate('');	
-			}, 
-			error: function() {
-				
 			}
 		});
 	},
@@ -86,10 +85,6 @@ YellowRed.Views.ProfilesList = Backbone.View.extend({
 			},
 			success: function(res) {
 				console.log("successfully noped");
-				YellowRed.appRouter.navigate('');	
-			}, 
-			error: function() {
-				
 			}
 		});
 	},

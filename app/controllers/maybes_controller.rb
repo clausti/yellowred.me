@@ -12,7 +12,13 @@ class MaybesController < ApplicationController
   
   def create
     maybe_params = params[:maybe].merge(:user_id => current_user.id)
-    @maybe = Maybe.new(maybe_params)
+    @maybe = Maybe.find_by_ids(maybe_params)
+
+    if @maybe
+      @maybe.update_attributes(maybe_params)
+    else
+      @maybe = Maybe.new(maybe_params)
+    end
     
     if @maybe.save
       render :json => @maybe.profile, :status => 200

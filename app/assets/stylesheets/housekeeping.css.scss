@@ -51,6 +51,10 @@ h3 {
 #current-user-thumbnail-utility:hover {
 	background-color: #F5BAA6;
 	border-color: red;
+}
+#current-user-thumbnail-utility:active {
+	position: relative;
+	top: 2px;
 };
 
 .round-corners {
