@@ -14,10 +14,20 @@ YellowRed.Views.NewMessage = Backbone.View.extend({
   
   sendMessage: function(event) {
     event.preventDefault();
-    
-    //ajax stuff
-    
-    console.log('you sent a message!')
+    var msgData = $(event.currentTarget).serializeJSON();
+    $.ajax({
+      url: "messages",
+      data: msgData,
+      type: 'post',
+      success: function(res) {
+       var message = new YellowRed.Models.Message(); 
+       YellowRed.messages.add(message);
+       console.log('you sent a message!');
+      },
+      error: function(req, err) {
+        console.log(err);
+      }
+    });
     YellowRed.appRouter.navigate('messages', {trigger:true});
   },
 

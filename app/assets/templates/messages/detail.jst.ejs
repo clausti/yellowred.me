@@ -1,4 +1,10 @@
 From: <%= message.escape('sender_id') %>
+<button class="button" 
+        id="<%= 'delete-messsage' + message.get('id') %>" 
+        data-id="<%= 'delete-messsage' + message.get('id') %>"
+        style='float:right'>Delete Message</button>
 <br>
 I am a message detail
 <%= message.escape('body') %>
+
+
