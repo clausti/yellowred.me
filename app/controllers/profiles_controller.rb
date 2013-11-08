@@ -26,13 +26,13 @@ class ProfilesController < ApplicationController
   
   def update
     @profile = current_user.profile
-    
     profile_params = profile_booleans_false.merge(params[:profile])
 
     if @profile.update_attributes(profile_params)
-      render :json => @profile, :status => 200
+      redirect_to root_url
     else
-      render :json => @profile.errors.full_messages, :status => 422
+      flash.now[:errors] = @profile.errors.full_messages
+      render :edit
     end
   end
   

@@ -2,13 +2,7 @@
 <div id="all-content">
 	<div id="lobby-sidebar" class="round-corners shadow">
 		
-		<div class="errors-marquee">
-			<% unless flash[:errors].nil?%>
-				<% flash[:errors].each do |error_message| %>
-					<%= error_message %><br>
-				<% end %>
-			<% end%>
-		</div>
+		<%= render "shared/errors_marquee" %>
 		
 		<form action="<%= session_url %>" method="post" accept-charset="utf-8">
 			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -27,6 +21,6 @@
 	
 	</div>
 
-	<%= render "lobby_blurb" %>
+	<%= render "shared/lobby_blurb" %>
 	
 </div>

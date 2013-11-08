@@ -14,13 +14,7 @@
 	
 	<div id="central-content" class="round-corners">
 		<div id="search-box" class="round-corners shadow">
-			<div class="errors-marquee">
-				<% unless flash[:errors].nil?%>
-					<% flash[:errors].each do |error_message| %>
-						<%= error_message %>
-					<% end %>
-				<% end%>
-			</div>
+			<%= render "shared/errors_marquee" %>
 	
 			<form action="<%= saved_search_url %>" method="post" id="search-form" accept-charset="utf-8">
 				<input type="hidden" name="_method" value="PUT">
