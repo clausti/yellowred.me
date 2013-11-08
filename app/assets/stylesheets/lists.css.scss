@@ -1,6 +1,4 @@
-// Place all the styles related to the sessions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
 
 .profile-card {
 	width: 305px;
@@ -12,15 +10,6 @@
 	border-color: orange;
 	border-width: 1px;
 	background-color: #FFC766;
-	
-	a {
-		color: #2e2c2e;
-	}
-	a:hover {
-		color: #AA15D6;
-		text-shadow: 0px 0px 1px #0c078f;
-	}
-
 }
 
 .profile-card:hover {
@@ -31,8 +20,6 @@
 	position: relative;
 	top: 2px;
 }
-
-
 
 .message-card {
 	display: block;
@@ -55,6 +42,6 @@
 	}
 }
 .message-card:hover {
-	background-color: #BAD8FF;
+	background-color: #EBF4FC;
 	border-color: purple;
 }
