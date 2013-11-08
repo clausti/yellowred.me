@@ -1,12 +1,12 @@
 class MaybesController < ApplicationController
     
   def maybe_list
-    @maybe_profiles = current_user.maybe_profiles.where( 'prefer = true' )
+    @maybe_profiles = current_user.maybe_profiles
     render :json => @maybe_profiles, :status => 200
   end
   
   def nope_list
-    @nope_profiles = current_user.maybe_profiles.where( 'prefer = false' )
+    @nope_profiles = current_user.nope_profiles
     render :json => @nope_profiles, :status => 200
   end
   

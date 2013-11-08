@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
            :inverse_of => :recipient
            
   has_many :maybes, :inverse_of => :user, :dependent => :delete_all
-  has_many :maybe_profiles,
+  has_many :all_maybe_profiles,
            :through => :maybes,
            :source => :profile
   
@@ -69,6 +69,14 @@ class User < ActiveRecord::Base
   
   def messages
     self.messages_sent + self.messages_recd
+  end
+  
+  def maybe_profiles
+    self.all_maybe_profiles.where("prefer = true")
+  end
+  
+  def nope_profiles
+    self.all_maybe_profiles.where("prefer = false")
   end
   
 end
