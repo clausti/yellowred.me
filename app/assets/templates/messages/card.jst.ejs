@@ -1,5 +1,9 @@
 <div class="message-card round-corners shadow">
 	From: <%= message.escape('sender_id') %><br>
 	<a href="/messages/<%= message.escape('id') %>"><strong><%= message.escape('title') %></strong></a><br>
-	<%= message.escape('body') %> 
+	<% if (message.escape('body').length < 40) { %>
+    <%= message.escape('body') %>
+  <% } else { %> 
+    <%= message.escape('body').slice(0, 40) %>...
+  <% } %>
 </div>
