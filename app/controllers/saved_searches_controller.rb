@@ -9,7 +9,7 @@ class SavedSearchesController < ApplicationController
   def results
     # search collection will have url: saved_search/results
     # @profiles = all the profiles that match the search somehow
-    @profiles = Profile.all #for now
+    @profiles = Profile.all.shuffle #for now
     @profiles.delete(current_user.profile)
     render :json => @profiles #and include search params?
   end
@@ -21,7 +21,7 @@ class SavedSearchesController < ApplicationController
     
     if @search.update_attributes(search_params)
       # render :json => @search
-      results
+      render :json => true, :status => 200
     else 
       render :json => @search.errors.full_messages, :status => 422
     end

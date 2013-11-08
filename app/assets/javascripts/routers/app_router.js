@@ -17,7 +17,6 @@ YellowRed.Routers.App = Backbone.Router.extend({
 	
 	populateSearchResults: function() {
 		var searchResultsBox = this.search_results;
-		YellowRed.searched_profiles = new YellowRed.Collections.SearchedProfiles();
 		YellowRed.searched_profiles.fetch({
 			success: function() {
 				var searchResults = new YellowRed.Views.ProfilesList({
@@ -44,7 +43,6 @@ YellowRed.Routers.App = Backbone.Router.extend({
 	
 	displayMyMaybes: function() {
 		var central_content = this.central_content;
-		YellowRed.maybe_profiles = YellowRed.maybe_profiles || new YellowRed.Collections.MaybeProfiles();
 		YellowRed.maybe_profiles.fetch({
 			success: function() {
 				var myMaybes = new YellowRed.Views.ProfilesList({
@@ -58,7 +56,6 @@ YellowRed.Routers.App = Backbone.Router.extend({
 	
 	displayMyNopes: function() {
 		var central_content = this.central_content;
-		YellowRed.nope_profiles = YellowRed.nope_profiles || new YellowRed.Collections.NopeProfiles();
 		YellowRed.nope_profiles.fetch({
 			success: function() {
 				var myNopes = new YellowRed.Views.ProfilesList({
@@ -72,7 +69,6 @@ YellowRed.Routers.App = Backbone.Router.extend({
 	
 	displayMyStarred: function() {
 		var central_content = this.central_content;
-		YellowRed.starred_profiles = YellowRed.starred_profiles || new YellowRed.Collections.StarredProfiles();
 		YellowRed.starred_profiles.fetch({
 			success: function() {
 				var myStarred = new YellowRed.Views.ProfilesList({
@@ -86,7 +82,6 @@ YellowRed.Routers.App = Backbone.Router.extend({
 	
 	displayMyStarring: function() {
 		var central_content = this.central_content;
-		YellowRed.starring_profiles = YellowRed.starring_profiles || new YellowRed.Collections.StarringProfiles();
 		YellowRed.starring_profiles.fetch({
 			success: function() {
 				var myStarring = new YellowRed.Views.ProfilesList({
@@ -100,7 +95,6 @@ YellowRed.Routers.App = Backbone.Router.extend({
 	
 	displayAllProfiles: function() {
 		var central_content = this.central_content;
-		YellowRed.all_profiles = YellowRed.all_profiles || new YellowRed.Collections.AllProfiles();
 		YellowRed.all_profiles.fetch({
 			success: function() {
 				var allProfiles = new YellowRed.Views.ProfilesList({

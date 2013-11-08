@@ -29,7 +29,7 @@ YellowRed.profile_button_responses = {
 			success: function(res) {
 				console.log("successfully maybed");
 				YellowRed.maybe_profiles.fetch();
-				YellowRed.nope.fetch();
+				YellowRed.nope_profiles.fetch();
 			}
 		});
 	},
@@ -49,7 +49,7 @@ YellowRed.profile_button_responses = {
 			success: function(res) {
 				console.log("successfully noped");
 				YellowRed.maybe_profiles.fetch();
-				YellowRed.nope.fetch();
+				YellowRed.nope_profiles.fetch();
 			}
 		});
 	}
