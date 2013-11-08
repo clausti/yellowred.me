@@ -1,8 +1,9 @@
 class Message < ActiveRecord::Base
-  attr_accessible :title, :body, :recipient_id, :sender_id
+  attr_accessible :body, :recipient_id, :sender_id
   
-  validates :sender_id, :recipient_id, :body, :title, :presence => true
+  validates :sender_id, :recipient_id, :body, :presence => true
   validates :body, :length => { :maximum => 1200 }
+  validate :cant_message_self
   
   belongs_to :sender, 
              :class_name => "User",
@@ -14,5 +15,9 @@ class Message < ActiveRecord::Base
              :foreign_key => :recipient_id,
              :inverse_of => :messages_recd
              
-             
+  def cant_message_self
+    if sender_id == recipient_id
+      errors.add(:profile_id, "can't message yourself")
+    end
+  end       
 end

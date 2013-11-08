@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131108072956) do
+ActiveRecord::Schema.define(:version => 20131108182646) do
 
   create_table "maybes", :force => true do |t|
     t.integer  "user_id",                      :null => false
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(:version => 20131108072956) do
   create_table "messages", :force => true do |t|
     t.integer  "sender_id",    :null => false
     t.integer  "recipient_id", :null => false
-    t.string   "title",        :null => false
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.text     "body"
