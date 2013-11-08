@@ -5,7 +5,7 @@
 		<div class="errors-marquee">
 			<% unless flash[:errors].nil?%>
 				<% flash[:errors].each do |error_message| %>
-					<%= error_message %>
+					<%= error_message %><br>
 				<% end %>
 			<% end%>
 		</div>
@@ -20,8 +20,8 @@
 			<label for="user_password">Password</label>
 			<br>
 			<input type="password" name="user[password]" id="user_password">
-
-			<p><input type="submit" value="Log In" class="button"></p>
+			<br><br>
+			<input type="submit" value="Log In" class="button">
 		</form>
 		<%= button_to "New? Sign up!", signup_url, :method => :get, :class => "button" %>
 	

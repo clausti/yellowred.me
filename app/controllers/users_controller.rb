@@ -16,6 +16,7 @@ class UsersController < ApplicationController
       login_user!
       redirect_to edit_profile_url
     else
+      @profile = Profile.new(:username => params[:username])
       flash.now[:errors] = @user.errors.full_messages
       render :new
     end

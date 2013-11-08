@@ -12,8 +12,7 @@ class SessionsController < ApplicationController
       login_user!
       redirect_to root_url
     else
-      # not rendering as json. just putting on the page.
-      # can change later to a backbone view?
+      @user = User.new(params[:user])
       flash.now[:errors] = ["Invalid username and/or password"]
       render :lobby
     end
