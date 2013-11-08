@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(:version => 20131108072956) do
     t.integer  "sender_id",    :null => false
     t.integer  "recipient_id", :null => false
     t.string   "title",        :null => false
-    t.text     "body",         :null => false
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.text     "body"
   end
 
   add_index "messages", ["recipient_id"], :name => "index_messages_on_recipient_id"
