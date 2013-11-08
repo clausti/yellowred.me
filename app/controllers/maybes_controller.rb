@@ -23,7 +23,7 @@ class MaybesController < ApplicationController
     if @maybe.save
       render :json => @maybe.profile, :status => 200
     else
-      render :json => @maybe.errrors.full_messages, :status => 422
+      render :json => @maybe.errors.full_messages, :status => 422
     end
   end
   

@@ -3,6 +3,7 @@ class Maybe < ActiveRecord::Base
   
   validates :profile_id, :user_id, :presence => true
   validates_uniqueness_of :profile_id, :scope => [:user_id]
+  validate :cant_maybe_self
   
   belongs_to :user, :inverse_of => :maybes
   belongs_to :profile, :inverse_of => :maybes
@@ -11,6 +12,12 @@ class Maybe < ActiveRecord::Base
     user_id = params_hash[:user_id]
     profile_id = params_hash[:profile_id]
     Maybe.find_by_user_id_and_profile_id(user_id, profile_id)
+  end
+  
+  def cant_maybe_self
+    if profile_id == user_id
+      errors.add(:profile_id, "can't be your own profile")
+    end
   end
   
 end
