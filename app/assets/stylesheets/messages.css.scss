@@ -1,0 +1,46 @@
+
+.message-detail {
+	margin-top: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	padding: 5px;
+	font-size: 14pt;
+	float:left;
+	min-width: 630px;
+	max-width: 630px;
+	height: 400px;
+	background-color: #DCEDFC;
+	border-style: solid;
+	border-width: 1px;
+	border-color: blue;
+}
+
+.message-card {
+	display: block;
+	min-width: 620px;
+	float: left;
+	text-align: left;
+	padding: 5px;
+	margin: 5px;
+	border-style: solid;
+	border-color: #FAA42D;
+	border-width: 1px;
+	background-color: #FFFDD6;
+	
+	a {
+		color: #2e2c2e;
+	}
+	a:hover {
+		color: #AA15D6;
+		text-shadow: 0px 0px 1px #D6D8FF;
+	}
+}
+.message-card:hover {
+	background-color: #EBF4FC;
+	border-color: purple;
+}
+.message-card:active {
+	position: relative;
+	top: 2px;
+}

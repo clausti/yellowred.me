@@ -6,18 +6,59 @@ YellowRed.Views.MessagesList = Backbone.View.extend({
 										"add remove change sync reset", 
 										this.render)
 	},
+  
+  events: {
+    "click .message-card": "displayMessageDetail",
+    "click .message-detail": "displayMessageList",
+  },
 	
   template: JST['messages/card'],
 	
 	render: function() {
 		var that = this
 		this.$el.html('');
+    
 		this.collection.each( function (message) {
 			that.$el.append(that.template({
-				message: message
+				message: message, 
+        listData: JST['messages/list']({
+          message: message
+        })
 			}))
 		});
 		return this;
-	}
+	},
+  
+  displayMessageDetail: function(event) {
+    var htmlId = $(event.target).attr("id")
+    var messageCard = $("#" + htmlId)
+    
+    var messageId = $(event.target).attr("data-id")
+    var message = this.collection.get(messageId);
+    
+    var messageDetail = JST['messages/detail']({
+         message: message
+    });
+    messageCard.html(messageDetail);
+    messageCard.toggleClass("message-detail", true)
+    messageCard.toggleClass("message-card", false)
+  },
+  
+  displayMessageList: function(event) {
+    var htmlId = $(event.target).attr("id")
+    var messageCard = $("#" + htmlId)
+    
+    var messageId = $(event.target).attr("data-id")
+    var message = this.collection.get(messageId);
+    
+    var messageList = JST['messages/list']({
+         message: message
+    });
+    messageCard.html(messageList);
+    messageCard.toggleClass("message-detail", false)
+    messageCard.toggleClass("message-card", true)
+  },
+  
+  
 
 });

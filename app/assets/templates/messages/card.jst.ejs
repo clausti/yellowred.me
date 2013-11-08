@@ -1,9 +1,8 @@
-<div class="message-card round-corners shadow">
-	From: <%= message.escape('sender_id') %><br>
-	<a href="/messages/<%= message.escape('id') %>"><strong><%= message.escape('title') %></strong></a><br>
-	<% if (message.escape('body').length < 40) { %>
-    <%= message.escape('body') %>
-  <% } else { %> 
-    <%= message.escape('body').slice(0, 40) %>...
-  <% } %>
+<div id="<%= 'message' + message.get('id') %>"
+     class="message-card round-corners shadow" 
+     data-id="<%= message.get('id') %>">
+       
+     message <%= message.get('id') %>
+     
+     <%= listData %>
 </div>

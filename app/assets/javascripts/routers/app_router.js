@@ -11,8 +11,9 @@ YellowRed.Routers.App = Backbone.Router.extend({
 		"my-nope-list": "displayMyNopes",
 		"who-i-starred": "displayMyStarred",
 		"who-starred-me": "displayMyStarring",
+    "profiles/:id": "displayProfileDetailById",
 		"profiles": "displayAllProfiles",
-		":username": "displayProfileDetail"
+		":username": "displayProfileDetail",
 	},
 	
 	populateSearchResults: function() {
@@ -129,5 +130,9 @@ YellowRed.Routers.App = Backbone.Router.extend({
 			}
 		});
 	},
+  
+  displayProfileDetailById: function(id) {
+    this.displayProfileDetail("profiles/" + id);
+  },
 
 });

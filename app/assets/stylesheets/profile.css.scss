@@ -12,6 +12,27 @@
 	background-color: #FFC766;
 }
 
+.profile-card {
+	width: 305px;
+	float: left;
+	text-align: right;
+	padding: 5px;
+	margin: 5px;
+	border-style: solid;
+	border-color: orange;
+	border-width: 1px;
+	background-color: #FFC766;
+}
+
+.profile-card:hover {
+	background-color: #669EFF;
+	border-color: #AA15D6;
+}
+.profile-card:active {
+	position: relative;
+	top: 2px;
+}
+
 #dummy-left-sidebar {
 	padding: 10px;
 	margin: 5px;
