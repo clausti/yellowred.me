@@ -16,6 +16,7 @@
 //= require backbone
 //= require jquery.serializeJSON
 //= require yellow_red
+//= require_tree ./modules
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

@@ -1,7 +1,13 @@
-YellowRed.Views.ProfileDetail = Backbone.View.extend({
+YellowRed.Views.ProfileDetail = Backbone.View.extend(_.extend({
 	// initialize with a model
 
   template: JST['profiles/detail'],
+	
+	events: {
+		"click .star": "starProfile",
+		"click .maybe": "maybeProfile",
+		"click .nope": "nopeProfile",
+	},
 	
 	render: function() {
 		var renderedContent = this.template({
@@ -14,4 +20,4 @@ YellowRed.Views.ProfileDetail = Backbone.View.extend({
 		return this
 	}
 
-});
+}, YellowRed.profile_button_responses));

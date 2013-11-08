@@ -14,6 +14,7 @@ window.YellowRed = {
 			console.log("clicked on thumbnail utility");
 			YellowRed.appRouter.navigate("profile", { trigger: true} )
 		});
+		
   }
 };
 
