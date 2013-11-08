@@ -8,9 +8,10 @@ YellowRed.Views.MessagesList = Backbone.View.extend({
 	},
   
   events: {
+    "click #new-message": "displayNewForm",
     "click .message-card": "displayMessageDetail",
     "click .message-detail": "displayMessageList",
-    "click #new-message": "displayNewForm"
+    "click .delete-message": "deleteMessage"
   },
 	
   template: JST['messages/card'],
@@ -28,6 +29,10 @@ YellowRed.Views.MessagesList = Backbone.View.extend({
 		});
 		return this;
 	},
+  
+  displayNewForm: function() {
+    YellowRed.appRouter.navigate('/new-message', {trigger:true});
+  },
   
   displayMessageDetail: function(event) {
     var htmlId = $(event.target).attr("id");
@@ -59,8 +64,16 @@ YellowRed.Views.MessagesList = Backbone.View.extend({
     messageCard.toggleClass("message-card", true);
   },
   
-  displayNewForm: function() {
-    YellowRed.appRouter.navigate('/new-message', {trigger:true});
+  deleteMessage: function(event) {
+    console.log("clicked to delete message");
+    var msgId = $(event.currentTarget).attr('data-id');
+    var message = YellowRed.messages.get(msgId);
+    message.destroy({
+      wait: true, 
+      success: function() {
+        console.log('deleted messge' + msgId)
+      }
+    });
   },
   
   
