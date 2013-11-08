@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
   
   def index
     @profiles = Profile.all.shuffle
+    @profiles.delete(current_user.profile)
     render :json => @profiles
   end
   

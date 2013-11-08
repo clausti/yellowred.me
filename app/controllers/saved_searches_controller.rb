@@ -10,6 +10,7 @@ class SavedSearchesController < ApplicationController
     # search collection will have url: saved_search/results
     # @profiles = all the profiles that match the search somehow
     @profiles = Profile.all #for now
+    @profiles.delete(current_user.profile)
     render :json => @profiles #and include search params?
   end
   
