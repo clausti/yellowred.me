@@ -1,3 +1,26 @@
+.new-message-button {
+  padding: 3px;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin: 5px;
+}
+
+.new-message-card {
+	margin-top: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	padding: 5px;
+	font-size: 14pt;
+	float:left;
+	min-width: 620px;
+	max-width: 620px;
+//  min-height: 200px;
+	border-style: solid;
+	border-width: 1px;
+	background-color: #EBF4FC;
+	border-color: purple;
+}
 
 .message-detail {
 	margin-top: 5px;
@@ -7,9 +30,9 @@
 	padding: 5px;
 	font-size: 14pt;
 	float:left;
-	min-width: 630px;
-	max-width: 630px;
-	height: 400px;
+	min-width: 620px;
+	max-width: 620px;
+	min-height: 200px;
 	background-color: #DCEDFC;
 	border-style: solid;
 	border-width: 1px;

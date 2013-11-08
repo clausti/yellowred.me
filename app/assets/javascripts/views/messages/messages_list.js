@@ -10,14 +10,14 @@ YellowRed.Views.MessagesList = Backbone.View.extend({
   events: {
     "click .message-card": "displayMessageDetail",
     "click .message-detail": "displayMessageList",
+    "click #new-message": "displayNewForm"
   },
 	
   template: JST['messages/card'],
 	
 	render: function() {
-		var that = this
-		this.$el.html('');
-    
+		var that = this;
+    this.$el.html("<div id='new-message' class='button new-message-button'>New Message</div>");
 		this.collection.each( function (message) {
 			that.$el.append(that.template({
 				message: message, 
@@ -30,8 +30,8 @@ YellowRed.Views.MessagesList = Backbone.View.extend({
 	},
   
   displayMessageDetail: function(event) {
-    var htmlId = $(event.target).attr("id")
-    var messageCard = $("#" + htmlId)
+    var htmlId = $(event.target).attr("id");
+    var messageCard = $("#" + htmlId);
     
     var messageId = $(event.target).attr("data-id")
     var message = this.collection.get(messageId);
@@ -40,25 +40,28 @@ YellowRed.Views.MessagesList = Backbone.View.extend({
          message: message
     });
     messageCard.html(messageDetail);
-    messageCard.toggleClass("message-detail", true)
-    messageCard.toggleClass("message-card", false)
+    messageCard.toggleClass("message-detail", true);
+    messageCard.toggleClass("message-card", false);
   },
   
   displayMessageList: function(event) {
-    var htmlId = $(event.target).attr("id")
-    var messageCard = $("#" + htmlId)
+    var htmlId = $(event.target).attr("id");
+    var messageCard = $("#" + htmlId);
     
-    var messageId = $(event.target).attr("data-id")
+    var messageId = $(event.target).attr("data-id");
     var message = this.collection.get(messageId);
     
     var messageList = JST['messages/list']({
          message: message
     });
     messageCard.html(messageList);
-    messageCard.toggleClass("message-detail", false)
-    messageCard.toggleClass("message-card", true)
+    messageCard.toggleClass("message-detail", false);
+    messageCard.toggleClass("message-card", true);
+  },
+  
+  displayNewForm: function() {
+    YellowRed.appRouter.navigate('/new-message', {trigger:true});
   },
   
   
-
 });

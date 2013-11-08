@@ -7,6 +7,7 @@ YellowRed.Routers.App = Backbone.Router.extend({
 	routes: {
 		"": "populateSearchResults",
 		"messages": "displayAllMessages",
+    'new-message': "displayNewMessageForm",
 		"my-maybe-list": "displayMyMaybes",
 		"my-nope-list": "displayMyNopes",
 		"who-i-starred": "displayMyStarred",
@@ -41,6 +42,14 @@ YellowRed.Routers.App = Backbone.Router.extend({
 			}
 		});
 	},
+  
+  displayNewMessageForm: function() {
+    console.log("clicked new message")
+    var newForm = new YellowRed.Views.NewMessage();
+    $('#new-message').html(newForm.render().$el);
+    $('#new-message').toggleClass("button new-message-button", false)
+    $('#new-message').toggleClass("new-message-card round-corners shadow", true)
+  },
 	
 	displayMyMaybes: function() {
 		var central_content = this.central_content;
@@ -132,7 +141,7 @@ YellowRed.Routers.App = Backbone.Router.extend({
 	},
   
   displayProfileDetailById: function(id) {
-    this.displayProfileDetail("profiles/" + id);
+    this.displayProfileDetail("profiles/" + id);    
   },
 
 });
