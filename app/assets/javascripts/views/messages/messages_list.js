@@ -18,7 +18,7 @@ YellowRed.Views.MessagesList = Backbone.View.extend({
 	
 	render: function() {
 		var that = this;
-    this.$el.html("<div id='new-message' class='button new-message-button'>New Message</div>");
+    this.$el.html("<div id='new-message' class='button new-message-button' data-id='messages'>New Message</div>");
 		this.collection.each( function (message) {
 			that.$el.append(that.template({
 				message: message, 

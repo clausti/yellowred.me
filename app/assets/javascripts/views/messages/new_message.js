@@ -1,15 +1,27 @@
 YellowRed.Views.NewMessage = Backbone.View.extend({
 
-  template: JST['messages/new'],
+  form_body_template: JST['messages/new_body'],
+  recip_input_template: JST['messages/new_recip'],
+  profile_recip_input_template: JST['messages/from_profile'],
   
   events: {
     "submit form": "sendMessage",
   },
 	
 	render: function() {
-		var messageForm = this.template();
+		var messageForm = this.form_body_template();
     this.$el.html(messageForm);
-		return this;
+    var profileId = $('#new-message').attr('data-id')
+    
+    if ( profileId == 'messages' ) {
+      this.$el.find("#new-message-form").prepend(this.recip_input_template());
+      return this;
+    } else {
+      this.$el.find("#new-message-form").prepend(this.profile_recip_input_template({
+        profileId: profileId
+      }));
+  		return this;
+    }
 	},
   
   sendMessage: function(event) {
