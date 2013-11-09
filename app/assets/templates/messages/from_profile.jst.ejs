@@ -1,8 +1,8 @@
 
-<label for="message_recipient">To: <%= $("h3").html() %></label>
+<label for="message_recipient">To: <%= $("#profile-username").html() %></label>
 <input type="hidden"
        name="message[recipient]" 
-       value="<%= $("h3").html() %>"
+       value="<%= $('#profile-username').html() %>"
        id="message_recipient">
 <br>
 

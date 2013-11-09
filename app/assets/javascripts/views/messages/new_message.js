@@ -24,9 +24,9 @@ YellowRed.Views.NewMessage = Backbone.View.extend({
 	},
   
   checkForUser: function(event) {
-    var input = $(event.currentTarget).val();
+    var recipient = $(event.currentTarget).val();
     $.ajax({
-      url: input,
+      url: recipient,
       success: function() {
         $("#username-errors").html('');
       },

@@ -1,5 +1,7 @@
 YellowRed.profile_button_responses = {
 	starProfile: function(event) {
+    console.log("star")
+    
 		var profileId = $(event.currentTarget).attr("data-id");
 		console.log("you clicked to star profile " + profileId);
 		$.ajax({
@@ -15,6 +17,8 @@ YellowRed.profile_button_responses = {
 	},
 
 	maybeProfile: function(event) {
+    console.log("maybe")
+    
 		var profileId = $(event.currentTarget).attr("data-id");
 		console.log("you clicked to maybe profile " + profileId);
 		$.ajax({
@@ -35,6 +39,8 @@ YellowRed.profile_button_responses = {
 	},
 
 	nopeProfile: function(event) {
+    console.log("nope")
+    
 		var profileId = $(event.currentTarget).attr("data-id");
 		console.log("you clicked to nope profile " + profileId);
 		$.ajax({
@@ -50,6 +56,7 @@ YellowRed.profile_button_responses = {
 				console.log("successfully noped");
 				YellowRed.maybe_profiles.fetch();
 				YellowRed.nope_profiles.fetch();
+        YellowRed.searched_profiles.fetch();
 			}
 		});
 	},
