@@ -27,8 +27,11 @@ YellowRed.Views.NewMessage = Backbone.View.extend({
     var input = $(event.currentTarget).val();
     $.ajax({
       url: input,
+      success: function() {
+        $("#username-errors").html('');
+      },
       error: function() {
-        $("#new-message-form").prepend("<span style='color:red;font-size:12pt'>Username not found!</span><br>");
+        $("#username-errors").html("Username not found!");
       }
     });
   },
