@@ -6,6 +6,7 @@ YellowRed.Views.NewMessage = Backbone.View.extend({
   
   events: {
     "submit form": "sendMessage",
+    "blur #message_recipient": "checkForUser"
   },
 	
 	render: function() {
@@ -22,10 +23,19 @@ YellowRed.Views.NewMessage = Backbone.View.extend({
     }
 	},
   
+  checkForUser: function(event) {
+    var input = $(event.currentTarget).val();
+    $.ajax({
+      url: input,
+      error: function() {
+        $("#new-message-form").prepend("<span style='color:red;font-size:12pt'>Username not found!</span><br>");
+      }
+    });
+  },
+  
   sendMessage: function(event) {
     event.preventDefault();
     var msgData = $(event.currentTarget).serializeJSON();
-    // debugger
     $.ajax({
       url: "messages",
       data: msgData,
