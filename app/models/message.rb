@@ -17,6 +17,13 @@ class Message < ActiveRecord::Base
              :foreign_key => :recipient_id,
              :inverse_of => :messages_recd
              
+  def sender_username
+    self.sender.profile.username
+  end
+  
+  def recipient_username
+    self.recipient.profile.username
+  end
     
   private         
     def nilify_blanks
