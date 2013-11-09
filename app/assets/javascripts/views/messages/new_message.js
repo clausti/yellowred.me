@@ -17,9 +17,7 @@ YellowRed.Views.NewMessage = Backbone.View.extend({
       this.$el.find("#new-message-form").prepend(this.recip_input_template());
       return this;
     } else {
-      this.$el.find("#new-message-form").prepend(this.profile_recip_input_template({
-        profileId: profileId
-      }));
+      this.$el.find("#new-message-form").prepend(this.profile_recip_input_template());
   		return this;
     }
 	},
@@ -27,6 +25,7 @@ YellowRed.Views.NewMessage = Backbone.View.extend({
   sendMessage: function(event) {
     event.preventDefault();
     var msgData = $(event.currentTarget).serializeJSON();
+    // debugger
     $.ajax({
       url: "messages",
       data: msgData,

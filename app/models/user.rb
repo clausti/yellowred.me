@@ -50,6 +50,10 @@ class User < ActiveRecord::Base
     end
   end
   
+  def self.find_by_username(username)
+    Profile.find_by_username(username).user
+  end
+  
   def password=(raw_pw) 
     @password = raw_pw
     self.password_digest = BCrypt::Password.create(raw_pw)

@@ -1,9 +1,9 @@
 
-<label for="message_recipient_id">To: <%= $("h3").html() %></label>
+<label for="message_recipient">To: <%= $("h3").html() %></label>
 <input type="hidden"
-       name="message[recipient_id]" 
-       value="<%= profileId %>"
-       id="message_recipient_id">
+       name="message[recipient]" 
+       value="<%= $("h3").html() %>"
+       id="message_recipient">
 <br>
 
 

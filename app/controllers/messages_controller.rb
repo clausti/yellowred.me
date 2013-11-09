@@ -11,9 +11,11 @@ class MessagesController < ApplicationController
   end
   
   def create
-    message_params = params[:message].merge(:sender_id => current_user.id)
+    recipient = User.find_by_username(params[:message][:recipient])
+    message_params = { :sender_id => current_user.id, 
+                       :recipient_id => recipient.id,
+                       :body => params[:message][:body] }
     @message = Message.new(message_params)
-    
     if @message.save
       render :json => @message, :status => 200
     else
