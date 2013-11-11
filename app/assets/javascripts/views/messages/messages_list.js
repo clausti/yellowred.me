@@ -9,7 +9,6 @@ YellowRed.Views.MessagesList = Backbone.View.extend({
   
   events: {
     "click #new-message": "displayNewForm",
-    "click #cancel-message": "cancelMessage",
     "click .message-card": "displayMessageDetail",
     "click .message-detail": "displayMessageList",
     "click .delete-message": "deleteMessage"
@@ -33,11 +32,6 @@ YellowRed.Views.MessagesList = Backbone.View.extend({
   
   displayNewForm: function() {
     YellowRed.appRouter.navigate('new-message', {trigger:true});
-  },
-  
-  cancelMessage: function() {
-    // YellowRed.appRouter.navigate('#/messages', {trigger:true});
-    this.render();
   },
   
   displayMessageDetail: function(event) {

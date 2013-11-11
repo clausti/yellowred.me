@@ -124,7 +124,6 @@ YellowRed.Routers.App = Backbone.Router.extend({
 				var profile = new YellowRed.Models.Profile(res);
 				var profileView = new YellowRed.Views.ProfileDetail({
           username: username,
-          centralContent: central_content,
 					model: profile
 				});
 				central_content.html(profileView.render().$el)
