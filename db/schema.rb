@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131111184948) do
+ActiveRecord::Schema.define(:version => 20131111234435) do
 
   create_table "maybes", :force => true do |t|
     t.integer  "user_id",                      :null => false
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20131111184948) do
   create_table "profiles", :force => true do |t|
     t.string   "username",                                      :null => false
     t.string   "gender"
-    t.string   "about_me"
+    t.text     "about_me"
     t.boolean  "friends_wanted",             :default => false
     t.boolean  "dating_wanted",              :default => false
     t.boolean  "hookups_wanted",             :default => false

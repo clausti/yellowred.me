@@ -101,8 +101,20 @@ class Profile < ActiveRecord::Base
     super(:except => [ :profile_photo_content_type, 
                        :profile_photo_file_name, 
                        :profile_photo_file_size, 
-                       :profile_photo_updated_at], 
-          :methods => [:photo_url, :photo_thumb_url, :height_string])
+                       :profile_photo_updated_at,
+                       :height,
+                       :men_wanted,
+                       :women_wanted,
+                       :nonbinary_wanted,
+                       :friends_wanted,
+                       :dating_wanted,
+                       :hookups_wanted ], 
+                       
+          :methods => [:photo_url, 
+                       :photo_thumb_url, 
+                       :height_string,
+                       :looking_for,
+                       :interested_in ])
   end
   
   def photo_url
@@ -119,6 +131,22 @@ class Profile < ActiveRecord::Base
     else
       nil
     end
+  end
+  
+  def looking_for
+    looking = []
+    looking << "Friends" if self.friends_wanted
+    looking << "Dates" if self.dating_wanted
+    looking << "Hookups" if self.hookups_wanted
+    looking.join(", ")
+  end
+  
+  def interested_in
+    interested = []
+    interested << "Men" if self.men_wanted
+    interested << "Women" if self.women_wanted
+    interested << "Genderqueer or Nonbinary folks" if self.nonbinary_wanted
+    interested.join(", ")
   end
            
   private
