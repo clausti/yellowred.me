@@ -91,8 +91,14 @@
 								cols="43"><%= @profile.about_me %></textarea>
 
       <label for="profile_profile_photo"></label>
+
       <input type="file" name="profile[profile_photo]"  id="profile_profile_photo">
-                
+      <br>
+      Current photo: 
+      <br>
+      <%= image_tag @profile.profile_photo.url(:thumb) %>
+      <br>
+                      
 		</div>
 	
 		<div id="my-stats">

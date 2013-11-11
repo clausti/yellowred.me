@@ -101,6 +101,8 @@ GEM
       mime-types
     pg (0.16.0)
     polyglot (0.3.3)
+    rabl (0.9.0)
+      activesupport (>= 2.3.14)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -167,6 +169,7 @@ DEPENDENCIES
   meta_request
   paperclip
   pg
+  rabl
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)

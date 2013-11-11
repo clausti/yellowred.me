@@ -19,7 +19,6 @@ YellowRed.Views.ProfileDetail = Backbone.View.extend(_.extend({
 		var detailCard = this.detailCard({
 			profile: this.model
 		})
-
     this.$el.html("<h3 id='profile-username'>" + this.model.escape('username') + "</h3>");
     this.addButtons();
 		this.$el.append(detailCard);

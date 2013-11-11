@@ -11,6 +11,7 @@ gem 'figaro'
 gem 'jquery-rails'
 gem 'paperclip'
 gem 'pg'
+gem 'rabl'
 gem 'underscore'
 
 # Gems used only for assets and not required

@@ -19,7 +19,7 @@ class Profile < ActiveRecord::Base
                   
                   has_attached_file :profile_photo, :styles => {
                           :full => "400x400>",
-                          :thumb => "50x50#"
+                          :thumb => "80x80#"
                   }
                   
   GENDERS          = %w( male female genderqueer/nonbinary )
@@ -95,6 +95,22 @@ class Profile < ActiveRecord::Base
   def self.height_string(height_inches)
     hieght_feet_inches = height_inches.divmod(12)
     "#{hieght_feet_inches[0]}' #{hieght_feet_inches[1]}\""
+  end
+  
+  def as_json(options = {})
+    super(:except => [ :profile_photo_content_type, 
+                       :profile_photo_file_name, 
+                       :profile_photo_file_size, 
+                       :profile_photo_updated_at ], 
+          :methods => [:photo_url, :photo_thumb_url])
+  end
+  
+  def photo_url
+    self.profile_photo.url(:full)
+  end
+  
+  def photo_thumb_url
+    self.profile_photo.url(:thumb)
   end
            
   private
