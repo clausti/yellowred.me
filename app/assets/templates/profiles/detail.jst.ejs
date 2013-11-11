@@ -1,10 +1,18 @@
 <!-- profile show/detail template -->
 <div id="profile-detail" class="round-corners shadow">
-  <%= profile.get('stars_count') %> Stars
-  <p>
-  	Username: <%= profile.escape('username')%><br>
-  	Gender: <%= profile.escape('Gender')%><br>
-  	Height: <%= profile.escape('height')%><br>
-  	About Me: <%= profile.escape('about_me')%><br>
-  </p>
+  
+  <div class="profile-detail-data">
+  	<strong>Gender:</strong> <%= profile.escape('gender')%><br>
+  	<strong>Height:</strong> <%= profile.escape('height_string')%><br>
+    
+    <br>
+  	<strong>About Me: </strong>
+    <br>
+    <%= profile.escape('about_me')%><br>
+  </div>
+    
+  <div class="profile-photo">
+    <img src="<%= profile.escape('photo_url') %>" style="align:right">
+  </div>
+
 </div>

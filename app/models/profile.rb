@@ -101,8 +101,8 @@ class Profile < ActiveRecord::Base
     super(:except => [ :profile_photo_content_type, 
                        :profile_photo_file_name, 
                        :profile_photo_file_size, 
-                       :profile_photo_updated_at ], 
-          :methods => [:photo_url, :photo_thumb_url])
+                       :profile_photo_updated_at], 
+          :methods => [:photo_url, :photo_thumb_url, :height_string])
   end
   
   def photo_url
@@ -111,6 +111,14 @@ class Profile < ActiveRecord::Base
   
   def photo_thumb_url
     self.profile_photo.url(:thumb)
+  end
+  
+  def height_string
+    unless self.height.nil?
+      Profile.height_string(self.height)
+    else
+      nil
+    end
   end
            
   private
