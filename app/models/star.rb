@@ -6,7 +6,7 @@ class Star < ActiveRecord::Base
   validate :cant_star_self
   
   belongs_to :user, :inverse_of => :stars
-  belongs_to :profile, :inverse_of => :stars
+  belongs_to :profile, :inverse_of => :stars, :counter_cache => true
   
   def cant_star_self
     if profile_id == user_id

@@ -13,7 +13,6 @@ YellowRed.Views.ProfileDetail = Backbone.View.extend(_.extend({
 		"click .star": "starProfile",
 		"click .maybe": "maybeProfile",
 		"click .nope": "nopeProfile",
-    // "click #cancel-message": "cancelMessage"
 	},
 	
 	render: function() {
@@ -38,10 +37,5 @@ YellowRed.Views.ProfileDetail = Backbone.View.extend(_.extend({
       }));
 		}
   },
-  
-  // cancelMessage: function(event) {
-  //   event.preventDefault();
-  //   this.render();
-  // }
 
 }, YellowRed.profile_button_responses));

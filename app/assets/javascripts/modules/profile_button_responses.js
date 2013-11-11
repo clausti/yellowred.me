@@ -1,5 +1,6 @@
 YellowRed.profile_button_responses = {
 	starProfile: function(event) {
+    var that = this
     console.log("star")
     
 		var profileId = $(event.currentTarget).attr("data-id");

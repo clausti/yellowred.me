@@ -30,6 +30,7 @@ YellowRed.Routers.App = Backbone.Router.extend({
 	},
 	
 	displayAllMessages: function() {
+    debugger
 		var central_content = this.central_content;
 		YellowRed.messages = YellowRed.messages || new YellowRed.Collections.AllMessages();
 		YellowRed.messages.fetch({

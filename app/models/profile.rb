@@ -14,7 +14,13 @@ class Profile < ActiveRecord::Base
                   :religion,
                   :education,
                   :children,
-                  :pets
+                  :pets,
+                  :profile_photo
+                  
+                  has_attached_file :profile_photo, :styles => {
+                          :full => "400x400>",
+                          :thumb => "50x50#"
+                  }
                   
   GENDERS          = %w( male female genderqueer/nonbinary )
   HEIGHTS          = (58..84).to_a

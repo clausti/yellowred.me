@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131108182646) do
+ActiveRecord::Schema.define(:version => 20131111184948) do
 
   create_table "maybes", :force => true do |t|
     t.integer  "user_id",                      :null => false
@@ -36,24 +36,29 @@ ActiveRecord::Schema.define(:version => 20131108182646) do
   add_index "messages", ["sender_id"], :name => "index_messages_on_sender_id"
 
   create_table "profiles", :force => true do |t|
-    t.string   "username",                            :null => false
+    t.string   "username",                                      :null => false
     t.string   "gender"
     t.string   "about_me"
-    t.boolean  "friends_wanted",   :default => false
-    t.boolean  "dating_wanted",    :default => false
-    t.boolean  "hookups_wanted",   :default => false
-    t.boolean  "men_wanted",       :default => false
-    t.boolean  "women_wanted",     :default => false
+    t.boolean  "friends_wanted",             :default => false
+    t.boolean  "dating_wanted",              :default => false
+    t.boolean  "hookups_wanted",             :default => false
+    t.boolean  "men_wanted",                 :default => false
+    t.boolean  "women_wanted",               :default => false
     t.integer  "height"
     t.string   "body_type"
     t.string   "religion"
     t.string   "education"
     t.string   "children"
     t.string   "pets"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
-    t.boolean  "nonbinary_wanted", :default => false
-    t.integer  "user_id",                             :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+    t.boolean  "nonbinary_wanted",           :default => false
+    t.integer  "user_id",                                       :null => false
+    t.integer  "stars_count",                :default => 0
+    t.string   "profile_photo_file_name"
+    t.string   "profile_photo_content_type"
+    t.integer  "profile_photo_file_size"
+    t.datetime "profile_photo_updated_at"
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id", :unique => true
