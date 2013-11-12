@@ -13,7 +13,8 @@ body {
 }
 
 h3 {
-	display: block;
+	display: inline-block;
+  float: left;
 	font-family: Verdana;
 	font-weight: normal;
 	font-size: 20pt	;
