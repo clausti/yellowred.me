@@ -32,7 +32,7 @@ class Message < ActiveRecord::Base
   end
   
   def timestamp
-    self.created_at.strftime('%d %b %Y, %I:%M %p')
+    self.created_at.strftime('%d %b %Y, %I:%M %p %Z')
   end
     
   private         
