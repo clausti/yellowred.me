@@ -7,7 +7,7 @@ YellowRed.Views.ProfileDetail = Backbone.View.extend(_.extend({
 
   detailCard: JST['profiles/detail'],
   editButton: JST['profiles/edit_button'],
-  maybeNopeStarButtons: JST['profiles/buttons'],
+  maybeNopeStarMsgButtons: JST['profiles/mns_buttons'],
 	
 	events: {
 		"click .star": "starProfile",
@@ -31,7 +31,7 @@ YellowRed.Views.ProfileDetail = Backbone.View.extend(_.extend({
         profile: this.model
       }));
 		} else {
-			this.$el.append(this.maybeNopeStarButtons({
+			this.$el.append(this.maybeNopeStarMsgButtons({
         profile: this.model
       }));
 		}

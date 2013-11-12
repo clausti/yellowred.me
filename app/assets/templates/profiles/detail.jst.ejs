@@ -1,31 +1,28 @@
 <!-- profile show/detail template -->
 <div id="profile-detail-card" class="round-corners shadow">
     
-  <div class="profile-detail-data">
-    <img src="<%= profile.escape('photo_url') %>" style="align:right" class="profile-photo">
+  <img src="<%= profile.escape('photo_url') %>" style="align:right" class="profile-photo">
+  
+	<strong>Gender:</strong> <%= profile.escape('gender')%><br>
+	<strong>Height:</strong> <%= profile.escape('height_string')%><br>
+  <strong>Body Type:</strong> <%= profile.escape('body_type')%><br>
+  <strong>Religion:</strong> <%= profile.escape('religion')%><br>
+  <strong>Education:</strong><br>
+  <%= profile.escape('education')%><br>
+  <strong>Children:</strong><br>
+  <%= profile.escape('children')%><br>
+  <strong>Pets:</strong><br>
+  <%= profile.escape('pets')%><br>
+  <br>
+  <strong>Looking For:</strong><br>
+  <%= profile.escape('looking_for')%><br>
+  <br>
+  <strong>Interested In:</strong><br>
+  <%= profile.escape('interested_in')%><br>
+  
+  <br>
+	<strong>About Me: </strong>
+  <br>
+  <%= profile.escape('about_me')%><br>
     
-  	<strong>Gender:</strong> <%= profile.escape('gender')%><br>
-  	<strong>Height:</strong> <%= profile.escape('height_string')%><br>
-    <strong>Body Type:</strong> <%= profile.escape('body_type')%><br>
-    <strong>Religion:</strong> <%= profile.escape('religion')%><br>
-    <strong>Education:</strong><br>
-    <%= profile.escape('education')%><br>
-    <strong>Children:</strong><br>
-    <%= profile.escape('children')%><br>
-    <strong>Pets:</strong><br>
-    <%= profile.escape('pets')%><br>
-    <br>
-    <strong>Looking For:</strong><br>
-    <%= profile.escape('looking_for')%><br>
-    <br>
-    <strong>Interested In:</strong><br>
-    <%= profile.escape('interested_in')%><br>
-    
-    <br>
-  	<strong>About Me: </strong>
-    <br>
-    <%= profile.escape('about_me')%><br>
-    
-  </div>
-
 </div>

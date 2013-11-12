@@ -2,25 +2,21 @@
 #profile-detail-card {
 	margin: 5px;
 	padding: 5px;
+  float: left;
+  line-height: 140%;
   min-width: 625px;
 	border-style:solid;
 	border-color:orange;
 	border-width: 1px;
 	background-color: #FFC766;
-  
-  .profile-detail-data {
-    float: left;
-    width: 100%;
-    line-height: 140%;
     
-    .profile-photo {
-      float: right;
-      margin-left: 10px;
-      padding: 5px;
-      padding-bottom: 20px;
-      background-color: white;
-      box-shadow: 0px 0px 3px 0px gray;
-    }
+  .profile-photo {
+    float: right;
+    margin-left: 10px;
+    padding: 5px;
+    padding-bottom: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 3px 0px gray;
   }
 }
 
