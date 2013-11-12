@@ -77,12 +77,10 @@ h3 {
 	border-bottom-left-radius: 6px;
 }
 
-input, select, textarea {
-  font-family: Verdana;
-}
 
 textarea {
-  font-weight: 14pt;
+  font-family: Verdana;
+  font-size: 12pt;
   padding: 5px;
   background-color: white;
   border-color: blue;
@@ -92,6 +90,8 @@ textarea {
 }
 
 input[type=text] {
+  font-family: Verdana;
+  font-size: 10pt;
   padding: 3px;
   background-color: white;
   border-color: blue;

@@ -2,8 +2,8 @@ YellowRed.profile_button_responses = {
 	starProfile: function(event) {
     var that = this
     console.log("star")
-    
-		var profileId = $(event.currentTarget).attr("data-id");
+    var starButton = $(event.currentTarget)
+		var profileId = starButton.attr("data-id");
 		console.log("you clicked to star profile " + profileId);
 		$.ajax({
 			url: "stars",
@@ -13,9 +13,37 @@ YellowRed.profile_button_responses = {
 			},
 			success: function(res) {
 				console.log("successfully starred");
+        debugger
+        var profileId = res.id
+        $(".star[data-id='" + profileId + "']").toggleClass("unstar", true);
+        $(".unstar[data-id='" + profileId + "']").toggleClass("star", false);
+        $(".unstar[data-id='" + profileId + "']").text("unStar");
 			}, 
 		});
 	},
+  
+  unStarProfile: function(event) {
+    var that = this
+    console.log("unstar")
+    var unStarButton = $(event.currentTarget)
+		var profileId = unStarButton.attr("data-id");
+		console.log("you clicked to unstar profile " + profileId);
+		$.ajax({
+			url: "stars/" + profileId,
+			type: "delete",
+			data: { 
+				profile_id: profileId
+			},
+			success: function(res) {
+				console.log("successfully unstarred");
+        debugger
+        var profileId = res.id
+        $(".unstar[data-id='" + profileId + "']").toggleClass("star", true);
+        $(".star[data-id='" + profileId + "']").toggleClass("unstar", false);
+        $(".star[data-id='" + profileId + "']").text("Star");
+			}, 
+		});
+  },
 
 	maybeProfile: function(event) {
     console.log("maybe")
@@ -38,6 +66,10 @@ YellowRed.profile_button_responses = {
 			}
 		});
 	},
+  
+  unMaybeProfile: function(event) {
+    
+  },
 
 	nopeProfile: function(event) {
     console.log("nope")
@@ -61,5 +93,9 @@ YellowRed.profile_button_responses = {
 			}
 		});
 	},
+  
+  unNopeProfile: function(event) {
+    
+  },
   
 };

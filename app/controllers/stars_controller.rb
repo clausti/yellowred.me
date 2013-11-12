@@ -22,7 +22,7 @@ class StarsController < ApplicationController
   def destroy
     @star = Star.find(params[:star])
     if @star.destroy
-      render :json => true, :status => 200
+      render :json => params[:star], :status => 200
     else
       render :json => @star.errors.full_messages, :status => 422
     end

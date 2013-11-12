@@ -114,7 +114,8 @@ class Profile < ActiveRecord::Base
                        :photo_thumb_url, 
                        :height_string,
                        :looking_for,
-                       :interested_in ])
+                       :interested_in,
+                       :stars_count ])
   end
   
   def photo_url
@@ -147,6 +148,10 @@ class Profile < ActiveRecord::Base
     interested << "Women" if self.women_wanted
     interested << "Genderqueer or Nonbinary folks" if self.nonbinary_wanted
     interested.join(", ")
+  end
+  
+  def stars_count
+    self.stars.count
   end
            
   private
