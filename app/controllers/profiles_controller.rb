@@ -3,14 +3,16 @@ class ProfilesController < ApplicationController
   def index
     @profiles = Profile.all.shuffle
     @profiles.delete(current_user.profile)
-    render :json => @profiles
+    # Profile.transaction do
+      render :index
+    # end
   end
   
   def show
     if params[:username]
       @profile = Profile.find_by_username(params[:username])
       if @profile 
-        render :json => @profile, :status => 200
+        render :show, :status => 200
       else
         render :json => false, :status => 422
       end

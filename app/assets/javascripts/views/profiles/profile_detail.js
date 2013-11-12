@@ -13,6 +13,9 @@ YellowRed.Views.ProfileDetail = Backbone.View.extend(_.extend({
 		"click .star": "starProfile",
 		"click .maybe": "maybeProfile",
 		"click .nope": "nopeProfile",
+		"click .unstar": "unStarProfile",
+		"click .unmaybe": "unMaybeProfile",
+		"click .unnope": "unNopeProfile",
 	},
 	
 	render: function() {

@@ -11,8 +11,9 @@ class SavedSearchesController < ApplicationController
       @profiles = Profile.all.shuffle #for now
       @profiles.delete(current_user.profile)
       @profiles -= current_user.nope_profiles
+      @profiles -= current_user.maybe_profiles
     end
-    render :json => @profiles
+    render "profiles/index"
   end
   
   def update

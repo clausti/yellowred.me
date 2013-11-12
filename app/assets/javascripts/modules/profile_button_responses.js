@@ -1,7 +1,5 @@
 YellowRed.profile_button_responses = {
 	starProfile: function(event) {
-    var that = this
-    console.log("star")
     var starButton = $(event.currentTarget)
 		var profileId = starButton.attr("data-id");
 		console.log("you clicked to star profile " + profileId);
@@ -22,17 +20,12 @@ YellowRed.profile_button_responses = {
 	},
   
   unStarProfile: function(event) {
-    var that = this
-    console.log("unstar")
     var unStarButton = $(event.currentTarget)
 		var profileId = unStarButton.attr("data-id");
 		console.log("you clicked to unstar profile " + profileId);
 		$.ajax({
 			url: "stars/" + profileId,
 			type: "delete",
-			data: { 
-				profile_id: profileId
-			},
 			success: function(res) {
 				console.log("successfully unstarred");
         var profileId = res
@@ -43,9 +36,7 @@ YellowRed.profile_button_responses = {
 		});
   },
 
-	maybeProfile: function(event) {
-    console.log("maybe")
-    
+	maybeProfile: function(event) {    
 		var profileId = $(event.currentTarget).attr("data-id");
 		console.log("you clicked to maybe profile " + profileId);
 		$.ajax({
@@ -61,16 +52,33 @@ YellowRed.profile_button_responses = {
 				console.log("successfully maybed");
 				YellowRed.maybe_profiles.fetch();
 				YellowRed.nope_profiles.fetch();
+        
+        var profileId = res.id
+        $(".maybe[data-id='" + profileId + "']").toggleClass("unmaybe", true);
+        $(".unmaybe[data-id='" + profileId + "']").toggleClass("maybe", false);
+        $(".unmaybe[data-id='" + profileId + "']").text("unMaybe");
 			}
 		});
 	},
   
   unMaybeProfile: function(event) {
-    
+    var unMaybeButton = $(event.currentTarget)
+		var profileId = unMaybeButton.attr("data-id");
+		console.log("you clicked to unmaybe profile " + profileId);
+		$.ajax({
+			url: "maybes/" + profileId,
+			type: "delete",
+			success: function(res) {
+				console.log("successfully unmaybed");
+        var profileId = res
+        $(".unmaybe[data-id='" + profileId + "']").toggleClass("maybe", true);
+        $(".maybe[data-id='" + profileId + "']").toggleClass("unmaybe", false);
+        $(".maybe[data-id='" + profileId + "']").text("Maybe");
+			}, 
+		});
   },
 
 	nopeProfile: function(event) {
-    console.log("nope")
     
 		var profileId = $(event.currentTarget).attr("data-id");
 		console.log("you clicked to nope profile " + profileId);
@@ -88,12 +96,30 @@ YellowRed.profile_button_responses = {
 				YellowRed.maybe_profiles.fetch();
 				YellowRed.nope_profiles.fetch();
         YellowRed.searched_profiles.fetch();
+        
+        var profileId = res.id
+        $(".nope[data-id='" + profileId + "']").toggleClass("unnope", true);
+        $(".unnope[data-id='" + profileId + "']").toggleClass("nope", false);
+        $(".unnope[data-id='" + profileId + "']").text("unNope");
 			}
 		});
 	},
   
   unNopeProfile: function(event) {
-    
+    var unMaybeButton = $(event.currentTarget)
+		var profileId = unMaybeButton.attr("data-id");
+		console.log("you clicked to unnope profile " + profileId);
+		$.ajax({
+			url: "maybes/" + profileId,
+			type: "delete",
+			success: function(res) {
+				console.log("successfully unnoped");
+        var profileId = res
+        $(".unnope[data-id='" + profileId + "']").toggleClass("nope", true);
+        $(".nope[data-id='" + profileId + "']").toggleClass("unnope", false);
+        $(".nope[data-id='" + profileId + "']").text("Nope");
+			}, 
+		});
   },
   
 };

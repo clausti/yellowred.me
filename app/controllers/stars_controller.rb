@@ -1,13 +1,13 @@
 class StarsController < ApplicationController
   
   def index
-    @starred_profiles = current_user.starred_profiles
-    render :json => @starred_profiles
+    @profiles = current_user.starred_profiles
+    render "profiles/index"
   end
   
   def starred_me
-    @starring_profiles = current_user.starring_profiles
-    render :json => @starring_profiles
+    @profiles = current_user.starring_profiles
+    render "profiles/index"
   end
   
   def create
@@ -20,7 +20,8 @@ class StarsController < ApplicationController
   end
   
   def destroy
-    @star = Star.find_by_user_id_and_profile_id(current_user.id, params[:profile_id])
+    star_params = { :profile_id => params[:profile_id], :user_id => current_user.id }
+    @star = Star.find_by_ids(star_params)
     if @star.destroy
       render :json => params[:profile_id], :status => 200
     else

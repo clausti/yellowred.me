@@ -8,6 +8,12 @@ class Star < ActiveRecord::Base
   belongs_to :user, :inverse_of => :stars
   belongs_to :profile, :inverse_of => :stars
   
+  def self.find_by_ids(star_hash)
+    user_id = star_hash[:user_id]
+    profile_id = star_hash[:profile_id]
+    Star.find_by_user_id_and_profile_id(user_id, profile_id)
+  end
+  
   def cant_star_self
     if profile_id == user_id
       errors.add(:profile_id, "can't be your own profile")

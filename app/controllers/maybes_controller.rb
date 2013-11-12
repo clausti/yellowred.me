@@ -1,13 +1,13 @@
 class MaybesController < ApplicationController
     
   def maybe_list
-    @maybe_profiles = current_user.maybe_profiles
-    render :json => @maybe_profiles, :status => 200
+    @profiles = current_user.maybe_profiles
+    render "profiles/index"
   end
   
   def nope_list
-    @nope_profiles = current_user.nope_profiles
-    render :json => @nope_profiles, :status => 200
+    @profiles = current_user.nope_profiles
+    render "profiles/index"
   end
   
   def create
@@ -27,14 +27,11 @@ class MaybesController < ApplicationController
     end
   end
   
-  def update
-    
-  end
-  
-  def destroy
-    @maybe = Maybe.find(params[:maybe])
+  def destroy    
+    maybe_params = { :profile_id => params[:profile_id], :user_id => current_user.id }
+    @maybe = Maybe.find_by_ids(maybe_params)
     if @maybe.destroy
-      render :json => true, :status => 200
+      render :json => params[:profile_id], :status => 200
     else
       render :json => @maybe.errrors.full_messages, :status => 422
     end

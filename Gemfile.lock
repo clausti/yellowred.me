@@ -94,6 +94,7 @@ GEM
     mime-types (1.25)
     multi_json (1.8.2)
     nokogiri (1.5.10)
+    oj (2.2.0)
     paperclip (3.5.2)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -167,6 +168,7 @@ DEPENDENCIES
   figaro
   jquery-rails
   meta_request
+  oj
   paperclip
   pg
   rabl
