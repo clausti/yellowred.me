@@ -1,4 +1,7 @@
-From: <%= message.escape('sender_id') %>
+<div style="float:right"><%= message.get('timestamp') %></div>
+From: <%= message.escape('sender_username') %>
+<br>
+To: <%= message.escape('recipient_username') %>
 <button class="delete-message button" 
         id="<%= 'delete-messsage' + message.get('id') %>" 
         data-id="<%= message.get('id') %>"
