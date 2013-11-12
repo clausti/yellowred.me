@@ -1,12 +1,23 @@
 
 
 <div style="padding:8px;float:right">
-	<button class="maybe button" 
-          data-id="<%= profile.escape('id')%>">Maybe</button>
-	<button class="nope button" 
-          data-id="<%= profile.escape('id')%>">Nope!</button>
-	<button class="star button" 
-          data-id="<%= profile.escape('id')%>">Star</button>
+  <% if (maybed) { %>
+    <button class="unmaybe button" data-id="<%= profile.escape('id')%>">unMaybe</button>
+  <% } else { %>
+    <button class="maybe button" data-id="<%= profile.escape('id')%>">Maybe</button>
+  <% } %>
+          
+  <% if (noped) { %>
+    <button class="unnope button" data-id="<%= profile.escape('id')%>">unNope</button>
+  <% } else { %>
+    <button class="nope button" data-id="<%= profile.escape('id')%>">Nope!</button>
+  <% } %>
+          
+  <% if (starred) { %>
+    <button class="unstar button" data-id="<%= profile.escape('id')%>">unStar</button>
+  <% } else { %>
+    <button class="star button" data-id="<%= profile.escape('id')%>">Star</button>
+  <% } %>
 </div>
 
 

@@ -35,7 +35,10 @@ YellowRed.Views.ProfileDetail = Backbone.View.extend(_.extend({
       }));
 		} else {
 			this.$el.append(this.maybeNopeStarMsgButtons({
-        profile: this.model
+        profile: this.model,
+        maybed: this.model.get('maybed'),
+        noped: this.model.get('noped'),
+        starred: this.model.get('starred'),
       }));
 		}
   },
