@@ -14,9 +14,7 @@
     <br>
     <%= profile.get('stars_count') %> Stars
     <br>
-  	<button class="maybe button" data-id="<%= profile.escape('id')%>">Maybe</button>
-  	<button class="nope button" data-id="<%= profile.escape('id')%>">Nope!</button>
-  	<button class="star button" data-id="<%= profile.escape('id')%>">Star</button>
+  	<%= JST['profiles/mns_buttons']({ profile: profile }) %>
   </div>
   
 </div>

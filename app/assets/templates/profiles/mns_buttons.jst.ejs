@@ -1,28 +1,18 @@
 
-
-<div style="padding:8px;float:right">
-  <% if (maybed) { %>
-    <button class="unmaybe button" data-id="<%= profile.escape('id')%>">unMaybe</button>
-  <% } else { %>
-    <button class="maybe button" data-id="<%= profile.escape('id')%>">Maybe</button>
-  <% } %>
-          
-  <% if (noped) { %>
-    <button class="unnope button" data-id="<%= profile.escape('id')%>">unNope</button>
-  <% } else { %>
-    <button class="nope button" data-id="<%= profile.escape('id')%>">Nope!</button>
-  <% } %>
-          
-  <% if (starred) { %>
-    <button class="unstar button" data-id="<%= profile.escape('id')%>">unStar</button>
-  <% } else { %>
-    <button class="star button" data-id="<%= profile.escape('id')%>">Star</button>
-  <% } %>
-</div>
-
-
-<div style="padding:5px;float:right">
-  <a href='#/new-message' id='new-message' 
-                          class='button new-message-button'
-                          data-id="<%= profile.escape('id')%>">New Message</a>
-</div>
+<% if (profile.get('maybed')) { %>
+  <button class="unmaybe button" data-id="<%= profile.escape('id')%>">unMaybe</button>
+<% } else { %>
+  <button class="maybe button" data-id="<%= profile.escape('id')%>">Maybe</button>
+<% } %>
+        
+<% if (profile.get('noped')) { %>
+  <button class="unnope button" data-id="<%= profile.escape('id')%>">unNope</button>
+<% } else { %>
+  <button class="nope button" data-id="<%= profile.escape('id')%>">Nope</button>
+<% } %>
+        
+<% if (profile.get('starred')) { %>
+  <button class="unstar button" data-id="<%= profile.escape('id')%>">unStar</button>
+<% } else { %>
+  <button class="star button" data-id="<%= profile.escape('id')%>">Star</button>
+<% } %>

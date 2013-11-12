@@ -89,7 +89,7 @@ textarea {
   box-shadow: inset 0 0 4px blue;
 }
 
-input[type=text] {
+input[type=text], input[type=password] {
   font-family: Verdana;
   font-size: 10pt;
   padding: 3px;
