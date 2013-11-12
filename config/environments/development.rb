@@ -38,7 +38,7 @@ YellowRed::Application.configure do
   config.paperclip_defaults = {
         :storage => :s3,
         :s3_credentials => {
-          :bucket => ENV['AW3_DEV_BUCKET'],
+          :bucket => ENV['S3_DEV_BUCKET'],
           :access_key_id => ENV['AW3_ACCESS_KEY_ID'],
           :secret_access_key => ENV['AW3_SECRET_ACCESS_KEY'],
           :s3_host_name => 's3-us-west-1.amazonaws.com'

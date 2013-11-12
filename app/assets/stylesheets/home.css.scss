@@ -8,9 +8,8 @@
 }
 
 #left-sidebar {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: fixed;
+  top: 62px;
 	font-size: 12pt;
 	text-shadow: 0px 0px 1px #0c078f;
 	padding: 10px;
