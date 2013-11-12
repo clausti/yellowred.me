@@ -20,9 +20,9 @@ class StarsController < ApplicationController
   end
   
   def destroy
-    @star = Star.find(params[:star])
+    @star = Star.find_by_user_id_and_profile_id(current_user.id, params[:profile_id])
     if @star.destroy
-      render :json => params[:star], :status => 200
+      render :json => params[:profile_id], :status => 200
     else
       render :json => @star.errors.full_messages, :status => 422
     end

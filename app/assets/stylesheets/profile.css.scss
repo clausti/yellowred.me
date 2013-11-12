@@ -54,6 +54,15 @@
 	top: 2px;
 }
 
+.unstar, .unmaybe, .unnope {
+	background-color: #dfdfdf;
+	color: #AA15D6;
+}
+.unstar:hover, .unmaybe:hover, .unnope:hover {
+	background-color:#7d797d;
+	color: #ebc805;
+}
+
 .profile-thumb-photo {
   float:left;
 //  text-align: right;

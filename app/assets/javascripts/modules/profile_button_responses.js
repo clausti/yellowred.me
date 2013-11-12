@@ -13,7 +13,6 @@ YellowRed.profile_button_responses = {
 			},
 			success: function(res) {
 				console.log("successfully starred");
-        debugger
         var profileId = res.id
         $(".star[data-id='" + profileId + "']").toggleClass("unstar", true);
         $(".unstar[data-id='" + profileId + "']").toggleClass("star", false);
@@ -36,8 +35,7 @@ YellowRed.profile_button_responses = {
 			},
 			success: function(res) {
 				console.log("successfully unstarred");
-        debugger
-        var profileId = res.id
+        var profileId = res
         $(".unstar[data-id='" + profileId + "']").toggleClass("star", true);
         $(".star[data-id='" + profileId + "']").toggleClass("unstar", false);
         $(".star[data-id='" + profileId + "']").text("Star");

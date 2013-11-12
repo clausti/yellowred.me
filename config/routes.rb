@@ -18,7 +18,8 @@ YellowRed::Application.routes.draw do
   get 'my-maybe-list', :to => 'maybes#maybe_list'
   get 'my-nope-list', :to => 'maybes#nope_list'
   
-  resources :stars, :only => [:index, :create, :destroy]
+  resources :stars, :only => [:index, :create]
+  delete 'stars/:profile_id' => 'stars#destroy'
   get 'who-i-starred', :to => 'stars#index'
   get 'who-starred-me', :to => 'stars#starred_me'
   
