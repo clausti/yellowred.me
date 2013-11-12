@@ -21,7 +21,7 @@
 }
 
 .edit-profile-button {
-  float: right;
+  float: left;
   margin: 5px;
   margin-top: 13px;
   padding: 3px;
@@ -40,16 +40,6 @@
 	border-width: 1px;
 	background-color: #FFC766;
   
-  .profile-thumb-photo {
-    float:left;
-    padding: 2px;
-    padding-bottom: 7px;
-    background-color: white;
-    font-size: 6pt;
-  
-    box-shadow: 0px 0px 3px 0px gray;
-  }
-  
   .profile-card-data {
     float: right;
   }
@@ -62,6 +52,17 @@
 .profile-card:active {
 	position: relative;
 	top: 2px;
+}
+
+.profile-thumb-photo {
+  float:left;
+//  text-align: right;
+  padding: 2px;
+  padding-bottom: 7px;
+  background-color: white;
+  font-size: 6pt;
+
+  box-shadow: 0px 0px 3px 0px gray;
 }
 
 #dummy-left-sidebar {

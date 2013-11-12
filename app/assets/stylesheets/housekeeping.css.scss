@@ -77,6 +77,30 @@ h3 {
 	border-bottom-left-radius: 6px;
 }
 
+input, select, textarea {
+  font-family: Verdana;
+}
+
+textarea {
+  font-weight: 14pt;
+  padding: 5px;
+  background-color: white;
+  border-color: blue;
+  -webkit-box-shadow: inset 0 0 4px blue;
+  -moz-box-shadow: inset 0 0 4px blue;
+  box-shadow: inset 0 0 4px blue;
+}
+
+input[type=text] {
+  padding: 3px;
+  background-color: white;
+  border-color: blue;
+  border-width: 1px;
+  -webkit-box-shadow: inset 0 0 2px blue;
+  -moz-box-shadow: inset 0 0 2px blue;
+  box-shadow: inset 0 0 2px blue;
+}
+
 .shadow {
 	-moz-box-shadow: -1px 1px 3px -1px blue;
 	-webkit-box-shadow: 0px 1px 3px 0px blue;

@@ -89,16 +89,16 @@
 								id="profile_about_me" 
 								rows="10" 
 								cols="43"><%= @profile.about_me %></textarea>
+      <br>
 
-      <label for="profile_profile_photo"></label>
-
+      Profile photo:
       <input type="file" name="profile[profile_photo]"  id="profile_profile_photo">
       <br>
-      <span style="font-size:12pt">Current: </span>
-      <br>
-      <%= image_tag @profile.profile_photo.url(:thumb) %>
-      <br>
-                      
+        <div class="profile-thumb-photo" style="margin-top:10px;margin-left:15px;margin-right:15px">
+          <%= image_tag @profile.profile_photo.url(:thumb) %>
+          <br>
+          <span style="font-size:10pt;text-align:center">current</span> 
+        </div>           
 		</div>
 	
 		<div id="my-stats">
