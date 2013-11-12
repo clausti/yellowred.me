@@ -17,10 +17,10 @@ class Profile < ActiveRecord::Base
                   :pets,
                   :profile_photo
                   
-                  has_attached_file :profile_photo, :styles => {
-                          :full => "400x400>",
-                          :thumb => "80x80#"
-                  }
+                  has_attached_file :profile_photo, 
+                                    :styles => { :full => "400x400>",
+                                                :thumb => "80x80#" },
+                                    :default_url => "/images/cat_:style.png" 
                   
   GENDERS          = %w( male female genderqueer/nonbinary )
   HEIGHTS          = (58..84).to_a
