@@ -94,8 +94,6 @@
            style="margin-left:5px;margin-right:15px"
            align="bottom-left">
         <%= image_tag @profile.profile_photo.url(:thumb) %>
-        <br>
-        <span style="font-size:10pt">current</span> 
       </div> 
       Profile photo:
       <input type="file" name="profile[profile_photo]"  id="profile_profile_photo">
@@ -178,12 +176,12 @@
 				<% end %>				
 			</select><br>
 		</div>
-			<div style="position:relative;top:400px;left:-111px;padding:5px">
+			<div style="position:relative;top:390px;left:-111px;padding:5px">
 				<input class="button" type="submit" value="Save Profile">
 			</div>
 		</form>
 		<br>
-		<div style="position:relative;top:100px;left:35px;padding:5px">
+		<div style="position:relative;top:90px;left:35px;padding:5px">
 			<%= button_to "Go to Home without saving", root_url, :method => :get, :class => "button" %>
 		</div>
 	</div>
