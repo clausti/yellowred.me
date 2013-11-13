@@ -35,31 +35,33 @@ YellowRed.Views.MessagesList = Backbone.View.extend({
   },
   
   displayMessageDetail: function(event) {
-    var htmlId = $(event.target).attr("id");
+    var htmlId = $(event.currentTarget).attr("id");
+    var messageId = $(event.currentTarget).attr("data-id");
+    
     var messageCard = $("#" + htmlId);
-    
-    var messageId = $(event.target).attr("data-id")
-    var message = this.collection.get(messageId);
-    
+    var messageCardContent = $("#" + "message-" + messageId + "-content")
+
+    var message = this.collection.get(messageId)
     var messageDetail = JST['messages/detail']({
          message: message
     });
-    messageCard.html(messageDetail);
+    messageCardContent.html(messageDetail);
     messageCard.toggleClass("message-detail", true);
     messageCard.toggleClass("message-card", false);
   },
   
   displayMessageList: function(event) {
-    var htmlId = $(event.target).attr("id");
+    var htmlId = $(event.currentTarget).attr("id");
+    var messageId = $(event.currentTarget).attr("data-id");
+    
     var messageCard = $("#" + htmlId);
+    var messageCardContent = $("#" + "message-" + messageId + "-content")
     
-    var messageId = $(event.target).attr("data-id");
     var message = this.collection.get(messageId);
-    
     var messageList = JST['messages/list']({
          message: message
     });
-    messageCard.html(messageList);
+    messageCardContent.html(messageList);
     messageCard.toggleClass("message-detail", false);
     messageCard.toggleClass("message-card", true);
   },

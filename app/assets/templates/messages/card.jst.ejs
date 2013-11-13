@@ -2,5 +2,18 @@
      class="message-card round-corners shadow" 
      data-id="<%= message.get('id') %>">
      
+   <div style="float:right"><%= message.get('timestamp') %></div>
+   
+   From: <%= message.escape('sender_username') %>
+   <br>
+   <button class="delete-message button" 
+           id="<%= 'delete-messsage' + message.get('id') %>" 
+           data-id="<%= message.get('id') %>"
+           style='float:right'>Delete Message</button>
+   To: <%= message.escape('recipient_username') %>
+   <br>
+   
+   <div id="<%= 'message-' + message.get('id') + '-content' %>">
      <%= listData %>
+   </div>
 </div>

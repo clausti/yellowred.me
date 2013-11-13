@@ -24,20 +24,23 @@ h3 {
 }
 
 #site-header {
+  position: relative;
 	display: inline-block;
 	min-width: 1010px;
 }
 
 #logo-home-link {
+  position: relative;
 	text-shadow: 1px 1px 1px #0c078f;
 	float: left;
-	min-width: 815px;
 	font-size: 26pt;
 	font-family: "Times New Roman";
 	text-indent: 10px
 }
 
 #current-user-thumbnail-utility {
+  position: absolute;
+  left: 815px;
 	color: #2E2E2E;
 	text-align: right;
 	padding: 2px;

@@ -56,6 +56,8 @@
 
 
 #search-box {
+  position: relative;
+  top: 10px;
 	float:left;
 	width: 100%;
 	margin-bottom: 5px;
@@ -93,6 +95,8 @@
 
 
 #search-results {
+  position: relative;
+  top: 10px;
 	float:left;
 	width: 100%;
 	height: 370px;
