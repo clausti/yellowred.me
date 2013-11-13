@@ -15,6 +15,7 @@ YellowRed.profile_button_responses = {
 				console.log("successfully starred");
 
         var profile = that.model || that.collection.get(profileId);
+        console.log(profile.get('id'))
         var stars_count = profile.get('stars_count');
         profile.set({stars_count: stars_count + 1 })
 
@@ -35,6 +36,8 @@ YellowRed.profile_button_responses = {
 			type: "delete",
 			success: function(res) {
         var profile = that.model || that.collection.get(profileId);
+        console.log(profile.get('id'))
+        
         var stars_count = profile.get('stars_count');
         profile.set({stars_count: stars_count - 1 })
         

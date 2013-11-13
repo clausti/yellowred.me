@@ -26,7 +26,6 @@ h3 {
 #site-header {
   position: relative;
 	display: inline-block;
-	min-width: 1010px;
 }
 
 #logo-home-link {
@@ -53,11 +52,14 @@ h3 {
 }
 
 #current-user-thumbnail-utility:hover {
+  position: absolute;
+  left: 815px;
 	background-color: #F5BAA6;
 	border-color: red;
 }
 #current-user-thumbnail-utility:active {
-	position: relative;
+  position: absolute;
+  left: 815px;
 	top: 2px;
 };
 
