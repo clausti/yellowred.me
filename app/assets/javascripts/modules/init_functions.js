@@ -18,6 +18,7 @@ YellowRed.staticElementEventHandlers = function() {
 }
 
 YellowRed.instantiateProfileCollections = function() {
+  YellowRed.messages             = new YellowRed.Collections.AllMessages();
 	YellowRed.all_profiles         = new YellowRed.Collections.AllProfiles();
   YellowRed.searched_profiles    = new YellowRed.Collections.SearchedProfiles();
 	YellowRed.maybe_profiles       = new YellowRed.Collections.MaybeProfiles();

@@ -2,7 +2,7 @@ YellowRed.Views.ProfileDetail = Backbone.View.extend(_.extend({
 	// initialize with a model
   
   initialize: function(options) {
-    this.path = options.username;
+    this.path = options.path;
 		this.listenTo( this.model, 
 										"change", 
 										this.render)
