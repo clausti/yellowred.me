@@ -46,6 +46,7 @@ YellowRed.Views.MessagesList = Backbone.View.extend({
          message: message
     });
     messageCardContent.html(messageDetail);
+    messageCardContent.attr("style", "width:100%");
     messageCard.toggleClass("message-detail", true);
     messageCard.toggleClass("message-card", false);
   },
@@ -62,6 +63,7 @@ YellowRed.Views.MessagesList = Backbone.View.extend({
          message: message
     });
     messageCardContent.html(messageList);
+    messageCardContent.removeAttr("style")
     messageCard.toggleClass("message-detail", false);
     messageCard.toggleClass("message-card", true);
   },

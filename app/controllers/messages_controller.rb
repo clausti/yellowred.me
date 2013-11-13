@@ -1,13 +1,8 @@
 class MessagesController < ApplicationController
   
   def index
-    @messages = current_user.messages
-    render :json => @messages.sort { |el1, el2| el2.created_at <=> el1.created_at }, :status => 200
-  end
-  
-  def show
-    @message = Message.find(params[:id])
-    render :json => @message, :status => 200
+    @messages = current_user.messages.sort { |el1, el2| el2.created_at <=> el1.created_at }
+    render :index
   end
   
   def create

@@ -17,19 +17,11 @@ class Message < ActiveRecord::Base
              :foreign_key => :recipient_id,
              :inverse_of => :messages_recd
              
-  def as_json(options = {})
-    super(:methods => [:sender_username, 
-                       :recipient_username, 
-                       :timestamp])
-  end
-             
-  def sender_username
-    self.sender.profile.username
-  end
-  
-  def recipient_username
-    self.recipient.profile.username
-  end
+  # def as_json(options = {})
+  #   super(:methods => [:sender_username, 
+  #                      :recipient_username, 
+  #                      :timestamp])
+  # end
   
   def timestamp
     self.created_at.strftime('%d %b %Y, %I:%M %p')

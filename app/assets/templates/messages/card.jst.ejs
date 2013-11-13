@@ -2,6 +2,10 @@
      class="message-card round-corners shadow" 
      data-id="<%= message.get('id') %>">
      
+   <img class="profile-thumb-photo"
+        src="<%= message.get('photo_url') %>"
+        style="align:top-left;margin-right:5px">
+     
    <div style="float:right"><%= message.get('timestamp') %></div>
    
    From: <%= message.escape('sender_username') %>
@@ -12,7 +16,7 @@
            style='float:right'>Delete Message</button>
    To: <%= message.escape('recipient_username') %>
    <br>
-   
+   <br>
    <div id="<%= 'message-' + message.get('id') + '-content' %>">
      <%= listData %>
    </div>
