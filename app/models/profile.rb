@@ -97,26 +97,26 @@ class Profile < ActiveRecord::Base
     "#{hieght_feet_inches[0]}' #{hieght_feet_inches[1]}\""
   end
   
-  def as_json(options = {})
-    super(:except => [ :profile_photo_content_type, 
-                       :profile_photo_file_name, 
-                       :profile_photo_file_size, 
-                       :profile_photo_updated_at,
-                       :height,
-                       :men_wanted,
-                       :women_wanted,
-                       :nonbinary_wanted,
-                       :friends_wanted,
-                       :dating_wanted,
-                       :hookups_wanted ], 
-                       
-          :methods => [:photo_url, 
-                       :photo_thumb_url, 
-                       :height_string,
-                       :looking_for,
-                       :interested_in,
-                       :stars_count ])
-  end
+  # def as_json(options = {})
+  #   super(:except => [ :profile_photo_content_type, 
+  #                      :profile_photo_file_name, 
+  #                      :profile_photo_file_size, 
+  #                      :profile_photo_updated_at,
+  #                      :height,
+  #                      :men_wanted,
+  #                      :women_wanted,
+  #                      :nonbinary_wanted,
+  #                      :friends_wanted,
+  #                      :dating_wanted,
+  #                      :hookups_wanted ], 
+  #                      
+  #         :methods => [:photo_url, 
+  #                      :photo_thumb_url, 
+  #                      :height_string,
+  #                      :looking_for,
+  #                      :interested_in,
+  #                      :stars_count ])
+  # end
   
   def photo_url
     self.profile_photo.url(:full)

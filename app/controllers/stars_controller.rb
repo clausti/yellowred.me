@@ -13,7 +13,8 @@ class StarsController < ApplicationController
   def create
     @star = Star.new(:profile_id => params[:profile_id], :user_id => current_user.id)
     if @star.save
-      render :json => @star.profile, :status => 200
+      @profile = @star.profile
+      render "profiles/show", :status => 200
     else
       render :json => @star.errors.full_messages, :status => 422
     end

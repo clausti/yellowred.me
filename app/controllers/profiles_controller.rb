@@ -18,7 +18,7 @@ class ProfilesController < ApplicationController
       end
     else
       @profile = current_user.profile
-      render :json => @profile, :status => 200
+      render :show, :status => 200
     end
   end
   

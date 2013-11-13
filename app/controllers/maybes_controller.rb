@@ -21,7 +21,8 @@ class MaybesController < ApplicationController
     end
     
     if @maybe.save
-      render :json => @maybe.profile, :status => 200
+      @profile = @maybe.profile
+      render "profiles/show", :status => 200
     else
       render :json => @maybe.errors.full_messages, :status => 422
     end
