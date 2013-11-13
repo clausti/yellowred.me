@@ -17,7 +17,8 @@ YellowRed.profile_button_responses = {
         var profile = that.model || that.collection.get(profileId);
         console.log(profile.get('id'))
         var stars_count = profile.get('stars_count');
-        profile.set({stars_count: stars_count + 1 })
+        profile.set({stars_count: stars_count + 1 });
+        profile.set({starred: true});
 
         $(".star[data-id='" + profileId + "']").toggleClass("unstar", true);
         $(".unstar[data-id='" + profileId + "']").toggleClass("star", false);
@@ -37,6 +38,7 @@ YellowRed.profile_button_responses = {
 			success: function(res) {
         var profile = that.model || that.collection.get(profileId);
         console.log(profile.get('id'))
+        profile.set({starred: false});
         
         var stars_count = profile.get('stars_count');
         profile.set({stars_count: stars_count - 1 })

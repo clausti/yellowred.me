@@ -4,7 +4,7 @@ YellowRed.Views.ProfilesList = Backbone.View.extend(_.extend({
 	initialize: function() {
 		this.listenTo( this.collection, 
 										"add remove change sync reset", 
-										this.render)
+										this.eventListenerCB)
 	},
 	
   template: JST['profiles/card'],
@@ -19,6 +19,11 @@ YellowRed.Views.ProfilesList = Backbone.View.extend(_.extend({
 		"click .profile-card": "linkProfile",
 		"click #current-user-thumbnail-utility": "linkMyProfile",
 	},
+  
+  eventListenerCB: function(event) {
+    console.log(event);
+    this.render();
+  },
 	
 	render: function() {
 		var that = this
