@@ -13,14 +13,13 @@ YellowRed.profile_button_responses = {
 			},
 			success: function(res) {
 				console.log("successfully starred");
-        // debugger
+
         var profile = that.model || that.collection.get(profileId);
         var stars_count = profile.get('stars_count');
         profile.set({stars_count: stars_count + 1 })
 
         $(".star[data-id='" + profileId + "']").toggleClass("unstar", true);
         $(".unstar[data-id='" + profileId + "']").toggleClass("star", false);
-        // $(".unstar[data-id='" + profileId + "']").text("unStar");
 			}, 
 		});
 	},
@@ -41,7 +40,6 @@ YellowRed.profile_button_responses = {
         
         $(".unstar[data-id='" + profileId + "']").toggleClass("star", true);
         $(".star[data-id='" + profileId + "']").toggleClass("unstar", false);
-        // $(".star[data-id='" + profileId + "']").text("Star");
 			}, 
 		});
   },

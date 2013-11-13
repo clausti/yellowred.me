@@ -3,6 +3,9 @@ YellowRed.Views.ProfileDetail = Backbone.View.extend(_.extend({
   
   initialize: function(options) {
     this.path = options.username;
+		this.listenTo( this.model, 
+										"change", 
+										this.render)
   },
 
   detailCard: JST['profiles/detail'],
