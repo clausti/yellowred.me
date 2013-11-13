@@ -1,10 +1,11 @@
 YellowRed.Views.MessagesList = Backbone.View.extend({
 	// initialize with a collection
 	
-	initialize: function() {
+	initialize: function(options) {
+    this.sectionHeader = options.header;
 		this.listenTo( this.collection, 
 										"add remove change sync reset", 
-										this.render)
+										this.render);
 	},
   
   events: {
@@ -17,9 +18,11 @@ YellowRed.Views.MessagesList = Backbone.View.extend({
   template: JST['messages/card'],
 	
 	render: function() {
+    this.$el.html(this.sectionHeader);
+    this.$el.append("<div id='new-message' class='button new-message-button' data-id='messages'>New Message</div>");
+		
 		var that = this;
-    this.$el.html("<div id='new-message' class='button new-message-button' data-id='messages'>New Message</div>");
-		this.collection.each( function (message) {
+    this.collection.each( function (message) {
 			that.$el.append(that.template({
 				message: message, 
         listData: JST['messages/list']({

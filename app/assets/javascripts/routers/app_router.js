@@ -1,7 +1,7 @@
 YellowRed.Routers.App = Backbone.Router.extend({
 	initialize: function(page_elements){
-		this.central_content = page_elements.central_content;
-		this.search_results = page_elements.search_results;
+		this.centralContent = page_elements.central_content;
+		this.searchResultsBox = page_elements.search_results;
 	},
 	
 	routes: {
@@ -16,23 +16,28 @@ YellowRed.Routers.App = Backbone.Router.extend({
 		"profiles": "displayAllProfiles",
 		":username": "displayProfileDetail",
 	},
+  
+  _swapView: function(newView) {
+    this.currentView && this.currentView.remove();
+    this.currentView = newView;
+    this.centralContent.html(newView.render().$el);
+  },
 	
 	populateSearchResults: function() {
-		var searchResultsBox = this.search_results;
 		var searchResults = new YellowRed.Views.ProfilesList({
 			collection: YellowRed.searched_profiles
 		});
-		searchResultsBox.html(searchResults.render().$el);
+    this.currentView = searchResults;
+		this.searchResultsBox.html(searchResults.render().$el);
 		YellowRed.searched_profiles.fetch();
 	},
 	
 	displayAllMessages: function() {
-		var central_content = this.central_content;
 		var allMessages = new YellowRed.Views.MessagesList({
+      header: $("<h3>Everybody talks, everybody talks...</h3>"),
 			collection: YellowRed.messages
 		});
-		central_content.html($("<h3>Everybody talks, everybody talks...</h3>"))
-		central_content.append(allMessages.render().$el)
+    this._swapView(allMessages);
 		YellowRed.messages.fetch();
 	},
   
@@ -45,58 +50,52 @@ YellowRed.Routers.App = Backbone.Router.extend({
   },
 	
 	displayMyMaybes: function() {
-		var central_content = this.central_content;
 		var myMaybes = new YellowRed.Views.ProfilesList({
+      sectionHeader: $("<h3>Maybe?</h3><div class='central-info-blurb'>Get something started! (Drag cards to sort.)</div>"),
 			collection: YellowRed.maybe_profiles
 		});
-		central_content.html("<h3>Maybe?</h3><div class='central-info-blurb'>Get something started! (Drag cards to sort.)</div>");
-		central_content.append(myMaybes.render().$el);
+    this._swapView(myMaybes);
 		YellowRed.maybe_profiles.fetch();
 	},
 	
 	displayMyNopes: function() {
-		var central_content = this.central_content;
 		var myNopes = new YellowRed.Views.ProfilesList({
+      sectionHeader: $("<h3>Nope!</h3><div class='central-info-blurb'>These users will not appear in your search results.</div>"),
 			collection: YellowRed.nope_profiles
 		});
-		central_content.html("<h3>Nope!</h3><div class='central-info-blurb'>These users will not appear in your search results.</div>");
-		central_content.append(myNopes.render().$el);
+    this._swapView(myNopes);
 		YellowRed.nope_profiles.fetch();
 	},
 	
 	displayMyStarred: function() {
-		var central_content = this.central_content;
 		var myStarred = new YellowRed.Views.ProfilesList({
+      sectionHeader: $("<h3>Who I starred</h3><div class='central-info-blurb'>Pretty...</div>"),
 			collection: YellowRed.starred_profiles
 		});
-		central_content.html($("<h3>Who I starred</h3><div class='central-info-blurb'>Pretty...</div>"));
-		central_content.append(myStarred.render().$el);
+    this._swapView(myStarred);
 		YellowRed.starred_profiles.fetch();
 	},
 	
 	displayMyStarring: function() {
-		var central_content = this.central_content;
 		var myStarring = new YellowRed.Views.ProfilesList({
+      sectionHeader: $("<h3>Who starred me?</h3><div class='central-info-blurb'>They like me!</div>"),
 			collection: YellowRed.starring_profiles
 		});
-		central_content.html($("<h3>Who starred me?</h3><div class='central-info-blurb'>They like me!</div>"))
-		central_content.append(myStarring.render().$el)
-    
+    this._swapView(myStarring);
 		YellowRed.starring_profiles.fetch();
 	},
 	
 	displayAllProfiles: function() {
-		var central_content = this.central_content;
 		var allProfiles = new YellowRed.Views.ProfilesList({
+      sectionHeader: $("<h3 style='width:100%'>Browse profiles...</h3>"),
 			collection: YellowRed.all_profiles
 		});
-		central_content.html($("<h3>Browse profiles...</h3>"))
-		central_content.append(allProfiles.render().$el)
+    this._swapView(allProfiles);
 		YellowRed.all_profiles.fetch();
 	},
 	 
 	displayProfileDetail: function(usernameURL) {
-		var central_content = this.central_content;
+    var that = this;
 		$.ajax({
 			url: usernameURL,
 			success: function(res) {
@@ -105,10 +104,12 @@ YellowRed.Routers.App = Backbone.Router.extend({
           path: usernameURL,
 					model: profile
 				});
-				central_content.html(profileView.render().$el)
+				that._swapView(profileView);
 			},
 			error: function(req, status, err) {
-    		central_content.html($("<br><br><h3>Sorry! We don't have a user with that name.</h3>"));
+        that.currentView.remove();
+        that.currentView = $("<br><br><h3>Sorry! We don't have a user with that name.</h3>")
+    		central_content.html(that.currentView);
 			}
 		});
 	},
