@@ -44,14 +44,14 @@
     float: right;
   }
 }
-
 .profile-card:hover {
-	background-color: #669EFF;
-	border-color: #AA15D6;
+  background-color: #669EFF;
+  border-color: #AA15D6;
 }
-.profile-card:active {
-	position: relative;
-	top: 2px;
+//.profile-card:active 
+.profile-card-active {
+  position: relative;
+  top: 2px;
 }
 
 .unstar, .unmaybe, .unnope {
