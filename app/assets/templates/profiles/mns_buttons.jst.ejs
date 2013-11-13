@@ -12,7 +12,7 @@
 <% } %>
         
 <% if (profile.get('starred')) { %>
-  <button class="unstar button" data-id="<%= profile.escape('id')%>">unStar</button>
+  <button class="unstar button" data-id="<%= profile.escape('id')%>"><%= profile.get('stars_count') %> &#9733;</button>
 <% } else { %>
-  <button class="star button" data-id="<%= profile.escape('id')%>">Star</button>
+  <button class="star button" data-id="<%= profile.escape('id')%>"><%= profile.get('stars_count') %> &#9733;</button>
 <% } %>

@@ -11,7 +11,6 @@
   	<strong><%= profile.escape('username') %></strong><br>
   	<%= profile.escape('gender') || 'gender not specified' %>
     <br>
-    <%= profile.get('stars_count') %> Stars
     <br>
   	<%= JST['profiles/mns_buttons']({ profile: profile }) %>
   </div>

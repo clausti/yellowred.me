@@ -20,7 +20,7 @@ YellowRed.profile_button_responses = {
 
         $(".star[data-id='" + profileId + "']").toggleClass("unstar", true);
         $(".unstar[data-id='" + profileId + "']").toggleClass("star", false);
-        $(".unstar[data-id='" + profileId + "']").text("unStar");
+        // $(".unstar[data-id='" + profileId + "']").text("unStar");
 			}, 
 		});
 	},
@@ -41,7 +41,7 @@ YellowRed.profile_button_responses = {
         
         $(".unstar[data-id='" + profileId + "']").toggleClass("star", true);
         $(".star[data-id='" + profileId + "']").toggleClass("unstar", false);
-        $(".star[data-id='" + profileId + "']").text("Star");
+        // $(".star[data-id='" + profileId + "']").text("Star");
 			}, 
 		});
   },
