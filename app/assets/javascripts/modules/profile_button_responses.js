@@ -1,6 +1,6 @@
 YellowRed.profile_button_responses = {
 	starProfile: function(event) {
-    var that = this
+    var that = this;
     var starButton = $(event.currentTarget)
 		var profileId = starButton.attr("data-id");
 		console.log("you clicked to star profile " + profileId);
@@ -13,25 +13,32 @@ YellowRed.profile_button_responses = {
 			},
 			success: function(res) {
 				console.log("successfully starred");
-        var profileId = res.id
+        // debugger
+        var profile = that.model || that.collection.get(profileId);
+        var stars_count = profile.get('stars_count');
+        profile.set({stars_count: stars_count + 1 })
+
         $(".star[data-id='" + profileId + "']").toggleClass("unstar", true);
         $(".unstar[data-id='" + profileId + "']").toggleClass("star", false);
         $(".unstar[data-id='" + profileId + "']").text("unStar");
-        debugger
 			}, 
 		});
 	},
   
   unStarProfile: function(event) {
+    var that = this;
     var unStarButton = $(event.currentTarget)
 		var profileId = unStarButton.attr("data-id");
 		console.log("you clicked to unstar profile " + profileId);
+    
 		$.ajax({
 			url: "stars/" + profileId,
 			type: "delete",
 			success: function(res) {
-				console.log("successfully unstarred");
-        var profileId = res
+        var profile = that.model || that.collection.get(profileId);
+        var stars_count = profile.get('stars_count');
+        profile.set({stars_count: stars_count - 1 })
+        
         $(".unstar[data-id='" + profileId + "']").toggleClass("star", true);
         $(".star[data-id='" + profileId + "']").toggleClass("unstar", false);
         $(".star[data-id='" + profileId + "']").text("Star");
