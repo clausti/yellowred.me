@@ -66,7 +66,6 @@ YellowRed.profile_button_responses = {
 				YellowRed.maybe_profiles.fetch();
 				YellowRed.nope_profiles.fetch();
         
-        var profileId = res.id
         $(".maybe[data-id='" + profileId + "']").toggleClass("unmaybe", true);
         $(".unmaybe[data-id='" + profileId + "']").toggleClass("maybe", false);
         $(".unmaybe[data-id='" + profileId + "']").text("unMaybe");

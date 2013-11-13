@@ -3,9 +3,9 @@ YellowRed.Views.ProfilesList = Backbone.View.extend(_.extend({
 	
 	initialize: function(options) {
     this.header = options.sectionHeader;
-		this.listenTo( this.collection, 
-										"add remove change sync reset", 
-										this.render)
+    this.listenTo( this.collection, 
+                    "change", 
+                    this.render)
 	},
 	
   template: JST['profiles/card'],
@@ -23,8 +23,8 @@ YellowRed.Views.ProfilesList = Backbone.View.extend(_.extend({
 	},
 	
 	render: function() {
-		this.$el.html(this.header);
-    
+    this.$el.html(this.header);
+    console.log("rendered");
 		var that = this
 		this.collection.each( function (profile) {
 			that.$el.append(that.template({

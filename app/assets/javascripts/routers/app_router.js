@@ -17,28 +17,39 @@ YellowRed.Routers.App = Backbone.Router.extend({
 		":username": "displayProfileDetail",
 	},
   
-  _swapView: function(newView) {
+  _swapView: function(newView, contentDest) {
+    var contentDest = contentDest || this.centralContent;
     this.currentView && this.currentView.remove();
     this.currentView = newView;
-    this.centralContent.html(newView.render().$el);
+    contentDest.html(newView.render().$el);
   },
 	
 	populateSearchResults: function() {
-		var searchResults = new YellowRed.Views.ProfilesList({
-			collection: YellowRed.searched_profiles
-		});
-    this.currentView = searchResults;
-		this.searchResultsBox.html(searchResults.render().$el);
-		YellowRed.searched_profiles.fetch();
+    var that = this;
+		YellowRed.searched_profiles.fetch({ 
+      wait: true, 
+      success: function() {
+    		var searchResults = new YellowRed.Views.ProfilesList({
+    			collection: YellowRed.searched_profiles
+    		});
+        console.log("populateSearchResults");
+        that._swapView(searchResults, that.searchResultsBox);
+      }
+    });
 	},
 	
 	displayAllMessages: function() {
-		var allMessages = new YellowRed.Views.MessagesList({
-      header: $("<h3>Everybody talks, everybody talks...</h3>"),
-			collection: YellowRed.messages
+    var that = this;
+		YellowRed.messages.fetch({
+		  wait: true,
+      success: function() {
+    		var allMessages = new YellowRed.Views.MessagesList({
+          header: $("<h3>Everybody talks, everybody talks...</h3>"),
+    			collection: YellowRed.messages
+    		});
+        that._swapView(allMessages);
+      }
 		});
-    this._swapView(allMessages);
-		YellowRed.messages.fetch();
 	},
   
   displayNewMessageForm: function() {
@@ -50,48 +61,73 @@ YellowRed.Routers.App = Backbone.Router.extend({
   },
 	
 	displayMyMaybes: function() {
-		var myMaybes = new YellowRed.Views.ProfilesList({
-      sectionHeader: $("<h3>Maybe?</h3><div class='central-info-blurb'>Get something started! (Drag cards to sort.)</div>"),
-			collection: YellowRed.maybe_profiles
+    var that = this;
+		YellowRed.maybe_profiles.fetch({
+		  wait: true,
+      success: function() {
+    		var myMaybes = new YellowRed.Views.ProfilesList({
+          sectionHeader: $("<h3>Maybe?</h3><div class='central-info-blurb'>Get something started! (Drag cards to sort.)</div>"),
+    			collection: YellowRed.maybe_profiles
+    		});
+        that._swapView(myMaybes);
+      }
 		});
-    this._swapView(myMaybes);
-		YellowRed.maybe_profiles.fetch();
 	},
 	
 	displayMyNopes: function() {
-		var myNopes = new YellowRed.Views.ProfilesList({
-      sectionHeader: $("<h3>Nope!</h3><div class='central-info-blurb'>These users will not appear in your search results.</div>"),
-			collection: YellowRed.nope_profiles
-		});
-    this._swapView(myNopes);
-		YellowRed.nope_profiles.fetch();
+		var that = this;
+		YellowRed.nope_profiles.fetch({ 
+      wait: true,
+      success: function() {
+    		var myNopes = new YellowRed.Views.ProfilesList({
+          sectionHeader: $("<h3>Nope!</h3><div class='central-info-blurb'>These users will not appear in your search results.</div>"),
+    			collection: YellowRed.nope_profiles
+    		});
+        that._swapView(myNopes);
+      } 
+    });
 	},
 	
 	displayMyStarred: function() {
-		var myStarred = new YellowRed.Views.ProfilesList({
-      sectionHeader: $("<h3>Who I starred</h3><div class='central-info-blurb'>Pretty...</div>"),
-			collection: YellowRed.starred_profiles
-		});
-    this._swapView(myStarred);
-		YellowRed.starred_profiles.fetch();
+    var that = this;
+		YellowRed.starred_profiles.fetch({ 
+      wait: true,
+      success: function() {
+    		var myStarred = new YellowRed.Views.ProfilesList({
+          sectionHeader: $("<h3>Who I starred</h3><div class='central-info-blurb'>Pretty...</div>"),
+    			collection: YellowRed.starred_profiles
+    		});
+        that._swapView(myStarred);
+      }
+    });
 	},
 	
 	displayMyStarring: function() {
-		var myStarring = new YellowRed.Views.ProfilesList({
-      sectionHeader: $("<h3>Who starred me?</h3><div class='central-info-blurb'>They like me!</div>"),
-			collection: YellowRed.starring_profiles
-		});
-    this._swapView(myStarring);
-		YellowRed.starring_profiles.fetch();
+		var that = this;
+		YellowRed.starring_profiles.fetch({ 
+      wait: true,
+      success: function() {
+    		var myStarring = new YellowRed.Views.ProfilesList({
+          sectionHeader: $("<h3>Who starred me?</h3><div class='central-info-blurb'>They like me!</div>"),
+    			collection: YellowRed.starring_profiles
+    		});
+        that._swapView(myStarring);
+      }
+    });
 	},
 	
 	displayAllProfiles: function() {
-		var allProfiles = new YellowRed.Views.ProfilesList({
-      sectionHeader: $("<h3 style='width:100%'>Browse profiles...</h3>"),
-			collection: YellowRed.all_profiles
-		});
-    this._swapView(allProfiles);
-		YellowRed.all_profiles.fetch();
+		var that = this;
+		YellowRed.all_profiles.fetch({
+      wait: true,
+      success: function() {
+    		var allProfiles = new YellowRed.Views.ProfilesList({
+          sectionHeader: $("<h3 style='width:100%'>Browse profiles...</h3>"),
+    			collection: YellowRed.all_profiles
+    		});
+        that._swapView(allProfiles);
+      }
+    });
 	},
 	 
 	displayProfileDetail: function(usernameURL) {
