@@ -3,9 +3,9 @@ class ProfilesController < ApplicationController
   def index
     @profiles = Profile.all.shuffle
     @profiles.delete(current_user.profile)
-    # Profile.transaction do
+    Profile.transaction do
       render :index
-    # end
+    end
   end
   
   def show

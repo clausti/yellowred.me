@@ -2,6 +2,7 @@ YellowRed.Views.NewMessage = Backbone.View.extend({
 
   formBodyTemplate: JST['messages/new_body'],
   inputRecip: JST['messages/new_recip'],
+  recipPhoto: JST['messages/new_recip_photo'],
   cancelFromMessages: JST['messages/messages_cancel'],
   profileRecip: JST['messages/from_profile'],
   cancelFromProfile: JST['messages/profile_cancel'],
@@ -30,14 +31,17 @@ YellowRed.Views.NewMessage = Backbone.View.extend({
 	},
   
   checkForUser: function(event) {
+    var that = this;
     var recipient = $(event.currentTarget).val();
     $.ajax({
       url: recipient,
-      success: function() {
+      success: function(res) {
         $("#username-errors").html('');
+        $("#message-recip-photo").html(that.recipPhoto({ photoUrl: res.photo_thumb_url }));
       },
       error: function() {
         $("#username-errors").html("Username not found!");
+        $("#message-recip-photo").html('');
       }
     });
   },
