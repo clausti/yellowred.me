@@ -112,32 +112,55 @@
 	
 	#yellow-box {
     position: fixed;
-    top: 250px;
+    top: 150px;
 		font-size: 14pt;
 		float: left;
 		width: 200px;
 		height: 250px;
 		margin-bottom: 10px;
+		background-color: #FCF258;
 		border-style: solid;
-		border-color: yellow;
-		border-width: 1px;
-		background-color: #FFF675;
-	
+    border-color: yellow;
+    border-width: 1px;
+
+    #inner-yellow {
+      position: relative;
+      height: 92%;
+      width: 90%%;
+      border-style: solid;
+      border-color: yellow;
+      border-width: 1px;
+      background-color: #FFF9A8;
+      margin: 10px;
+      box-shadow: inset 0 0 2px yellow;
+    }
 	}
 
 	#red-box {
 		font-size: 14pt;
 		float: left;
     position: fixed;
-    top: 500px;
+    top: 400px;
 		width: 200px;
-		height: 100px;
+		height: 150px;
 		margin-top: 10px;
 		margin-bottom: 10px;
 		border-style: solid;
 		border-color: red;
 		border-width: 1px;
 		background-color: #FF1E00;
+    
+    #inner-red {
+      position: relative;
+      height: 86%;
+      width: 90%%;
+      border-style: solid;
+      border-color: red;
+      border-width: 1px;
+      background-color: #FF8373;
+      margin: 10px;
+      box-shadow: inset 0 0 2px red;
+    }
 	}
 }
 
