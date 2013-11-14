@@ -1,5 +1,14 @@
 YellowRed.profile_button_responses = {
   
+  startDrag: function(event, ui) {
+    ui.helper.toggleClass("noclick");
+  },
+  
+  stopDrag: function(event, ui) {
+    console.log("stopped");
+    // ui.helper.parent().toggleClass("profile-card-active", false);
+  },
+  
 	activateProfileCard: function(event) {
 		if (!$(event.target).is("button")) {
       $(event.currentTarget).toggleClass("profile-card-active");
@@ -7,11 +16,17 @@ YellowRed.profile_button_responses = {
 	},
 	
 	linkProfile: function(event) {
-		if (!$(event.target).is("button")) {
-      $(event.currentTarget).toggleClass("profile-card-active", false);
-			var username = $(event.currentTarget).attr("data-username");
-			YellowRed.appRouter.navigate(username, {trigger: true});	
-		}
+    debugger
+    var clickedOn = $(event.target);
+    if ((clickedOn).hasClass('noclick')) {
+      clickedOn.removeClass('noclick');
+    } else {
+  		if (!clickedOn.is("button")) {
+        $(event.currentTarget).toggleClass("profile-card-active", false);
+  			var username = $(event.currentTarget).attr("data-username");
+  			YellowRed.appRouter.navigate(username, {trigger: true});	
+  		}
+    }
 	},
   
 	starProfile: function(event) {
