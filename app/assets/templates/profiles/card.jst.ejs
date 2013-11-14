@@ -10,7 +10,7 @@
     
     
   	<strong><%= profile.escape('username') %></strong><br>
-  	<%= profile.escape('gender') || 'gender not specified' %>
+  	<%= profile.escape('gender') %>
     <br>
     <br>
   	<%= JST['profiles/mns_buttons']({ profile: profile }) %>
