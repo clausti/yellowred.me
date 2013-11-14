@@ -4,7 +4,7 @@ YellowRed.Views.ProfilesList = Backbone.View.extend(_.extend({
 	initialize: function(options) {
     this.header = options.sectionHeader;
     this.listenTo( this.collection, 
-                    "change", 
+                    "add remove change",
                     this.render)
 	},
 	
@@ -22,6 +22,8 @@ YellowRed.Views.ProfilesList = Backbone.View.extend(_.extend({
 	},
 	
 	render: function() {
+    console.log('render' + this.collection.url)
+    this.$el.html('');
     this.$el.html(this.header);
 		var that = this
 		this.collection.each( function (profile) {

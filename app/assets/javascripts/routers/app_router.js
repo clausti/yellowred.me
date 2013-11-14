@@ -7,7 +7,7 @@ YellowRed.Routers.App = Backbone.Router.extend({
 	},
 	
 	routes: {
-		"": "populateBoxes",
+		"": "populateSearchResults",
 		"messages": "displayAllMessages",
     'new-message': "displayNewMessageForm",
 		"my-maybe-list": "displayMyMaybes",
@@ -17,32 +17,6 @@ YellowRed.Routers.App = Backbone.Router.extend({
     "profiles/:id": "displayProfileDetailById",
 		"profiles": "displayAllProfiles",
 		":username": "displayProfileDetail",
-	},
-  
-  _swapView: function(newView, contentDest) {
-    var contentDest = contentDest || this.centralContent;
-    this.currentView && this.currentView.remove();
-    this.currentView = newView;
-    contentDest.html(newView.render().$el);
-  },
-  
-  populateBoxes: function() {
-    this.populateSearchResults();
-    this.populateYellowBox();
-    this.populateRedBox();
-  },
-	
-	populateSearchResults: function() {
-    var that = this;
-		YellowRed.searched_profiles.fetch({ 
-      wait: true, 
-      success: function() {
-    		var searchResults = new YellowRed.Views.ProfilesList({
-    			collection: YellowRed.searched_profiles
-    		});
-        that._swapView(searchResults, that.searchResultsBox);
-      }
-    });
 	},
   
   populateYellowBox: function() {
@@ -72,6 +46,26 @@ YellowRed.Routers.App = Backbone.Router.extend({
       }
     });
   },
+  
+  _swapView: function(newView, contentDest) {
+    var contentDest = contentDest || this.centralContent;
+    this.currentView && this.currentView.remove();
+    this.currentView = newView;
+    contentDest.html(newView.render().$el);
+  },
+  
+	populateSearchResults: function() {
+    var that = this;
+		YellowRed.searched_profiles.fetch({ 
+      wait: true, 
+      success: function() {
+    		var searchResults = new YellowRed.Views.ProfilesList({
+    			collection: YellowRed.searched_profiles
+    		});
+        that._swapView(searchResults, that.searchResultsBox);
+      }
+    });
+	},
   
 	displayAllMessages: function() {
     var that = this;

@@ -18,7 +18,6 @@ YellowRed.profile_button_responses = {
     var that = this;
     var starButton = $(event.currentTarget)
 		var profileId = starButton.attr("data-id");
-		console.log("you clicked to star profile " + profileId);
     
 		$.ajax({
 			url: "stars",
@@ -27,17 +26,15 @@ YellowRed.profile_button_responses = {
 				profile_id: profileId
 			},
 			success: function(res) {
-				console.log("successfully starred");
-
         var profile = that.model || that.collection.get(profileId);
-        console.log(profile.get('id'))
+        YellowRed.starred_profiles.add(profile);
+        
         var stars_count = profile.get('stars_count');
-        profile.set({stars_count: stars_count + 1 });
-        profile.set({starred: true});
-
-        $(".star[data-id='" + profileId + "']").toggleClass("unstar", true);
-        $(".unstar[data-id='" + profileId + "']").toggleClass("star", false);
-			}, 
+        profile.set({
+          starred: true,
+          stars_count: stars_count + 1
+        });
+			} 
 		});
 	},
   
@@ -45,28 +42,26 @@ YellowRed.profile_button_responses = {
     var that = this;
     var unStarButton = $(event.currentTarget)
 		var profileId = unStarButton.attr("data-id");
-		console.log("you clicked to unstar profile " + profileId);
     
 		$.ajax({
 			url: "stars/" + profileId,
 			type: "delete",
 			success: function(res) {
         var profile = that.model || that.collection.get(profileId);
-        console.log(profile.get('id'))
-        profile.set({starred: false});
-        
+        YellowRed.starred_profiles.add(profile);
+                
         var stars_count = profile.get('stars_count');
-        profile.set({stars_count: stars_count - 1 })
-        
-        $(".unstar[data-id='" + profileId + "']").toggleClass("star", true);
-        $(".star[data-id='" + profileId + "']").toggleClass("unstar", false);
-			}, 
+        profile.set({
+          starred: false,
+          stars_count: stars_count - 1
+        })
+			} 
 		});
   },
 
-	maybeProfile: function(event) {    
+	maybeProfile: function(event) {
+    var that = this;
 		var profileId = $(event.currentTarget).attr("data-id");
-		console.log("you clicked to maybe profile " + profileId);
 		$.ajax({
 			url: "maybes",
 			type: "post",
@@ -77,10 +72,10 @@ YellowRed.profile_button_responses = {
 				}
 			},
 			success: function(res) {
-				console.log("successfully maybed");
-				YellowRed.maybe_profiles.fetch();
-				YellowRed.nope_profiles.fetch();
-        YellowRed.searched_profiles.fetch({wait: true});
+        var profile = that.model || that.collection.get(profileId);
+				YellowRed.maybe_profiles.add(profile);
+				YellowRed.nope_profiles.remove(profile);
+        YellowRed.searched_profiles.remove(profile);
         
         $(".maybe[data-id='" + profileId + "']").toggleClass("unmaybe", true);
         $(".unmaybe[data-id='" + profileId + "']").toggleClass("maybe", false);
@@ -94,15 +89,17 @@ YellowRed.profile_button_responses = {
 	},
   
   unMaybeProfile: function(event) {
+    var that = this;
     var unMaybeButton = $(event.currentTarget)
 		var profileId = unMaybeButton.attr("data-id");
-		console.log("you clicked to unmaybe profile " + profileId);
 		$.ajax({
 			url: "maybes/" + profileId,
 			type: "delete",
 			success: function(res) {
-				console.log("successfully unmaybed");
-        var profileId = res
+        var profile = that.model || that.collection.get(profileId);
+				YellowRed.maybe_profiles.remove(profile);
+        YellowRed.searched_profiles.add(profile);
+        
         $(".unmaybe[data-id='" + profileId + "']").toggleClass("maybe", true);
         $(".maybe[data-id='" + profileId + "']").toggleClass("unmaybe", false);
         $(".maybe[data-id='" + profileId + "']").text("Maybe");
@@ -111,9 +108,8 @@ YellowRed.profile_button_responses = {
   },
 
 	nopeProfile: function(event) {
-    
+    var that = this;
 		var profileId = $(event.currentTarget).attr("data-id");
-		console.log("you clicked to nope profile " + profileId);
 		$.ajax({
 			url: "maybes",
 			type: "post",
@@ -124,12 +120,11 @@ YellowRed.profile_button_responses = {
 				}
 			},
 			success: function(res) {
-				console.log("successfully noped");
-				YellowRed.maybe_profiles.fetch();
-				YellowRed.nope_profiles.fetch();
-        YellowRed.searched_profiles.fetch({wait: true});
+        var profile = that.model || that.collection.get(profileId);
+				YellowRed.maybe_profiles.remove(profile);
+				YellowRed.nope_profiles.add(profile);
+        YellowRed.searched_profiles.remove(profile);
         
-        var profileId = res.id
         $(".nope[data-id='" + profileId + "']").toggleClass("unnope", true);
         $(".unnope[data-id='" + profileId + "']").toggleClass("nope", false);
         $(".unnope[data-id='" + profileId + "']").text("unNope");
@@ -142,15 +137,17 @@ YellowRed.profile_button_responses = {
 	},
   
   unNopeProfile: function(event) {
+    var that = this;
     var unMaybeButton = $(event.currentTarget)
 		var profileId = unMaybeButton.attr("data-id");
-		console.log("you clicked to unnope profile " + profileId);
 		$.ajax({
 			url: "maybes/" + profileId,
 			type: "delete",
 			success: function(res) {
-				console.log("successfully unnoped");
-        var profileId = res
+        var profile = that.model || that.collection.get(profileId);
+				YellowRed.nope_profiles.remove(profile);
+        YellowRed.searched_profiles.add(profile);
+        
         $(".unnope[data-id='" + profileId + "']").toggleClass("nope", true);
         $(".nope[data-id='" + profileId + "']").toggleClass("unnope", false);
         $(".nope[data-id='" + profileId + "']").text("Nope");

@@ -14,6 +14,9 @@ window.YellowRed = {
       red_box: $("#inner-red")
 		});
 		Backbone.history.start();
+    
+    YellowRed.appRouter.populateYellowBox();
+    YellowRed.appRouter.populateRedBox();
   }
 };
 
