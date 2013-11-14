@@ -9,14 +9,20 @@
 
 			<label for="user_username">Email</label>
 			<br>
-			<input type="text" name="user[email]" value="<%= @user.email %>" id="user_username">
+			<input type="text" name="user[email]" value="<%= @user.email %>" id="user_email">
 			<br>
 			<label for="user_password">Password</label>
 			<br>
 			<input type="password" name="user[password]" id="user_password">
 			<br><br>
+  		
 			<input type="submit" value="Log In" class="button">
+  		<input type="submit"
+             class="button"
+             id="demo-user"
+             value="Demo User" >
 		</form>
+		
 		<%= button_to "New? Sign up!", signup_url, :method => :get, :class => "button" %>
 	
 	</div>
