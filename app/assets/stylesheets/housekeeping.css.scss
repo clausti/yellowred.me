@@ -37,6 +37,10 @@ h3 {
 	font-family: "Verdana";
 	text-indent: 10px;
   width: 50%;
+  
+  a:hover {
+    text-shadow: 1px 1px 20px #9000FF;
+  }
 }
 
 #site-tagline {
