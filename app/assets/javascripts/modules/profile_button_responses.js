@@ -1,4 +1,19 @@
 YellowRed.profile_button_responses = {
+  
+	activateProfileCard: function(event) {
+		if (!$(event.target).is("button")) {
+      $(event.currentTarget).toggleClass("profile-card-active");
+		}
+	},
+	
+	linkProfile: function(event) {
+		if (!$(event.target).is("button")) {
+      $(event.currentTarget).toggleClass("profile-card-active", false);
+			var username = $(event.currentTarget).attr("data-username");
+			YellowRed.appRouter.navigate(username, {trigger: true});	
+		}
+	},
+  
 	starProfile: function(event) {
     var that = this;
     var starButton = $(event.currentTarget)

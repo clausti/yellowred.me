@@ -1,10 +1,10 @@
-YellowRed.Views.BoxList = Backbone.View.extend({
+YellowRed.Views.BoxList = Backbone.View.extend(_.extend({
 	// initialize with a collection
 	
 	initialize: function(options) {
     this.maybe = options.maybe;
     this.listenTo( this.collection, 
-                    "change", 
+                    "change add remove", 
                     this.render)
 	},
 	
@@ -16,8 +16,9 @@ YellowRed.Views.BoxList = Backbone.View.extend({
 	},
 	
 	render: function() {
-    console.log(this.maybe);
+    console.log('rendering');
 		var that = this
+    this.$el.html('')
 		this.collection.each( function (profile) {
 			that.$el.append(that.template({
         maybe_state: that.maybe,
@@ -26,19 +27,5 @@ YellowRed.Views.BoxList = Backbone.View.extend({
 		});
 		return this;
 	},
-  
-	activateProfileCard: function(event) {
-		if (!$(event.target).is("button")) {
-      $(event.currentTarget).toggleClass("profile-card-active");
-		}
-	},
-	
-	linkProfile: function(event) {
-		if (!$(event.target).is("button")) {
-      $(event.currentTarget).toggleClass("profile-card-active", false);
-			var username = $(event.currentTarget).attr("data-username");
-			YellowRed.appRouter.navigate(username, {trigger: true});	
-		}
-	},
 
-});
+}, YellowRed.profile_button_responses));

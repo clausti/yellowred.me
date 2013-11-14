@@ -40,7 +40,6 @@ YellowRed.Routers.App = Backbone.Router.extend({
     		var searchResults = new YellowRed.Views.ProfilesList({
     			collection: YellowRed.searched_profiles
     		});
-        console.log("populateSearchResults");
         that._swapView(searchResults, that.searchResultsBox);
       }
     });

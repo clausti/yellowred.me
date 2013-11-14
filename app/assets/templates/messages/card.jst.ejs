@@ -2,9 +2,12 @@
      class="message-card round-corners shadow" 
      data-id="<%= message.get('id') %>">
      
-   <img class="profile-thumb-photo"
-        src="<%= message.get('photo_url') %>"
-        style="align:top-left;margin-right:5px">
+   <div class="profile-thumb-photo"
+        style="align:top-left;margin-right:5px;padding-bottom:4px;padding-right:0px">
+        <img  src="<%= message.get('photo_url') %>">
+        <br>
+        <span style="padding-right:3px">drag me!</span>
+    </div>
      
    <div style="float:right"><%= message.get('timestamp') %></div>
    

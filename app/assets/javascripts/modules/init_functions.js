@@ -1,6 +1,5 @@
 YellowRed.staticElementEventHandlers = function() {
 	$("#current-user-thumbnail-utility").on("click", function() {
-    debugger
 		YellowRed.appRouter.navigate("profile", { trigger: true} )
 	});
   
@@ -24,6 +23,7 @@ YellowRed.staticElementEventHandlers = function() {
     $("#demo-user").attr("value", "Log In Gary");
     $("#demo-user").off();
   });
+
 }
 
 YellowRed.instantiateProfileCollections = function() {
