@@ -2,10 +2,12 @@ YellowRed.Routers.App = Backbone.Router.extend({
 	initialize: function(page_elements){
 		this.centralContent = page_elements.central_content;
 		this.searchResultsBox = page_elements.search_results;
+    this.yellowBox = page_elements.yellow_box;
+    this.redBox = page_elements.red_box;
 	},
 	
 	routes: {
-		"": "populateSearchResults",
+		"": "populateBoxes",
 		"messages": "displayAllMessages",
     'new-message': "displayNewMessageForm",
 		"my-maybe-list": "displayMyMaybes",
@@ -23,6 +25,12 @@ YellowRed.Routers.App = Backbone.Router.extend({
     this.currentView = newView;
     contentDest.html(newView.render().$el);
   },
+  
+  populateBoxes: function() {
+    this.populateSearchResults();
+    // this.populateYellowBox();
+    // this.populateRedBox();
+  },
 	
 	populateSearchResults: function() {
     var that = this;
@@ -37,6 +45,33 @@ YellowRed.Routers.App = Backbone.Router.extend({
       }
     });
 	},
+  
+  // populateYellowBox: function() {
+  //   var that = this;
+  //     YellowRed.maybe_profiles.fetch({
+  //       wait: true,
+  //     success: function() {
+  //       var boxMaybes = new YellowRed.Views.BoxList({
+  //         collection: YellowRed.maybe_profiles
+  //       });
+  //       that.yellowBox.html(boxMaybes.render());
+  //     }
+  //     });
+  // },
+  // 
+  // populateRedBox: function() {
+  //   var that = this;
+  //   var that = this;
+  //     YellowRed.maybe_profiles.fetch({
+  //       wait: true,
+  //     success: function() {
+  //       var boxNopes = new YellowRed.Views.BoxList({
+  //         collection: YellowRed.nope_profiles
+  //       });
+  //       that.yellowBox.html(boxNopes.render());
+  //     }
+  //     });
+  // },
 	
 	displayAllMessages: function() {
     var that = this;
