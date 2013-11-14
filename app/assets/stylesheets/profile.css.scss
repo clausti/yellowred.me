@@ -73,8 +73,7 @@
 
 .mini-profile-card {
   float:left;
-  padding: 3px;
-  padding-bottom: 2px;
+  padding: 5px;
   margin: 3px;
   font-size: 6pt;
   box-shadow: 0px 0px 3px 0px gray;
@@ -109,6 +108,7 @@
   text-shadow: 0px 0px 1px #0c078f;
 }
 .mini-nope:hover {
+  color: purple;
   border-color: purple;
   box-shadow: 0px 0px 10px 0px purple;
 }

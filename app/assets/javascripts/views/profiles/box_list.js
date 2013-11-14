@@ -4,13 +4,15 @@ YellowRed.Views.BoxList = Backbone.View.extend(_.extend({
 	initialize: function(options) {
     this.maybe = options.maybe;
     this.listenTo( this.collection, 
-                    "add remove",
+                    "add remove change",
                     this.render)
 	},
 	
   template: JST['profiles/mini_card'],
     
 	events: {
+    "click .star": "starProfile",
+		"click .unstar": "unStarProfile",
     "mousedown .mini-profile-card": "activateProfileCard",
     "mouseup .mini-profile-card": "linkProfile"
 	},
