@@ -23,6 +23,22 @@ YellowRed.staticElementEventHandlers = function() {
     $("#demo-user").attr("value", "Log In Gary");
     $("#demo-user").off();
   });
+  
+  $("#user_username").on("blur", function(event) {
+    var that = this;
+    var username = $(event.currentTarget).val();
+    $.ajax({
+      url: "check-username/" + username,
+      success: function(res) {
+        console.log("here")
+        $("#errors-marquee").html("Username not available");
+      },
+      error: function() {
+        console.log("there")
+        $("#errors-marquee").html('');
+      }
+    });
+  });
 
 }
 

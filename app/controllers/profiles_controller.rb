@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  skip_before_filter :must_be_logged_in, :only => :taken
   
   def index
     @profiles = Profile.all.shuffle
@@ -19,6 +20,15 @@ class ProfilesController < ApplicationController
     else
       @profile = current_user.profile
       render :show, :status => 200
+    end
+  end
+  
+  def taken
+    @profile = Profile.find_by_username(params[:username])
+    if @profile 
+      render :json => true, :status => 200
+    else
+      render :json => false, :status => 422
     end
   end
   

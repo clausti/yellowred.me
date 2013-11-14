@@ -25,6 +25,7 @@ YellowRed::Application.routes.draw do
   get 'who-starred-me', :to => 'stars#starred_me'
   
   resources :profiles, :only => [:index, :show]
+  get 'check-username/:username', :to => 'profiles#taken'
   get ':username', :to => 'profiles#show'
 
 end
