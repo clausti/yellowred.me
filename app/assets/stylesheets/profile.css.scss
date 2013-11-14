@@ -32,7 +32,7 @@
 .profile-card {
 	width: 305px;
 	float: left;
-//  text-align: right;
+  text-align: right;
 	padding: 5px;
 	margin: 5px;
 	border-style: solid;
@@ -48,7 +48,6 @@
   background-color: #669EFF;
   border-color: #AA15D6;
 }
-//.profile-card:active 
 .profile-card-active {
   position: relative;
   top: 2px;
@@ -76,12 +75,24 @@
 	border-bottom-left-radius: 4px;
 }
 
+
 .mini-maybe {
   background-color: #FCF258;
+}
+.mini-maybe:hover {
+  background-color: #669EFF;
+  border-color: #AA15D6;
 }
 
 .mini-nope {
 	background-color: #FF1E00;
+  color: white;
+	font-size: 12pt;
+  text-shadow: 0px 0px 1px #0c078f;
+}
+.mini-nope:hover {
+  background-color: #669EFF;
+  border-color: white;
 }
 
 .unstar, .unmaybe, .unnope {

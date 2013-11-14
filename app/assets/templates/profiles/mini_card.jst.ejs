@@ -1,3 +1,7 @@
 <div class="<%= 'mini-profile-card mini-' + maybe_state %>" data-username="<%= profile.escape('username')%>" > 
+  <% if (maybe_state == "maybe") { %>
     <img src="<%= profile.escape('photo_thumb_url') %>" class="profile-thumb-photo">
+  <% } else { %>
+    <%= profile.get('username') %>
+  <% } %>
 </div>
