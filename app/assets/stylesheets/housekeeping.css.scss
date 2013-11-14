@@ -26,15 +26,23 @@ h3 {
 #site-header {
   position: relative;
 	display: inline-block;
+  width: 100%;
 }
 
 #logo-home-link {
   position: relative;
-	text-shadow: 1px 1px 3px #0c078f;
+  text-shadow: 1px 1px 3px #0c078f;
 	float: left;
 	font-size: 26pt;
 	font-family: "Verdana";
-	text-indent: 10px
+	text-indent: 10px;
+  width: 50%;
+}
+
+#site-tagline {
+  text-shadow: 1px 1px 2px #0c078f;
+  font-size: 12pt;
+  color: #615E61;
 }
 
 #current-user-thumbnail-utility {
@@ -46,11 +54,6 @@ h3 {
   min-width: 200px;
 	border-style: solid;
   border-width: 1px;
-  
-//  color: #2E2E2E;
-//  border-style: solid;
-//  border-color: #119921;
-//  background-color: #A6E1F5
   color: white;
 	font-size: 12pt;
   text-shadow: 0px 0px 1px #0c078f;
