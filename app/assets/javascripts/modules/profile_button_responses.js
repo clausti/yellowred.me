@@ -65,7 +65,7 @@ YellowRed.profile_button_responses = {
 				console.log("successfully maybed");
 				YellowRed.maybe_profiles.fetch();
 				YellowRed.nope_profiles.fetch();
-        YellowRed.searched_profiles.fetch();
+        YellowRed.searched_profiles.fetch({wait: true});
         
         $(".maybe[data-id='" + profileId + "']").toggleClass("unmaybe", true);
         $(".unmaybe[data-id='" + profileId + "']").toggleClass("maybe", false);
@@ -112,7 +112,7 @@ YellowRed.profile_button_responses = {
 				console.log("successfully noped");
 				YellowRed.maybe_profiles.fetch();
 				YellowRed.nope_profiles.fetch();
-        YellowRed.searched_profiles.fetch();
+        YellowRed.searched_profiles.fetch({wait: true});
         
         var profileId = res.id
         $(".nope[data-id='" + profileId + "']").toggleClass("unnope", true);

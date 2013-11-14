@@ -28,8 +28,8 @@ YellowRed.Routers.App = Backbone.Router.extend({
   
   populateBoxes: function() {
     this.populateSearchResults();
-    // this.populateYellowBox();
-    // this.populateRedBox();
+    this.populateYellowBox();
+    this.populateRedBox();
   },
 	
 	populateSearchResults: function() {
@@ -46,33 +46,34 @@ YellowRed.Routers.App = Backbone.Router.extend({
     });
 	},
   
-  // populateYellowBox: function() {
-  //   var that = this;
-  //     YellowRed.maybe_profiles.fetch({
-  //       wait: true,
-  //     success: function() {
-  //       var boxMaybes = new YellowRed.Views.BoxList({
-  //         collection: YellowRed.maybe_profiles
-  //       });
-  //       that.yellowBox.html(boxMaybes.render());
-  //     }
-  //     });
-  // },
-  // 
-  // populateRedBox: function() {
-  //   var that = this;
-  //   var that = this;
-  //     YellowRed.maybe_profiles.fetch({
-  //       wait: true,
-  //     success: function() {
-  //       var boxNopes = new YellowRed.Views.BoxList({
-  //         collection: YellowRed.nope_profiles
-  //       });
-  //       that.yellowBox.html(boxNopes.render());
-  //     }
-  //     });
-  // },
-	
+  populateYellowBox: function() {
+    var that = this;
+    YellowRed.maybe_profiles.fetch({
+      wait: true,
+      success: function() {
+        var boxMaybes = new YellowRed.Views.BoxList({
+          maybe: "maybe",
+          collection: YellowRed.maybe_profiles
+        });
+        that.yellowBox.html(boxMaybes.render().$el);
+      }
+    });
+  },
+  
+  populateRedBox: function() {
+    var that = this;
+    YellowRed.nope_profiles.fetch({
+      wait: true,
+      success: function() {
+        var boxNopes = new YellowRed.Views.BoxList({
+          maybe: "nope",
+          collection: YellowRed.nope_profiles
+        });
+        that.redBox.html(boxNopes.render().$el);
+      }
+    });
+  },
+  
 	displayAllMessages: function() {
     var that = this;
 		YellowRed.messages.fetch({

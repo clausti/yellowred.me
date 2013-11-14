@@ -2,6 +2,7 @@ YellowRed.Views.BoxList = Backbone.View.extend({
 	// initialize with a collection
 	
 	initialize: function(options) {
+    this.maybe = options.maybe;
     this.listenTo( this.collection, 
                     "change", 
                     this.render)
@@ -15,9 +16,11 @@ YellowRed.Views.BoxList = Backbone.View.extend({
 	},
 	
 	render: function() {
+    console.log(this.maybe);
 		var that = this
 		this.collection.each( function (profile) {
 			that.$el.append(that.template({
+        maybe_state: that.maybe,
 				profile: profile
 			}))
 		});
