@@ -18,7 +18,7 @@ YellowRed.Views.ProfilesList = Backbone.View.extend(_.extend({
 		"click .unmaybe": "unMaybeProfile",
 		"click .unnope": "unNopeProfile",
     "mousedown .profile-card": "activateProfileCard",
-		"mouseup .profile-card": "linkProfile",
+    // "mouseup .profile-card": "linkProfile",
 	},
 	
 	render: function() {
@@ -31,6 +31,10 @@ YellowRed.Views.ProfilesList = Backbone.View.extend(_.extend({
 				profile: profile
 			}))
 		});
+    this.$el.find(".profile-thumb-photo").draggable({
+        revert: "invalid",
+        stack: ".profile-thumb-photo"
+    });
 		return this;
 	},
   

@@ -1,6 +1,8 @@
 <div class="profile-card round-corners shadow" data-username="<%= profile.escape('username')%>" >
   
-  <div class="profile-thumb-photo" style="padding-bottom:4px;padding-right:0px">
+  <div class="profile-thumb-photo" 
+       style="padding-bottom:4px;padding-right:0px"
+       data-id="<%= profile.escape('id')%>">
     <img src="<%= profile.escape('photo_thumb_url') %>">
     <br>
     <span style="padding-right:3px">drag me!</span>

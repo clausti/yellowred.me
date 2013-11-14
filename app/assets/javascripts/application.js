@@ -15,6 +15,7 @@
 //= require underscore
 //= require backbone
 //= require jquery.serializeJSON
+//= require jquery-ui-1.10.3.custom
 //= require yellow_red
 //= require_tree ./modules
 //= require_tree ../templates

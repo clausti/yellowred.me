@@ -5,8 +5,8 @@ window.YellowRed = {
   Routers: {},
   initialize: function() {
 		YellowRed.staticElementEventHandlers();
-		YellowRed.instantiateProfileCollections();
-		
+		YellowRed.instantiateCollections();
+     
 		YellowRed.appRouter = new YellowRed.Routers.App({
 			central_content: $("#central-content"),
 			search_results: $("#search-results"),
@@ -17,6 +17,7 @@ window.YellowRed = {
     
     YellowRed.appRouter.populateYellowBox();
     YellowRed.appRouter.populateRedBox();
+    YellowRed.all_profiles.fetch();
   }
 };
 

@@ -59,9 +59,9 @@ YellowRed.profile_button_responses = {
 		});
   },
 
-	maybeProfile: function(event) {
+	maybeProfile: function(event, ui) {
     var that = this;
-		var profileId = $(event.currentTarget).attr("data-id");
+		var profileId = $(event.currentTarget).attr("data-id") || ui.draggable.attr("data-id");
 		$.ajax({
 			url: "maybes",
 			type: "post",
@@ -72,10 +72,12 @@ YellowRed.profile_button_responses = {
 				}
 			},
 			success: function(res) {
-        var profile = that.model || that.collection.get(profileId);
+        // var profile = that.model || that.collection.get(profileId);
+        var profile = YellowRed.all_profiles.get(profileId);
 				YellowRed.maybe_profiles.add(profile);
 				YellowRed.nope_profiles.remove(profile);
         YellowRed.searched_profiles.remove(profile);
+        YellowRed.all_profiles.fetch({wait: true});
         
         $(".maybe[data-id='" + profileId + "']").toggleClass("unmaybe", true);
         $(".unmaybe[data-id='" + profileId + "']").toggleClass("maybe", false);
@@ -88,17 +90,19 @@ YellowRed.profile_button_responses = {
 		});
 	},
   
-  unMaybeProfile: function(event) {
+  unMaybeProfile: function(event, ui) {
     var that = this;
     var unMaybeButton = $(event.currentTarget)
-		var profileId = unMaybeButton.attr("data-id");
+		var profileId = $(event.currentTarget).attr("data-id") || ui.draggable.attr("data-id");
 		$.ajax({
 			url: "maybes/" + profileId,
 			type: "delete",
 			success: function(res) {
-        var profile = that.model || that.collection.get(profileId);
+        // var profile = that.model || that.collection.get(profileId);
+        var profile = YellowRed.all_profiles.get(profileId);
 				YellowRed.maybe_profiles.remove(profile);
         YellowRed.searched_profiles.add(profile);
+        YellowRed.all_profiles.fetch({wait: true});
         
         $(".unmaybe[data-id='" + profileId + "']").toggleClass("maybe", true);
         $(".maybe[data-id='" + profileId + "']").toggleClass("unmaybe", false);
@@ -107,9 +111,9 @@ YellowRed.profile_button_responses = {
 		});
   },
 
-	nopeProfile: function(event) {
+	nopeProfile: function(event, ui) {
     var that = this;
-		var profileId = $(event.currentTarget).attr("data-id");
+		var profileId = $(event.currentTarget).attr("data-id") || ui.draggable.attr("data-id");
 		$.ajax({
 			url: "maybes",
 			type: "post",
@@ -120,10 +124,12 @@ YellowRed.profile_button_responses = {
 				}
 			},
 			success: function(res) {
-        var profile = that.model || that.collection.get(profileId);
+        // var profile = that.model || that.collection.get(profileId);
+        var profile = YellowRed.all_profiles.get(profileId);
 				YellowRed.maybe_profiles.remove(profile);
 				YellowRed.nope_profiles.add(profile);
         YellowRed.searched_profiles.remove(profile);
+        YellowRed.all_profiles.fetch({wait: true});
         
         $(".nope[data-id='" + profileId + "']").toggleClass("unnope", true);
         $(".unnope[data-id='" + profileId + "']").toggleClass("nope", false);
@@ -136,17 +142,19 @@ YellowRed.profile_button_responses = {
 		});
 	},
   
-  unNopeProfile: function(event) {
+  unNopeProfile: function(event, ui) {
     var that = this;
     var unMaybeButton = $(event.currentTarget)
-		var profileId = unMaybeButton.attr("data-id");
+		var profileId = $(event.currentTarget).attr("data-id") || ui.draggable.attr("data-id");
 		$.ajax({
 			url: "maybes/" + profileId,
 			type: "delete",
 			success: function(res) {
-        var profile = that.model || that.collection.get(profileId);
+        // var profile = that.model || that.collection.get(profileId);
+        var profile = YellowRed.all_profiles.get(profileId);
 				YellowRed.nope_profiles.remove(profile);
         YellowRed.searched_profiles.add(profile);
+        YellowRed.all_profiles.fetch({wait: true});
         
         $(".unnope[data-id='" + profileId + "']").toggleClass("nope", true);
         $(".nope[data-id='" + profileId + "']").toggleClass("unnope", false);

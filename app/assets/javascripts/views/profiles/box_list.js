@@ -5,7 +5,7 @@ YellowRed.Views.BoxList = Backbone.View.extend(_.extend({
     this.maybe = options.maybe;
     this.listenTo( this.collection, 
                     "add remove change",
-                    this.render)
+                    this.render);
 	},
 	
   template: JST['profiles/mini_card'],
@@ -18,7 +18,7 @@ YellowRed.Views.BoxList = Backbone.View.extend(_.extend({
 	},
 	
 	render: function() {
-		var that = this
+    var that = this
     this.$el.html('')
 		this.collection.each( function (profile) {
 			that.$el.append(that.template({
@@ -26,6 +26,11 @@ YellowRed.Views.BoxList = Backbone.View.extend(_.extend({
 				profile: profile
 			}))
 		});
+    this.$el.find(".mini-" + this.maybe).draggable({
+        snap: true,
+        stack: ".mini-" + this.maybe,
+        revert: true
+      });
 		return this;
 	},
 

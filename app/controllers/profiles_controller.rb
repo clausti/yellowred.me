@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   skip_before_filter :must_be_logged_in, :only => :taken
   
   def index
-    @profiles = Profile.all.shuffle
+    @profiles = Profile.all
     @profiles.delete(current_user.profile)
     Profile.transaction do
       render :index

@@ -29,6 +29,15 @@ YellowRed.Routers.App = Backbone.Router.extend({
           collection: YellowRed.maybe_profiles
         });
         that.yellowBox.html(boxMaybes.render().$el);
+        $(".mini-maybe").draggable({
+            snap: true,
+            revert: true
+          });
+          
+        $("#inner-yellow").droppable({
+          drop: YellowRed.profile_button_responses.maybeProfile,
+          out: YellowRed.profile_button_responses.unMaybeProfile
+        });
       }
     });
   },
@@ -43,6 +52,15 @@ YellowRed.Routers.App = Backbone.Router.extend({
           collection: YellowRed.nope_profiles
         });
         that.redBox.html(boxNopes.render().$el);
+        $(".mini-nope").draggable({
+            snap: true,
+            revert: true
+          });
+          
+        $("#inner-red").droppable({
+          drop: YellowRed.profile_button_responses.nopeProfile,
+          out: YellowRed.profile_button_responses.unNopeProfile
+        });
       }
     });
   },

@@ -1,7 +1,10 @@
 <!-- profile show/detail template -->
 <div id="profile-detail-card" class="round-corners shadow">
     
-  <img src="<%= profile.escape('photo_url') %>" style="align:right" class="profile-photo">
+  <img src="<%= profile.escape('photo_url') %>" 
+       style="align:right" 
+       class="profile-photo"
+       data-id="<%= profile.escape('id')%>">
   
 	<strong>Gender:</strong> <%= profile.escape('gender')%><br>
 	<strong>Height:</strong> <%= profile.escape('height_string')%><br>

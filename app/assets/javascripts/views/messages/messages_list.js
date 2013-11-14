@@ -30,6 +30,10 @@ YellowRed.Views.MessagesList = Backbone.View.extend({
         })
 			}))
 		});
+    this.$el.find(".profile-thumb-photo").draggable({
+        revert: "invalid",
+        stack: ".profile-thumb-photo"
+    });
 		return this;
 	},
   
