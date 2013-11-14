@@ -1,29 +1,20 @@
-YellowRed.Views.ProfilesList = Backbone.View.extend(_.extend({
+YellowRed.Views.BoxList = Backbone.View.extend({
 	// initialize with a collection
 	
 	initialize: function(options) {
-    this.header = options.sectionHeader;
     this.listenTo( this.collection, 
                     "change", 
                     this.render)
 	},
 	
-  template: JST['profiles/card'],
-	
+  template: JST['profiles/mini_card'],
+    
 	events: {
-		"click .star": "starProfile",
-		"click .maybe": "maybeProfile",
-		"click .nope": "nopeProfile",  
-		"click .unstar": "unStarProfile",
-		"click .unmaybe": "unMaybeProfile",
-		"click .unnope": "unNopeProfile",
-    "mousedown .profile-card": "activateProfileCard",
-		"mouseup .profile-card": "linkProfile",
+    "mousedown .mini-profile-card": "activateProfileCard",
+    "mouseup .mini-profile-card": "linkProfile"
 	},
 	
 	render: function() {
-    this.$el.html(this.header);
-    console.log("rendered");
 		var that = this
 		this.collection.each( function (profile) {
 			that.$el.append(that.template({
@@ -47,4 +38,4 @@ YellowRed.Views.ProfilesList = Backbone.View.extend(_.extend({
 		}
 	},
 
-}, YellowRed.profile_button_responses));
+});
