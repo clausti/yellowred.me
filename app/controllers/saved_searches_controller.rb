@@ -12,6 +12,7 @@ class SavedSearchesController < ApplicationController
       @profiles -= [current_user.profile]
       @profiles -= current_user.nope_profiles
       @profiles -= current_user.maybe_profiles
+      @profiles.shuffle!
     end
     render "profiles/index"
   end
