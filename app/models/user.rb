@@ -17,12 +17,14 @@ class User < ActiveRecord::Base
   has_many :messages_sent, 
            :class_name => "Message",
            :foreign_key => :sender_id,
-           :inverse_of => :sender
+           :inverse_of => :sender,
+           :dependent => :delete_all
            
   has_many :messages_recd, 
            :class_name => "Message",
            :foreign_key => :recipient_id,
-           :inverse_of => :recipient
+           :inverse_of => :recipient,
+           :dependent => :delete_all
            
   has_many :maybes, :inverse_of => :user, :dependent => :delete_all
   
