@@ -2,8 +2,8 @@ class ProfilesController < ApplicationController
   skip_before_filter :must_be_logged_in, :only => :taken
   
   def index
-    @profiles = Profile.all
-    @profiles.delete(current_user.profile)
+    @profiles = Profile.includes(:stars, :maybes)
+    #remove current user
     Profile.transaction do
       render :index
     end

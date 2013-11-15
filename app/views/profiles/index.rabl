@@ -12,8 +12,8 @@ attributes :id,
            :photo_thumb_url, 
            :height_string,
            :looking_for,
-           :interested_in,
-           :stars_count
+           :interested_in
+node(:stars_count) { |profile| profile.stars_count }
 node(:gender) do |profile|
  if profile.gender
     profile.gender
