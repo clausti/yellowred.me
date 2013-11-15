@@ -82,8 +82,11 @@ class Profile < ActiveRecord::Base
                   
   belongs_to :user, :inverse_of => :profile
   
-  has_many :maybes, :inverse_of => :profile, :dependent => :delete_all
-  has_many :stars, :inverse_of => :profile, :dependent => :delete_all
+  has_many :maybes, :inverse_of => :profile, 
+                    :dependent => :delete_all
+                    
+  has_many :stars,  :inverse_of => :profile, 
+                    :dependent => :delete_all
   
   has_many :starring_users, 
            :through => :stars, 
@@ -128,10 +131,6 @@ class Profile < ActiveRecord::Base
     interested << "Women" if self.women_wanted
     interested << "Genderqueer or Nonbinary folks" if self.nonbinary_wanted
     interested.join(", ")
-  end
-  
-  def stars_count
-    self.stars.count
   end
            
   private

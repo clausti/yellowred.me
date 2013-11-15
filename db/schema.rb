@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131112192140) do
+ActiveRecord::Schema.define(:version => 20131115193616) do
 
   create_table "maybes", :force => true do |t|
     t.integer  "user_id",                      :null => false
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20131112192140) do
     t.string   "profile_photo_content_type"
     t.integer  "profile_photo_file_size"
     t.datetime "profile_photo_updated_at"
+    t.integer  "stars_count",                :default => 0
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id", :unique => true
