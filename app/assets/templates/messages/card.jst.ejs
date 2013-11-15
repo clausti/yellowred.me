@@ -3,7 +3,8 @@
      data-id="<%= message.get('id') %>">
      
    <div class="profile-thumb-photo"
-        style="align:top-left;margin-right:5px;padding-bottom:4px;padding-right:0px">
+        style="align:top-left;margin-right:5px;padding-bottom:4px;padding-right:0px"
+        data-id="<%= message.escape('profile_id') %>">
         <img  src="<%= message.get('photo_url') %>">
         <br>
         <span style="padding-right:3px">drag me!</span>

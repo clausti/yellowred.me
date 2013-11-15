@@ -28,6 +28,11 @@ YellowRed.Views.ProfileDetail = Backbone.View.extend(_.extend({
     this.$el.html("<h3 id='profile-username'>" + this.model.escape('username') + "</h3>");
     this.addButtons();
 		this.$el.append(detailCard);
+    this.$el.find(".profile-photo").draggable({
+        revert: true,
+        stack: ".profile-photo",
+        opacity: 0.35
+    });
 		return this
 	},
   

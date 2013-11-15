@@ -38,6 +38,12 @@ YellowRed.Views.NewMessage = Backbone.View.extend({
       success: function(res) {
         $("#username-errors").html('');
         $("#message-recip-photo").html(that.recipPhoto({ photoUrl: res.photo_thumb_url }));
+        $("#message-recip-photo").attr("data-id", res.id)
+        $("#message-recip-photo").draggable({
+          revert: true,
+          opacity: 0.35,
+          stack: "#message-recip-photo"
+        })
       },
       error: function() {
         $("#username-errors").html("Username not found!");

@@ -2,6 +2,13 @@ collection @messages
 attributes :id, 
            :body,
            :timestamp
+node(:profile_id) do |message|
+ if message.sender == current_user
+   message.recipient.profile.id
+ else 
+   message.sender.profile.id
+ end
+end
 node(:sender_username) do |message|
   if message.sender == current_user
     "me"
