@@ -113,7 +113,7 @@ YellowRed.Routers.App = Backbone.Router.extend({
 		  wait: true,
       success: function() {
     		var myMaybes = new YellowRed.Views.ProfilesList({
-          sectionHeader: $("<h3>Maybe?</h3><div class='central-info-blurb'>Get something started! (Drag cards to sort.)</div>"),
+          sectionHeader: $("<h3>Maybe?</h3><div class='central-info-blurb'>Looks promising...</div>"),
     			collection: YellowRed.maybe_profiles
     		});
         that._swapView(myMaybes);
