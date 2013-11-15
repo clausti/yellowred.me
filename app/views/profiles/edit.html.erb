@@ -23,7 +23,7 @@
 				<option value=""></option>
 				<% options = Profile::GENDERS %>
 				<% options.each do |gender| %>
-					<% option_value = gender.split('genderqueer/')[-1] %>
+					<% option_value = gender %>
 			    <option value="<%= option_value %>"
 						<% if @profile.gender == option_value %>
 								selected
