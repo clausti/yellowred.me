@@ -1,12 +1,18 @@
 YellowRed.profile_button_responses = {
   
   startDrag: function(event, ui) {
-    ui.helper.toggleClass("noclick");
+    ui.helper.toggleClass("drag-no-click");
+    $(ui.helper).children().toggleClass("drag-no-click");
   },
   
   stopDrag: function(event, ui) {
     console.log("stopped");
-    // ui.helper.parent().toggleClass("profile-card-active", false);
+    ui.helper.parent().toggleClass("profile-card-active", false);
+    ui.helper.toggleClass("profile-card-active", false);
+
+    ui.helper.removeClass('drag-no-click');
+    ui.helper.parent().removeClass('drag-no-click');
+    ui.helper.children().removeClass('drag-no-click');
   },
   
 	activateProfileCard: function(event) {
@@ -16,10 +22,10 @@ YellowRed.profile_button_responses = {
 	},
 	
 	linkProfile: function(event) {
-    debugger
     var clickedOn = $(event.target);
-    if ((clickedOn).hasClass('noclick')) {
-      clickedOn.removeClass('noclick');
+    
+    if ((clickedOn).hasClass('drag-no-click')) {
+      // $(event.currentTarget).toggleClass("profile-card-active", false);
     } else {
   		if (!clickedOn.is("button")) {
         $(event.currentTarget).toggleClass("profile-card-active", false);

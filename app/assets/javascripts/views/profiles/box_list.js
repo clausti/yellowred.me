@@ -14,7 +14,7 @@ YellowRed.Views.BoxList = Backbone.View.extend(_.extend({
     "click .star": "starProfile",
 		"click .unstar": "unStarProfile",
     "mousedown .mini-profile-card": "activateProfileCard",
-    "mouseup .mini-profile-card": "linkProfile"
+    "click .mini-profile-card": "linkProfile"
 	},
 	
 	render: function() {
@@ -27,10 +27,10 @@ YellowRed.Views.BoxList = Backbone.View.extend(_.extend({
 			}))
 		});
     this.$el.find(".mini-" + this.maybe).draggable({
-        snap: true,
         stack: ".mini-" + this.maybe,
         revert: true,
-        start: YellowRed.profile_button_responses.startDrag
+        start: YellowRed.profile_button_responses.startDrag,
+        stop: YellowRed.profile_button_responses.stopDrag
       });
 		return this;
 	},

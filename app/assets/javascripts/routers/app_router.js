@@ -36,7 +36,7 @@ YellowRed.Routers.App = Backbone.Router.extend({
           
         $("#inner-yellow").droppable({
           drop: YellowRed.profile_button_responses.maybeProfile,
-          out: YellowRed.profile_button_responses.unMaybeProfile
+          out: YellowRed.profile_button_responses.unMaybeProfile,
         });
       }
     });

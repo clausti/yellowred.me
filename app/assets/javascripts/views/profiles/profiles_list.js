@@ -18,7 +18,7 @@ YellowRed.Views.ProfilesList = Backbone.View.extend(_.extend({
 		"click .unmaybe": "unMaybeProfile",
 		"click .unnope": "unNopeProfile",
     "mousedown .profile-card": "activateProfileCard",
-    "mouseup .profile-card": "linkProfile",
+    "click .profile-card": "linkProfile",
 	},
 	
 	render: function() {
@@ -35,23 +35,10 @@ YellowRed.Views.ProfilesList = Backbone.View.extend(_.extend({
         revert: true,
         stack: ".profile-thumb-photo",
         opacity: 0.35,
-        start: YellowRed.profile_button_responses.startDrag
+        start: YellowRed.profile_button_responses.startDrag,
+        stop: YellowRed.profile_button_responses.stopDrag
     });
 		return this;
-	},
-  
-	activateProfileCard: function(event) {
-		if (!$(event.target).is("button")) {
-      $(event.currentTarget).toggleClass("profile-card-active");
-		}
-	},
-	
-	linkProfile: function(event) {
-		if (!$(event.target).is("button")) {
-      $(event.currentTarget).toggleClass("profile-card-active", false);
-			var username = $(event.currentTarget).attr("data-username");
-			YellowRed.appRouter.navigate(username, {trigger: true});	
-		}
 	},
 
 }, YellowRed.profile_button_responses));
