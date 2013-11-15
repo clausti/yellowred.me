@@ -41,6 +41,7 @@ YellowRed.Views.NewMessage = Backbone.View.extend({
         $("#message-recip-photo").attr("data-id", res.id)
         $("#message-recip-photo").draggable({
           revert: true,
+          revertDuration: 300,
           opacity: 0.35,
           stack: "#message-recip-photo"
         })

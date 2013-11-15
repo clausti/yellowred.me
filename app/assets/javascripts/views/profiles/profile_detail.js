@@ -30,6 +30,7 @@ YellowRed.Views.ProfileDetail = Backbone.View.extend(_.extend({
 		this.$el.append(detailCard);
     this.$el.find(".profile-photo").draggable({
         revert: true,
+        revertDuration: 150,
         stack: ".profile-photo",
         opacity: 0.35
     });

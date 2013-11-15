@@ -29,6 +29,7 @@ YellowRed.Views.BoxList = Backbone.View.extend(_.extend({
     this.$el.find(".mini-" + this.maybe).draggable({
         stack: ".mini-" + this.maybe,
         revert: true,
+        revertDuration: 300,
         start: YellowRed.profile_button_responses.startDrag,
         stop: YellowRed.profile_button_responses.stopDrag
       });

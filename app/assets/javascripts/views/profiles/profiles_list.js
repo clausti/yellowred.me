@@ -33,6 +33,7 @@ YellowRed.Views.ProfilesList = Backbone.View.extend(_.extend({
 		});
     this.$el.find(".profile-thumb-photo").draggable({
         revert: true,
+        revertDuration: 300,
         stack: ".profile-thumb-photo",
         opacity: 0.35,
         start: YellowRed.profile_button_responses.startDrag,
