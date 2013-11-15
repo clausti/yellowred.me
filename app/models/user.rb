@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
            :inverse_of => :recipient
            
   has_many :maybes, :inverse_of => :user, :dependent => :delete_all
+  
   has_many :all_maybe_profiles,
            :through => :maybes,
            :source => :profile

@@ -8,8 +8,8 @@ class SavedSearchesController < ApplicationController
   
   def results
     Profile.transaction do
-      @profiles = Profile.all.shuffle #for now
-      @profiles.delete(current_user.profile)
+      @profiles = Profile.includes(:stars, :maybes)
+      @profiles -= [current_user.profile]
       @profiles -= current_user.nope_profiles
       @profiles -= current_user.maybe_profiles
     end

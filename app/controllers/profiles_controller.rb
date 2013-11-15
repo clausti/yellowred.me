@@ -3,7 +3,8 @@ class ProfilesController < ApplicationController
   
   def index
     @profiles = Profile.includes(:stars, :maybes)
-    #remove current user
+    @profiles -= [current_user.profile]
+    
     Profile.transaction do
       render :index
     end

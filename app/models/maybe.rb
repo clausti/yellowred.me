@@ -5,7 +5,10 @@ class Maybe < ActiveRecord::Base
   validates_uniqueness_of :profile_id, :scope => [:user_id]
   validate :cant_maybe_self
   
-  belongs_to :user, :inverse_of => :maybes
+  belongs_to :user, 
+             :inverse_of => :maybes,
+             :include => :profile
+  
   belongs_to :profile, :inverse_of => :maybes
   
   def self.find_by_ids(maybe_hash)
