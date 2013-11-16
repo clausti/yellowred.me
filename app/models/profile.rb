@@ -22,7 +22,7 @@ class Profile < ActiveRecord::Base
                                                 :thumb => "80x80#" },
                                     :default_url => "/images/cat_:style.png" 
                   
-  GENDERS          = %w( male female genderqueer/nonbinary )
+  GENDERS          = %w( male female genderqueer nonbinary )
   HEIGHTS          = (58..84).to_a
   BODY_TYPES       = %w( skinny lean average pregnant athletic soft chubby heavy)
   RELIGIONS        = %w( none Jehovah Yaweh Allah Buddhist Hindu FSM other )
