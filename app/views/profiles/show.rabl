@@ -28,7 +28,7 @@ node(:looking_for) do |profile|
 end
 node(:interested_in) do |profile| 
   if profile.username == "clausti"
-    "Design, front-end development, and user experience. Playing with big data sets on the back end. Working with genomic data and lay science. Logistical problems."
+    "Front-end development, building sites that are a pleasure to use. Playing with big data sets on the back end. Working with genomic data and lay science. Logistical problems."
   else
     profile.interested_in
   end
