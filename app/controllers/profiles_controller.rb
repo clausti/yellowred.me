@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  skip_before_filter :must_be_logged_in, :only => :taken
+  skip_before_filter :must_be_logged_in, :only => [:taken, :clausti]
   
   def index
     @profiles = Profile.includes(:stars, :maybes)
@@ -48,6 +48,11 @@ class ProfilesController < ApplicationController
       flash.now[:errors] = @profile.errors.full_messages
       render :edit
     end
+  end
+  
+  def clausti
+    @profile = Profile.find_by_username("clausti")
+    render :clausti
   end
   
 end

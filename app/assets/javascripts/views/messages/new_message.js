@@ -3,9 +3,11 @@ YellowRed.Views.NewMessage = Backbone.View.extend({
   formBodyTemplate: JST['messages/new_body'],
   inputRecip: JST['messages/new_recip'],
   recipPhoto: JST['messages/new_recip_photo'],
-  profileRecip: JST['messages/from_profile'],
+  profileRecip: JST['messages/to_profile'],
+  claustiRecip: JST['messages/to_clausti'],
   cancelFromMessages: JST['messages/messages_cancel'],
   cancelFromProfile: JST['messages/profile_cancel'],
+  cancelFromClausti: JST['messages/clausti_cancel'],
   
   events: {
     "submit form": "sendMessage",
@@ -20,6 +22,10 @@ YellowRed.Views.NewMessage = Backbone.View.extend({
     if ( profileId == 'messages' ) {
       this.$el.find("#new-message-form").prepend(this.inputRecip());
       this.$el.find("#new-message-form").append(this.cancelFromMessages());
+      return this;
+    } else if ( profileId == 'clausti') {
+      this.$el.find("#new-message-form").prepend(this.claustiRecip());
+      this.$el.find("#new-message-form").append(this.cancelFromClausti());
       return this;
     } else {
       this.$el.find("#new-message-form").prepend(this.profileRecip());

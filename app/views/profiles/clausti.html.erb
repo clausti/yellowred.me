@@ -1,0 +1,58 @@
+
+<div id="all-content">
+	
+	<div id="dummy-left-sidebar" class="round-corners shadow">
+		<a href="lobby">go<br>play<br>with<br>it</a>
+	</div>
+	<div id="central-content">
+    <h3>Christina Austin</h3>
+    <input type="hidden" value="clausti" id="profile-username">
+    
+    <div style="padding-top:10px;float:right">
+      <a href='#/new-message' 
+         id='new-message' 
+         class='button new-message-button'
+         data-id="clausti">Send a Message</a>
+    </div>
+                            
+    <div id="profile-detail-card" class="round-corners shadow">
+  
+      <img src="<%= @profile.photo_url %>" 
+           style="align:right" 
+           class="profile-photo"
+           data-id="<%= @profile.id%>">
+       
+    	<strong>Gender:</strong> <%= @profile.gender%><br>
+    	<strong>Height:</strong> <%= @profile.height_string%><br>
+      <strong>Body Type:</strong> <%= @profile.body_type%><br>
+      <strong>Religion:</strong> <%= @profile.religion%><br>
+      <strong>Education:</strong>
+      <%= @profile.education%><br>
+      <strong>Children:</strong>
+      <%= @profile.children%><br>
+      <strong>Pets:</strong>
+      <%= @profile.pets%><br>
+      <br>
+      <strong>Looking For:</strong><br>
+      "A developer job"<br>
+      <br>
+      <strong>Interested In:</strong><br>
+      "Front-end development, building sites that are a pleasure to use. Playing with big data sets on the back end. Working with genomic data and lay science. Logistical problems."
+      <br>
+  
+      <br>
+    	<strong>About Me: </strong>
+      <br>
+      <%= @profile.about_me%><br>
+    
+    </div>
+  </div>
+	<div id="right-sidebar">
+		<div id="yellow-box" class="round-corners shadow">
+		</div>
+		
+		<div id="red-box" class="round-corners shadow">
+		</div>
+	</div>
+	
+</div>
