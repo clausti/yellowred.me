@@ -3,8 +3,8 @@ YellowRed.Views.NewMessage = Backbone.View.extend({
   formBodyTemplate: JST['messages/new_body'],
   inputRecip: JST['messages/new_recip'],
   recipPhoto: JST['messages/new_recip_photo'],
-  cancelFromMessages: JST['messages/messages_cancel'],
   profileRecip: JST['messages/from_profile'],
+  cancelFromMessages: JST['messages/messages_cancel'],
   cancelFromProfile: JST['messages/profile_cancel'],
   
   events: {
