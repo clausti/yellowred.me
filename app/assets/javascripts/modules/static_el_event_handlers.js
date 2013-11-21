@@ -22,7 +22,28 @@ YellowRed.staticElementEventHandlers = function() {
     $("#user_password").attr("value", "password");
     $("#demo-user").attr("value", "Log In Gary");
     $("#demo-user").off();
+    setTimeout( function() {
+      $("#login-submit").trigger("click");
+    }, 500)
   });
+  
+  $("#go-play-with-it").on("click", function(event) {
+    event.preventDefault();
+    $.ajax({
+      url: "session",
+      type: "post",
+      data: {
+        user: {
+          email: "gary@thegreywolf.com",
+          password: "password"
+        }
+      },
+      success: function(res) {
+        window.location = "/"
+      }
+    });
+  });
+  
   
   $("#user_username").on("blur", function(event) {
     var that = this;
