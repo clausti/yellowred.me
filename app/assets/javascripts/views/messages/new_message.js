@@ -75,7 +75,7 @@ YellowRed.Views.NewMessage = Backbone.View.extend({
         console.log(err);
       }
     });
-    YellowRed.appRouter.navigate('messages', {trigger:true});
+    window.location = "/#/messages";
   },
 
 });

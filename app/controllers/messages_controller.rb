@@ -8,12 +8,19 @@ class MessagesController < ApplicationController
   
   def create
     recipient = User.find_by_username(params[:message][:recipient])
+    
+    if params[:message][:from] 
+      message_body = "(From: #{params[:message][:from]}) " +  params[:message][:body]
+    else
+      message_body = params[:message][:body]
+    end
+
     message_params = { :sender_id => ( current_user ? current_user.id : 16 ),
                                                                         #fiesty
                        :recipient_id => recipient.id,
-                       :body => params[:message][:body] }
+                       :body => message_body }
     @message = Message.new(message_params)
-    if @message.save!
+    if @message.save
       render :json => @message, :status => 200
     else
       render :json => @message.errrors.full_messages, :status => 422
