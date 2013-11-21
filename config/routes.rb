@@ -26,7 +26,7 @@ YellowRed::Application.routes.draw do
   
   resources :profiles, :only => [:index, :show]
   get 'check-username/:username', :to => 'profiles#taken'
-  get 'clausti', :to => 'profiles#clausti'
+  get 'dev', :to => 'profiles#clausti'
   get ':username', :to => 'profiles#show'
 
 end
