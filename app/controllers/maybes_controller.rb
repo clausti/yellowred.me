@@ -1,12 +1,12 @@
 class MaybesController < ApplicationController
     
   def maybe_list
-    @profiles = current_user.maybe_profiles
+    @profiles = current_user.maybe_profiles.includes(:stars, :maybes)
     render "profiles/index"
   end
   
   def nope_list
-    @profiles = current_user.nope_profiles
+    @profiles = current_user.nope_profiles.includes(:stars, :maybes)
     render "profiles/index"
   end
   
