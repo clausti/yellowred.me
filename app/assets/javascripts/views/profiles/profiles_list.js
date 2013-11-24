@@ -22,7 +22,6 @@ YellowRed.Views.ProfilesList = Backbone.View.extend(_.extend({
 	},
 	
 	render: function() {
-    console.log('render' + this.collection.url)
     this.$el.html('');
     this.$el.html(this.header);
 		var that = this
