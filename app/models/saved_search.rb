@@ -20,12 +20,9 @@ class SavedSearch < ActiveRecord::Base
   belongs_to :user, :inverse_of => :saved_search
   
   def find_matches
-    # performs single query to locate profiles that match the given parameters
-    # returns them, including stars, maybes
-    
     @profiles = Profile.includes(:stars, :maybes)
                        .where("user_id != #{self.user_id}")
-                       .where( gender: interested_genders )
+                       .where( "gender" => interested_genders )
   end
   
   def interested_genders

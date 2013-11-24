@@ -8,6 +8,7 @@ class SavedSearchesController < ApplicationController
   
   def results
     @profiles = current_user.saved_search.find_matches
+    @profiles -= current_user.all_maybe_profiles
     render "profiles/index"
   end
   
