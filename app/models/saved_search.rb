@@ -25,22 +25,21 @@ class SavedSearch < ActiveRecord::Base
                        .where( gender: interested_genders )
                        .where( self.looking_for )
   end
-  
-  private 
-    def interested_genders
-      genders = []
-      genders << "male" if men_wanted
-      genders << "female" if women_wanted
-      genders += ["genderqueer", "nonbinary"] if nonbinary_wanted
-      genders.empty? ? nil : genders
-    end
-  
-    def looking_for
-      looking = []
-      looking << "friends_wanted = #{friends_wanted}" if friends_wanted
-      looking << "dating_wanted = #{dating_wanted}" if dating_wanted
-      looking << "hookups_wanted = #{hookups_wanted}" if hookups_wanted
-      looking.join(" OR ")
-    end
+
+  def interested_genders
+    genders = []
+    genders << "male" if men_wanted
+    genders << "female" if women_wanted
+    genders += ["genderqueer", "nonbinary"] if nonbinary_wanted
+    genders.empty? ? nil : genders
+  end
+
+  def looking_for
+    looking = []
+    looking << "friends_wanted = #{friends_wanted}" if friends_wanted
+    looking << "dating_wanted = #{dating_wanted}" if dating_wanted
+    looking << "hookups_wanted = #{hookups_wanted}" if hookups_wanted
+    looking.join(" OR ")
+  end
   
 end
