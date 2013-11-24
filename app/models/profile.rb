@@ -3,12 +3,12 @@ class Profile < ActiveRecord::Base
                   :username,
                   :gender, 
                   :about_me,
-                  :friends_wanted,
-                  :dating_wanted,
-                  :hookups_wanted, 
-                  :men_wanted,
-                  :women_wanted,
-                  :nonbinary_wanted,
+                  :friends_wanted, #boolean
+                  :dating_wanted, #boolean
+                  :hookups_wanted, #boolean
+                  :men_wanted, #boolean
+                  :women_wanted, #boolean
+                  :nonbinary_wanted, #boolean
                   :height, #integer in inches
                   :body_type,
                   :religion,
@@ -44,57 +44,57 @@ class Profile < ActiveRecord::Base
             :uniqueness => { :case_sensitive => false }          
             
   validates :gender, 
-            :on => :update,
-            :on        => :update,
-            :inclusion => GENDERS,
+            :on          => :update,
+            :on          => :update,
+            :inclusion   => GENDERS,
             :allow_blank => true
             
   validates :height,
-            :on        => :update,
-            :inclusion => HEIGHTS,
+            :on          => :update,
+            :inclusion   => HEIGHTS,
             :allow_blank => true
             
   validates :body_type,
-            :on        => :update,  
-            :inclusion => BODY_TYPES,
+            :on          => :update,  
+            :inclusion   => BODY_TYPES,
             :allow_blank => true
             
   validates :religion,
-            :on        => :update,
-            :inclusion => RELIGIONS,
+            :on          => :update,
+            :inclusion   => RELIGIONS,
             :allow_blank => true
             
   validates :education,
-            :on        => :update,  
-            :inclusion => EDUCATION_LEVELS,
+            :on          => :update,  
+            :inclusion   => EDUCATION_LEVELS,
             :allow_blank => true
             
   validates :children,
-            :on        => :update,  
-            :inclusion => CHILDREN_CHOICES,
+            :on          => :update,  
+            :inclusion   => CHILDREN_CHOICES,
             :allow_blank => true
             
   validates :pets,
-            :on        => :update,  
-            :inclusion => PET_CHOICES,
+            :on          => :update,  
+            :inclusion   => PET_CHOICES,
             :allow_blank => true
                 
                   
   belongs_to :user, :inverse_of => :profile
   
   has_many :maybes, :inverse_of => :profile, 
-                    :dependent => :delete_all
+                    :dependent  => :delete_all
                     
   has_many :stars,  :inverse_of => :profile, 
-                    :dependent => :delete_all
+                    :dependent  => :delete_all
   
   has_many :starring_users, 
            :through => :stars, 
-           :source => :user
+           :source  => :user
            
   has_many :starring_profiles, 
            :through => :starring_users,
-           :source => :profile
+           :source  => :profile
            
   def self.height_string(height_inches)
     hieght_feet_inches = height_inches.divmod(12)

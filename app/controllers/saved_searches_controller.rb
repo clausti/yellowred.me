@@ -7,13 +7,7 @@ class SavedSearchesController < ApplicationController
   end
   
   def results
-    Profile.transaction do
-      @profiles = Profile.includes(:stars, :maybes)
-      @profiles -= [current_user.profile]
-      @profiles -= current_user.nope_profiles
-      @profiles -= current_user.maybe_profiles
-      @profiles.shuffle!
-    end
+    @profiles = current_user.saved_search.find_matches
     render "profiles/index"
   end
   
