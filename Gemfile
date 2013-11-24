@@ -7,7 +7,6 @@ gem 'rails', '3.2.13'
 gem 'aws-sdk'
 gem 'backbone-on-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'debugger'
 gem 'ejs'
 gem 'figaro'
 gem 'jquery-rails'
@@ -26,6 +25,7 @@ group :assets do
 end
 
 group :development do 
+  gem 'debugger'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
