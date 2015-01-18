@@ -21,14 +21,14 @@ node(:gender) do |profile|
 end
 node(:looking_for) do |profile| 
   if profile.username == "clausti"
-    "A developer job"
+    "Intersting problems and ways to solve them"
   else
     profile.looking_for
   end
 end
 node(:interested_in) do |profile| 
   if profile.username == "clausti"
-    "Front-end development, building sites that are a pleasure to use. Playing with big data sets on the back end. Working with genomic data and lay science. Logistical problems."
+    "How the data models are laid out. The way the user interacts with the system, the system with itself, and the developers with the code. The pleasure acquired from things that work well."
   else
     profile.interested_in
   end
